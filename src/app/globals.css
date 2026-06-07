@@ -1,0 +1,208 @@
+/**
+ * graficasnasve.art — Design System NASVE v1.0
+ * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
+ */
+
+@import "tailwindcss";
+
+/* ── Registro de tokens en Tailwind v4 ───────────────────────────────────── */
+@theme {
+  --color-negro:      #0D0D0B;
+  --color-tinta:      #1A1A17;
+  --color-papel:      #F5F0E8;
+  --color-blanco:     #FAFAF7;
+  --color-oro:        #C9A84C;
+  --color-oro-suave:  #E8D5A0;
+  --color-oro-oscuro: #8B6F2E;
+  --color-rojo:       #C0392B;
+  --color-verde:      #27AE60;
+  --color-gris:       #6B6B60;
+  --color-borde:      #D4D0C8;
+  --color-fondo-alt:  #EDEBE4;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:    'DM Sans', system-ui, sans-serif;
+  --font-mono:    'DM Mono', 'Fira Code', monospace;
+
+  --text-xs:   0.640rem;
+  --text-sm:   0.800rem;
+  --text-base: 1.000rem;
+  --text-md:   1.250rem;
+  --text-lg:   1.563rem;
+  --text-xl:   1.953rem;
+  --text-2xl:  2.441rem;
+  --text-3xl:  3.052rem;
+
+  --duration-rapido:  150ms;
+  --duration-base:    250ms;
+  --duration-lento:   400ms;
+  --duration-reveal:  600ms;
+  --ease-out-expo:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:      cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Variables CSS nativas ───────────────────────────────────────────────── */
+:root {
+  --negro:      #0D0D0B;
+  --tinta:      #1A1A17;
+  --papel:      #F5F0E8;
+  --blanco:     #FAFAF7;
+  --oro:        #C9A84C;
+  --oro-suave:  #E8D5A0;
+  --oro-oscuro: #8B6F2E;
+  --rojo:       #C0392B;
+  --verde:      #27AE60;
+  --gris:       #6B6B60;
+  --borde:      #D4D0C8;
+  --fondo-alt:  #EDEBE4;
+  --negro-70:   rgba(13, 13, 11, 0.70);
+  --negro-40:   rgba(13, 13, 11, 0.40);
+}
+
+/* ── Fuentes self-hosted ─────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/cormorant-garamond/CormorantGaramond-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/cormorant-garamond/CormorantGaramond-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/cormorant-garamond/CormorantGaramond-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/cormorant-garamond/CormorantGaramond-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/fonts/dm-sans/DMSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/fonts/dm-sans/DMSans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/fonts/dm-sans/DMSans-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Mono';
+  src: url('/fonts/dm-mono/DMMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Mono';
+  src: url('/fonts/dm-mono/DMMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Reset y base ────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--papel);
+  color: var(--tinta);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 2px solid var(--oro);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ── Contenedor ──────────────────────────────────────────────────────────── */
+.contenedor {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 5vw, 4rem);
+}
+
+/* ── Reveal on scroll ────────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--duration-reveal) var(--ease-out-expo),
+    transform var(--duration-reveal) var(--ease-out-expo);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger > *:nth-child(1) { transition-delay: 0ms; }
+.stagger > *:nth-child(2) { transition-delay: 80ms; }
+.stagger > *:nth-child(3) { transition-delay: 160ms; }
+.stagger > *:nth-child(4) { transition-delay: 240ms; }
+.stagger > *:nth-child(5) { transition-delay: 320ms; }
+.stagger > *:nth-child(6) { transition-delay: 400ms; }
+
+/* ── Separador editorial ─────────────────────────────────────────────────── */
+.separador {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--gris);
+  font-family: var(--font-sans);
+  font-size: 0.64rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.separador::before,
+.separador::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--borde);
+}
