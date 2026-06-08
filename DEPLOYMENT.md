@@ -37,6 +37,12 @@ Copiar `.env.local.example` → `.env.local` y rellenar (nunca subir `.env.local
    ```
 5. Crear el usuario admin (Authentication → Users) para acceder a `/admin`.
 
+> **La tienda no usa Supabase.** El catálogo de productos/preformatos vive en código
+> (`src/lib/catalogoTienda.ts`) y el motor de precio en `src/lib/precioTienda.ts`; no requiere
+> migración ni *seed*. ⚠️ Los **precios son orientativos**: para producción, sustituir los
+> coeficientes de `precioTienda.ts` (precio base por producto, tramos de volumen y factores de
+> gramaje/acabado) por la tarifa real de NASVE.
+
 ## 4. Resend (email)
 
 1. Verificar el dominio `graficasnasve.art` en Resend.
@@ -89,6 +95,7 @@ Pasos genéricos para activar (cuando se elija proveedor):
 - [ ] Usuario admin creado · login OK en `/admin`
 - [ ] Dominio DKIM/SPF verificado (email de prueba recibido)
 - [ ] `pnpm build` + CI en verde
+- [ ] **Precios de la tienda revisados** (sustituir los orientativos de `precioTienda.ts` por la tarifa real)
 - [ ] Envío real de presupuesto → fila en Supabase + emails (interno + acuse)
 - [ ] Lighthouse SEO/Accesibilidad ≥ 90
 

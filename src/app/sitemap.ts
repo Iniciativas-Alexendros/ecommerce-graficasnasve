@@ -5,6 +5,7 @@
 
 import type { MetadataRoute } from 'next'
 import { catalogoServicios } from '@/lib/catalogoServicios'
+import { catalogoTienda } from '@/lib/catalogoTienda'
 
 const BASE_URL = 'https://graficasnasve.art'
 
@@ -43,6 +44,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
+    {
+      url: `${BASE_URL}/tienda`,
+      lastModified: ahora,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    ...catalogoTienda.map((p) => ({
+      url: `${BASE_URL}/tienda/${p.slug}`,
+      lastModified: ahora,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
     {
       url: `${BASE_URL}/sostenibilidad`,
       lastModified: ahora,

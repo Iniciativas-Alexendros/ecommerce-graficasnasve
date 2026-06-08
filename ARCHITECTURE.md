@@ -11,8 +11,8 @@ ataca un dolor concreto del sector: *las soluciones suelen entregarse tarde, car
 incompatibles*. La arquitectura prioriza por tanto tres cualidades verificables:
 
 - **Rápido** — SSG/ISR para todo lo público; entrega exprés como promesa visible (48 h).
-- **Precio claro** — catálogo con precios "desde", estimación orientativa por unidad (planificado).
-- **Compatible** — *preflight* de archivos (formato, sangre, resolución, CMYK, tipografías) antes de máquina (planificado).
+- **Precio claro** — tienda con precios "desde" y **estimación orientativa por unidad** en la ficha (`/tienda`, Fase 2).
+- **Compatible** — *preflight* de archivos (formato, sangre, resolución, CMYK, tipografías) antes de máquina (planificado, Fase 3).
 
 ## Stack real
 
@@ -68,7 +68,7 @@ src/
 ├── app/
 │   ├── (marketing)/            # Grupo público (Navbar + Footer)
 │   │   ├── page.tsx            # Home
-│   │   ├── historia/ servicios/[slug]/ portfolio/ sostenibilidad/ contacto/ presupuesto/
+│   │   ├── historia/ servicios/[slug]/ portfolio/ tienda/[slug]/ sostenibilidad/ contacto/ presupuesto/
 │   │   └── layout.tsx
 │   ├── admin/
 │   │   ├── (panel)/            # Área PROTEGIDA (guard + chrome admin)
@@ -84,7 +84,7 @@ src/
 ├── components/ui/ · components/marketing/ · components/formularios/
 ├── lib/
 │   ├── supabase/cliente.ts · servidor.ts   # browser / servidor (+admin)
-│   ├── resend.ts · catalogoServicios.ts
+│   ├── resend.ts · catalogoServicios.ts · catalogoTienda.ts · precioTienda.ts
 │   └── validaciones/presupuesto.ts
 ├── types/supabase.ts           # Tipos de la BD (fuente del esquema)
 └── proxy.ts                    # (Next 16) sustituye a middleware.ts
@@ -93,6 +93,7 @@ src/
 ## Routing y rendering
 
 - **(marketing)** — estático con ISR. El portfolio revalida (ISR) leyendo de Supabase.
+- **tienda** — `/tienda` estático (catálogo en código) y `/tienda/[slug]` **SSG** (`generateStaticParams`), con configurador de precio en cliente y JSON-LD `Product` + `BreadcrumbList`.
 - **admin/(panel)** — SSR; protegido por `proxy.ts` **y** por el guard del layout del grupo.
 - **admin/login** — público, fuera de `(panel)` para que sea alcanzable sin sesión.
 - **api/** — Route Handlers. `presupuesto` procesa `FormData` (multipart, archivo ≤ 50 MB).
@@ -191,6 +192,23 @@ sequenceDiagram
   F-->>C: pantalla de confirmación
 ```
 
+## Tienda y estimación de precio (Fase 2)
+
+El catálogo de la tienda vive **en código** (`src/lib/catalogoTienda.ts`), igual que
+`catalogoServicios` y **no** en Supabase: los preformatos son curados y estables, lo que permite
+SSG total y tests deterministas. Cada producto declara formato, material, opciones de
+gramaje/soporte y de acabado (cada una con su `factor`), tramos de cantidad y un `precioBase`.
+
+- **`/tienda`** (estático) — grid con filtros por categoría (client component) y precio «desde».
+- **`/tienda/[slug]`** (SSG) — ficha con specs, JSON-LD `Product` + `BreadcrumbList` y el
+  **configurador** (`ConfiguradorPrecio`, cliente) que estima €/ud y total en vivo.
+- **Motor de precio** (`src/lib/precioTienda.ts`) — función pura
+  `estimarPrecioUnitario = precioBase × gramaje × acabado × descuento_por_volumen`, con redondeo a
+  céntimos y formato `es-ES`. ⚠️ **Coeficientes orientativos**: centralizados aquí para sustituir
+  por la tarifa real de NASVE en un único punto.
+- **Funnel** — el CTA de la ficha enlaza a `/presupuesto?producto=<tipo>&detalle=<resumen>`; la
+  página de presupuesto lee `searchParams` en servidor y **prefija** el formulario.
+
 ## Seguridad y RGPD
 
 - Cabeceras en `next.config.ts`: CSP (sin `unsafe-eval`), `X-Frame-Options: DENY`, `nosniff`,
@@ -202,10 +220,11 @@ sequenceDiagram
 
 ## Testing y CI
 
-- **Unitarios (Vitest + Testing Library, jsdom):** validaciones Zod, catálogo, plantillas Resend
-  (mock), componentes UI y el formulario. `proxy.ts` se prueba en entorno **node**.
-- **E2E (Playwright, Chromium):** home, validación del formulario y guard de `/admin`
-  (sin secretos: cubre la redirección a `/admin/login` y la ausencia de bucle).
+- **Unitarios (Vitest + Testing Library, jsdom):** validaciones Zod, catálogos (servicios y
+  tienda), **motor de precio**, configurador, plantillas Resend (mock), componentes UI y el
+  formulario. `proxy.ts` se prueba en entorno **node**.
+- **E2E (Playwright, Chromium):** home, validación del formulario, guard de `/admin` y **tienda**
+  (grid + filtros, ficha con estimación reactiva y enlace al presupuesto). Sin secretos.
 - **CI** (`.github/workflows/ci.yml`): `typecheck` + `lint` + `test` y un job de `e2e`.
 - Scripts: `pnpm typecheck | lint | test | test:e2e`.
 
@@ -218,7 +237,6 @@ Vercel (`cdg1`) + Supabase (UE) + Resend + Cloudflare. Pasos detallados en
 
 Definido en el briefing `nasveweb2026.pdf` y aún **no implementado**:
 
-- **Tienda** `/tienda` (catálogo con filtros por categoría) y **ficha** `/tienda/[slug]`.
 - **Encargo asistido** `/encargo` (configurador de 4 pasos con *preflight* de archivo).
 - **Asistente flotante** (chatbot global que cualifica el encargo en 4 preguntas → CRM).
 - **Pagos** (Fase 4): comparativa Redsys + Bizum vs Stripe vs Mollie.
@@ -234,5 +252,5 @@ arquitectura ya está alineada con la realidad; se deja constancia de las difere
 | Naming `lib/` | `client/server`, `validations`, `stripe.ts` | `cliente/servidor`, `validaciones`, sin `stripe.ts` |
 | `pedidos` | pedidos de Stripe (jsonb, céntimos) | pipeline de producción (FK a presupuesto) |
 | `presupuestos`/`portfolio` | otros enums/campos | enums reales + `archivo_nombre`, `imagen_alt`, `publicado`… |
-| Pagos | Stripe activo | stub 501; proveedor a decidir (Fase 4) |
-| Tienda | implementada | planificada |
+| Pagos | Stripe activo | stub 501; proveedor a decidir (Fase 5) |
+| Tienda | implementada (asumía Supabase) | implementada (Fase 2; catálogo en código, no Supabase) |

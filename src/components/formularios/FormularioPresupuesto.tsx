@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
 import { schemaPresupuesto, type DatosPresupuesto } from '@/lib/validaciones/presupuesto'
+import type { ProductoPresupuesto } from '@/types/supabase'
 import { Campo } from '@/components/ui/Campo'
 import { Boton } from '@/components/ui/Boton'
 
@@ -19,7 +20,17 @@ const TIPOS_ARCHIVO = '.pdf,.ai,.eps,.zip'
 
 type EstadoEnvio = 'idle' | 'loading' | 'success' | 'error'
 
-export function FormularioPresupuesto() {
+interface PropiedadesFormulario {
+  /** Tipo de producto preseleccionado (p. ej. al llegar desde la tienda). */
+  productoInicial?: ProductoPresupuesto
+  /** Texto inicial del campo «detalles» (resumen del producto de la tienda). */
+  detallesInicial?: string
+}
+
+export function FormularioPresupuesto({
+  productoInicial,
+  detallesInicial,
+}: PropiedadesFormulario = {}) {
   const [estadoEnvio, setEstadoEnvio] = useState<EstadoEnvio>('idle')
   const [mensajeError, setMensajeError] = useState<string>('')
   const [errorArchivo, setErrorArchivo] = useState<string>('')
@@ -31,6 +42,10 @@ export function FormularioPresupuesto() {
     reset,
   } = useForm<DatosPresupuesto>({
     resolver: zodResolver(schemaPresupuesto),
+    defaultValues: {
+      producto: productoInicial,
+      detalles: detallesInicial,
+    },
   })
 
   function validarArchivo(archivo: File): string {
