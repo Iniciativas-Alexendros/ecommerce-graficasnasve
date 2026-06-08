@@ -1,44 +1,44 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://graficasnasve.art'),
+  metadataBase: new URL('https://tudominio.com'),
   title: {
-    template: '%s | Gráficas NASVE',
-    default: 'Gráficas NASVE — Imprenta en Torrent desde 1982',
+    template: '%s | Gráficas Ejemplo',
+    default: 'Gráficas Ejemplo — Imprenta en Tu Ciudad desde 20XX',
   },
   description:
-    'Imprenta offset y digital en Torrent (Valencia). Encuadernación artesanal, acabados premium (stamping, UVI, relieves), personalización y impresión sobre madera. Más de 40 años de experiencia. Presupuesto sin compromiso.',
+    'Imprenta offset y digital en Tu Ciudad (Tu Provincia). Encuadernación artesanal, acabados premium (stamping, UVI, relieves), personalización e impresión sobre madera. Décadas de experiencia. Presupuesto sin compromiso.',
   keywords: [
-    'imprenta Torrent',
-    'imprenta Valencia',
+    'imprenta Tu Ciudad',
+    'imprenta Tu Provincia',
     'imprenta offset',
     'encuadernación artesanal',
     'acabados stamping',
     'tarjetas de visita',
     'folletos',
     'impresión digital',
-    'Gráficas NASVE',
+    'Gráficas Ejemplo',
   ],
-  authors: [{ name: 'Gráficas NASVE, S.L.' }],
+  authors: [{ name: 'Gráficas Ejemplo, S.L.' }],
   creator: 'Iniciativas Alexendros S.L.U.',
   openGraph: {
     type: 'website',
     locale: 'es_ES',
-    url: 'https://graficasnasve.art',
-    siteName: 'Gráficas NASVE',
-    title: 'Gráficas NASVE — Imprenta en Torrent desde 1982',
+    url: 'https://tudominio.com',
+    siteName: 'Gráficas Ejemplo',
+    title: 'Gráficas Ejemplo — Imprenta en Tu Ciudad desde 20XX',
     description:
-      'Imprenta offset y digital en Torrent (Valencia). Acabados premium, encuadernación artesanal, personalización. +40 años. Presupuesto sin compromiso.',
+      'Imprenta offset y digital en Tu Ciudad (Tu Provincia). Acabados premium, encuadernación artesanal, personalización. Décadas. Presupuesto sin compromiso.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Gráficas NASVE — Imprenta en Torrent desde 1982',
-    description: 'Imprenta offset y digital en Torrent (Valencia). +40 años de experiencia.',
+    title: 'Gráficas Ejemplo — Imprenta en Tu Ciudad desde 20XX',
+    description: 'Imprenta offset y digital en Tu Ciudad (Tu Provincia). Décadas de experiencia.',
   },
   robots: {
     index: true,

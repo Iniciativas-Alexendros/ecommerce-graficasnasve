@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -7,8 +7,8 @@ import type { Metadata } from 'next'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 
 export const metadata: Metadata = {
-  title: 'Política de Privacidad — Gráficas NASVE',
-  description: 'Política de privacidad y protección de datos de Gráficas NASVE, S.L.',
+  title: 'Política de Privacidad — Gráficas Ejemplo',
+  description: 'Política de privacidad y protección de datos de Gráficas Ejemplo, S.L.',
   robots: { index: false, follow: false },
 }
 
@@ -35,12 +35,12 @@ export default function PaginaPrivacidad() {
               de este sitio web es:
             </p>
             <div className="bg-fondo-alt border border-borde p-6 font-sans text-sm text-gris space-y-1">
-              <p><strong className="text-negro">Denominación:</strong> GRÁFICAS NASVE, S.L.</p>
-              <p><strong className="text-negro">CIF:</strong> B46261210</p>
-              <p><strong className="text-negro">Domicilio:</strong> Ctra. Mas del Jutge, 53 · 46900 Torrent (Valencia)</p>
+              <p><strong className="text-negro">Denominación:</strong> GRÁFICAS EJEMPLO, S.L.</p>
+              <p><strong className="text-negro">CIF:</strong> B00000000</p>
+              <p><strong className="text-negro">Domicilio:</strong> Calle de Ejemplo, 1 · 00000 Tu Ciudad (Tu Provincia)</p>
               <p>
                 <strong className="text-negro">Delegada de Protección de Datos:</strong>{' '}
-                Alicia Armas · <a href="mailto:alicia@nasve.com" className="text-negro hover:text-ambar transition-colors">alicia@nasve.com</a>
+                Alicia Armas · <a href="mailto:privacidad@tudominio.com" className="text-negro hover:text-ambar transition-colors">privacidad@tudominio.com</a>
               </p>
             </div>
           </section>
@@ -146,7 +146,7 @@ export default function PaginaPrivacidad() {
               6. Derechos del interesado
             </h2>
             <p className="font-sans text-base text-gris leading-relaxed mb-4">
-              El interesado puede ejercer los siguientes derechos ante GRÁFICAS NASVE, S.L.:
+              El interesado puede ejercer los siguientes derechos ante GRÁFICAS EJEMPLO, S.L.:
             </p>
             <ul className="font-sans text-sm text-gris space-y-2 list-disc list-inside mb-4">
               <li><strong className="text-negro">Acceso:</strong> conocer qué datos personales tratamos</li>
@@ -158,10 +158,10 @@ export default function PaginaPrivacidad() {
             </ul>
             <p className="font-sans text-sm text-gris leading-relaxed">
               Para ejercer estos derechos, puede dirigirse a:{' '}
-              <a href="mailto:alicia@nasve.com" className="text-negro underline hover:text-ambar transition-colors">
-                alicia@nasve.com
+              <a href="mailto:privacidad@tudominio.com" className="text-negro underline hover:text-ambar transition-colors">
+                privacidad@tudominio.com
               </a>
-              {' '}o mediante escrito postal a Ctra. Mas del Jutge, 53 · 46900 Torrent (Valencia).
+              {' '}o mediante escrito postal a Calle de Ejemplo, 1 · 00000 Tu Ciudad (Tu Provincia).
               Asimismo, tiene derecho a presentar reclamación ante la Agencia Española de
               Protección de Datos (www.aepd.es).
             </p>
