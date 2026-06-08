@@ -25,17 +25,17 @@ flowchart LR
   classDef done fill:#dcedc8,stroke:#33691e;
   classDef now fill:#fff3c4,stroke:#c9a84c,stroke-width:2px;
   classDef next stroke-dasharray: 4 4;
-  class F0,F1 done;
-  class FC now;
-  class F2,F3,F4,F5,F6 next;
+  class F0,F1,FC done;
+  class F2 now;
+  class F3,F4,F5,F6 next;
 ```
 
 | Fase | Estado |
 |---|---|
 | 0 · Fundamentos | ✅ Hecho |
 | 1 · MVP (marketing + presupuesto + admin + portfolio) | ✅ Hecho |
-| **1.5 · Calidad (sanitizar + testing + docs)** | 🟡 **Esta tanda** |
-| 2 · Tienda + preformatos | ⏳ Pendiente |
+| 1.5 · Calidad (sanitizar + testing + docs) | ✅ Hecho |
+| **2 · Tienda + preformatos** | 🟡 **Esta tanda** |
 | 3 · Encargo asistido + preflight | ⏳ Pendiente |
 | 4 · Asistente flotante (chatbot) | ⏳ Pendiente |
 | 5 · Pagos | ⏳ Pendiente |
@@ -66,13 +66,14 @@ flowchart LR
 - [x] **Documentación**: `ARCHITECTURE.md`, `ROADMAP.md`, `DEPLOYMENT.md`, migración SQL real
 - [ ] Cobertura ampliada de tests conforme crezcan las features
 
-## Fase 2 — Tienda + preformatos ⏳
+## Fase 2 — Tienda + preformatos 🟡 (esta tanda)
 > Briefing: catálogo navegable con productos "listos para encargar".
-- [ ] `/tienda`: grid con **filtros por categoría** (Publicidad, Editorial, Hostelería, Identidad, Gran formato, Producto)
-- [ ] `/tienda/[slug]`: **ficha de producto** con specs (formato, gramaje, acabado), cantidad y **estimación €/ud**
-- [ ] Modelo de datos de productos/preformatos (nueva tabla `productos`; el taxonómico de tienda difiere del de `portfolio`)
-- [ ] Tarjetas con precio "desde" y CTA "Configurar y subir archivo"
-- [ ] SEO de producto: Schema.org `Product` + `BreadcrumbList`
+- [x] `/tienda`: grid con **filtros por categoría** (Publicidad, Editorial, Hostelería, Identidad, Gran formato, Producto)
+- [x] `/tienda/[slug]`: **ficha de producto** con specs (formato, gramaje, acabado), cantidad y **estimación €/ud en vivo**
+- [x] Modelo de datos de productos/preformatos: **catálogo estático en código** (`src/lib/catalogoTienda.ts`), no una tabla Supabase — los preformatos son curados y estables, lo que da SSG total y tests deterministas. El motor de precio vive en `src/lib/precioTienda.ts`
+- [x] Tarjetas con precio "desde" y CTA — la ficha enlaza a `/presupuesto` con el producto prefijado *(el "subir archivo" + preflight llega en Fase 3)*
+- [x] SEO de producto: Schema.org `Product` + `BreadcrumbList` (y `CollectionPage` en `/tienda`)
+- [ ] **Precios reales**: sustituir los coeficientes orientativos de `precioTienda.ts` por la tarifa de NASVE
 
 ## Fase 3 — Encargo asistido + preflight ⏳
 > Briefing `/encargo`: configurador guiado de 4 pasos, ref. `NSV-AAAA-NNNN`, respuesta < 24 h.

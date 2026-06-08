@@ -14,6 +14,7 @@ import { Boton } from '@/components/ui/Boton'
 const enlaces = [
   { href: '/historia', label: 'Historia' },
   { href: '/servicios', label: 'Servicios' },
+  { href: '/tienda', label: 'Tienda' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/sostenibilidad', label: 'Sostenibilidad' },
   { href: '/contacto', label: 'Contacto' },

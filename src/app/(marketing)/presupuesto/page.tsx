@@ -5,6 +5,7 @@
 
 import type { Metadata } from 'next'
 import { FormularioPresupuesto } from '@/components/formularios/FormularioPresupuesto'
+import type { ProductoPresupuesto } from '@/types/supabase'
 
 export const metadata: Metadata = {
   title: 'Solicitar Presupuesto — Gráficas NASVE',
@@ -12,7 +13,29 @@ export const metadata: Metadata = {
     'Solicita presupuesto sin compromiso para tu proyecto de impresión. Respondemos en menos de 24 horas laborables.',
 }
 
-export default function PaginaPresupuesto() {
+const PRODUCTOS_VALIDOS: ProductoPresupuesto[] = [
+  'papeleria',
+  'catalogo',
+  'libro',
+  'carpeteria',
+  'otro',
+]
+
+interface PropiedadesPagina {
+  // La tienda enlaza aquí con ?producto=<tipo>&detalle=<resumen> para prefijar el formulario.
+  searchParams: Promise<{ producto?: string; detalle?: string }>
+}
+
+export default async function PaginaPresupuesto({ searchParams }: PropiedadesPagina) {
+  const sp = await searchParams
+  const productoInicial = PRODUCTOS_VALIDOS.includes(sp.producto as ProductoPresupuesto)
+    ? (sp.producto as ProductoPresupuesto)
+    : undefined
+  const detallesInicial =
+    typeof sp.detalle === 'string' && sp.detalle.length > 0
+      ? sp.detalle.slice(0, 2000)
+      : undefined
+
   return (
     <div className="py-24">
       <div className="contenedor">
@@ -63,7 +86,10 @@ export default function PaginaPresupuesto() {
 
           {/* Formulario */}
           <div className="lg:col-span-8">
-            <FormularioPresupuesto />
+            <FormularioPresupuesto
+              productoInicial={productoInicial}
+              detallesInicial={detallesInicial}
+            />
           </div>
         </div>
       </div>

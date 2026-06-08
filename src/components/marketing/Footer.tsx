@@ -15,6 +15,7 @@ const serviciosLinks = [
 ]
 
 const empresaLinks = [
+  { href: '/tienda', label: 'Tienda' },
   { href: '/historia', label: 'Historia' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/sostenibilidad', label: 'Sostenibilidad' },
