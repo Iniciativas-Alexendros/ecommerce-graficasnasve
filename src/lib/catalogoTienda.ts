@@ -155,7 +155,7 @@ export const catalogoTienda: ProductoTienda[] = [
     precioBase: 6.5,
     tipoPresupuesto: 'libro',
   },
-  // ── Hostelería ───────────────────────────────────────────────────────────
+  // ── Hostelería ──────────────────────────────────────────────────────────
   {
     slug: 'carta-menu',
     nombre: 'Carta de menú',
@@ -218,7 +218,7 @@ export const catalogoTienda: ProductoTienda[] = [
     precioBase: 0.12,
     tipoPresupuesto: 'papeleria',
   },
-  // ── Gran formato ───────────────────────────────────────────────────────────
+  // ── Gran formato ────────────────────────────────────────────────────────
   {
     slug: 'lona-publicitaria',
     nombre: 'Lona publicitaria',
@@ -255,7 +255,7 @@ export const catalogoTienda: ProductoTienda[] = [
     precioBase: 38,
     tipoPresupuesto: 'otro',
   },
-  // ── Producto ───────────────────────────────────────────────────────────
+  // ── Producto ────────────────────────────────────────────────────────────
   {
     slug: 'pegatinas-troqueladas',
     nombre: 'Pegatinas troqueladas',
