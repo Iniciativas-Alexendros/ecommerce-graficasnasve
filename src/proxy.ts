@@ -15,9 +15,13 @@ export async function proxy(request: NextRequest) {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-  // Si no hay configuración de Supabase, bloquear /admin
+  // Si no hay configuración de Supabase, bloquear /admin (excepto el propio
+  // login, para no provocar un bucle de redirección sobre /admin/login).
   if (!url || !key) {
-    if (request.nextUrl.pathname.startsWith('/admin')) {
+    if (
+      request.nextUrl.pathname.startsWith('/admin') &&
+      !request.nextUrl.pathname.startsWith('/admin/login')
+    ) {
       return NextResponse.redirect(new URL('/admin/login', request.url))
     }
     return supabaseResponse

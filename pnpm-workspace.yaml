@@ -1,3 +1,14 @@
-ignoredBuiltDependencies:
+allowBuilds:
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
+# Scripts de build (pnpm): se permiten porque necesitan/empaquetan binarios
+# nativos por plataforma; esbuild es imprescindible para Vitest.
+onlyBuiltDependencies:
+  - esbuild
   - sharp
   - unrs-resolver
+# Fuerza una única versión de Vite para evitar el conflicto de tipos entre
+# vitest/config y @vitejs/plugin-react (que arrastraban vite 7 y vite 6).
+overrides:
+  vite: 6.4.3

@@ -4,7 +4,6 @@
  */
 
 import type { MetadataRoute } from 'next'
-import { createServidorSupabase } from '@/lib/supabase/servidor'
 import { catalogoServicios } from '@/lib/catalogoServicios'
 
 const BASE_URL = 'https://graficasnasve.art'

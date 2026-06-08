@@ -5,7 +5,6 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
 import { randomUUID } from 'crypto'
 import { schemaPresupuesto } from '@/lib/validaciones/presupuesto'
 import { sendEmailPresupuesto } from '@/lib/resend'
@@ -91,7 +90,6 @@ export async function POST(request: NextRequest) {
       const supabaseAdmin = createAdminClient()
       if (supabaseAdmin) {
         const uuid = randomUUID()
-        const extension = archivo.name.split('.').pop() ?? 'bin'
         const path = `presupuestos/${uuid}/${archivo.name}`
 
         const buffer = await archivo.arrayBuffer()
