@@ -22,6 +22,7 @@ import { Tarjeta } from '@/components/ui/Tarjeta'
 import { Stat } from '@/components/ui/Stat'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { BarraCMYK } from '@/components/ui/BarraCMYK'
+import { CropMarks } from '@/components/ui/CropMarks'
 import { catalogoServicios } from '@/lib/catalogoServicios'
 
 export const metadata: Metadata = {
@@ -124,13 +125,15 @@ export default function PaginaInicio() {
             </dl>
           </div>
 
-          {/* Grid 2×2 de baldosas (cuatricromía) */}
-          <div className="grid grid-cols-2 gap-4 max-w-md mx-auto w-full">
-            <Baldosa color="ambar" icono="barras" iconSize={64} />
-            <Baldosa color="key" icono="cuarto" iconSize={64} />
-            <Baldosa color="lavender" icono="estrella" iconSize={64} />
-            <Baldosa color="cyan" icono="anillo" iconSize={64} />
-          </div>
+          {/* Grid 2×2 de baldosas (cuatricromía) con marcas de corte */}
+          <CropMarks className="max-w-md mx-auto w-full p-3">
+            <div className="grid grid-cols-2 gap-4">
+              <Baldosa color="ambar" icono="barras" iconSize={64} />
+              <Baldosa color="key" icono="cuarto" iconSize={64} />
+              <Baldosa color="lavender" icono="estrella" iconSize={64} />
+              <Baldosa color="cyan" icono="anillo" iconSize={64} />
+            </div>
+          </CropMarks>
         </div>
         <BarraCMYK height={6} />
       </section>
