@@ -1,4 +1,4 @@
-# DEPLOYMENT — graficasnasve.art
+# DEPLOYMENT — tudominio.com
 
 > Guía de despliegue y configuración. Hermanos: [`ARCHITECTURE.md`](./ARCHITECTURE.md) · [`ROADMAP.md`](./ROADMAP.md).
 
@@ -17,9 +17,9 @@ Copiar `.env.local.example` → `.env.local` y rellenar (nunca subir `.env.local
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | público | Clave anónima |
 | `SUPABASE_SERVICE_ROLE_KEY` | **servidor** | Solo server-side (upload + insert) |
 | `RESEND_API_KEY` | servidor | API key de Resend |
-| `RESEND_FROM` | servidor | Remitente verificado (p. ej. `no-reply@graficasnasve.art`) |
-| `RESEND_PRESUPUESTO_TO` | servidor | Destinatario interno (p. ej. `alicia@nasve.com`) |
-| `NEXT_PUBLIC_APP_URL` | público | `https://graficasnasve.art` |
+| `RESEND_FROM` | servidor | Remitente verificado (p. ej. `no-reply@tudominio.com`) |
+| `RESEND_PRESUPUESTO_TO` | servidor | Destinatario interno (p. ej. `privacidad@tudominio.com`) |
+| `NEXT_PUBLIC_APP_URL` | público | `https://tudominio.com` |
 
 > Las claves de pasarela de pago (Stripe/Redsys/…) se añadirán en la **Fase 4** (ver §8).
 
@@ -41,11 +41,11 @@ Copiar `.env.local.example` → `.env.local` y rellenar (nunca subir `.env.local
 > (`src/lib/catalogoTienda.ts`) y el motor de precio en `src/lib/precioTienda.ts`; no requiere
 > migración ni *seed*. ⚠️ Los **precios son orientativos**: para producción, sustituir los
 > coeficientes de `precioTienda.ts` (precio base por producto, tramos de volumen y factores de
-> gramaje/acabado) por la tarifa real de NASVE.
+> gramaje/acabado) por la tarifa real de Ejemplo.
 
 ## 4. Resend (email)
 
-1. Verificar el dominio `graficasnasve.art` en Resend.
+1. Verificar el dominio `tudominio.com` en Resend.
 2. Añadir los registros **DKIM/SPF** que indique Resend en **Cloudflare DNS**.
 3. Configurar `RESEND_FROM` con un remitente del dominio verificado.
 
@@ -58,8 +58,8 @@ Copiar `.env.local.example` → `.env.local` y rellenar (nunca subir `.env.local
 
 ## 6. Cloudflare (DNS)
 
-1. Apuntar `graficasnasve.art` a Vercel (CNAME/A según panel de Vercel).
-2. Mantener `graficasnasve.com` activo: el `next.config.ts` ya hace **301** hacia `.art`.
+1. Apuntar `tudominio.com` a Vercel (CNAME/A según panel de Vercel).
+2. Mantener `tudominioantiguo.com` activo: el `next.config.ts` ya hace **301** hacia `.art`.
 3. DKIM/SPF de Resend (§4).
 
 ## 7. CI/CD
@@ -83,7 +83,7 @@ decidir proveedor (ver comparativa en [`ROADMAP.md`](./ROADMAP.md) › Fase 5):
 Pasos genéricos para activar (cuando se elija proveedor):
 
 1. Crear cuenta y obtener claves API + secreto de webhook.
-2. Registrar el endpoint del webhook (`https://graficasnasve.art/api/webhooks/stripe` o equivalente).
+2. Registrar el endpoint del webhook (`https://tudominio.com/api/webhooks/stripe` o equivalente).
 3. Añadir las claves en **Vercel → Environment Variables**.
 4. Implementar el handler real (sustituir el stub 501) y conectar con el pipeline `pedidos`.
 5. Probar en modo test antes de pasar a producción.
