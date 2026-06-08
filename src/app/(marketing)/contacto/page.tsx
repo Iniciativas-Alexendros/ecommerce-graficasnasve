@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -12,41 +12,41 @@ import { SectionLabel } from '@/components/ui/SectionLabel'
 import { FormularioPresupuesto } from '@/components/formularios/FormularioPresupuesto'
 
 export const metadata: Metadata = {
-  title: 'Contacto — Gráficas NASVE',
+  title: 'Contacto — Gráficas Ejemplo',
   description:
-    'Contacta con Gráficas NASVE en Torrent (Valencia). Teléfono: 961 55 34 09. Email: nasve@nasve.com. Lunes a viernes de 8:00 a 18:00.',
+    'Contacta con Gráficas Ejemplo en Tu Ciudad (Tu Provincia). Teléfono: 600 00 00 00. Email: hola@tudominio.com. Lunes a viernes de 8:00 a 18:00.',
 }
 
 const schemaOrg = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': 'https://graficasnasve.art/#empresa',
-  name: 'Gráficas NASVE, S.L.',
-  alternateName: 'NASVE',
+  '@id': 'https://tudominio.com/#empresa',
+  name: 'Gráficas Ejemplo, S.L.',
+  alternateName: 'Ejemplo',
   description:
-    'Imprenta offset y digital en Torrent (Valencia). Encuadernación artesanal, acabados premium, personalización e impresión sobre madera. Fundada en 1982.',
-  url: 'https://graficasnasve.art',
-  telephone: '+34961553409',
-  email: 'nasve@nasve.com',
-  taxID: 'B46261210',
-  foundingDate: '1982',
+    'Imprenta offset y digital en Tu Ciudad (Tu Provincia). Encuadernación artesanal, acabados premium, personalización e impresión sobre madera. Fundada en 20XX.',
+  url: 'https://tudominio.com',
+  telephone: '+34600000000',
+  email: 'hola@tudominio.com',
+  taxID: 'B00000000',
+  foundingDate: '20XX',
   currenciesAccepted: 'EUR',
   paymentAccepted: 'Transferencia, tarjeta',
   priceRange: '€€',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Ctra. Mas del Jutge, 53',
-    addressLocality: 'Torrent',
-    addressRegion: 'Valencia',
-    postalCode: '46900',
+    streetAddress: 'Calle de Ejemplo, 1',
+    addressLocality: 'Tu Ciudad',
+    addressRegion: 'Tu Provincia',
+    postalCode: '00000',
     addressCountry: 'ES',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 39.4333,
-    longitude: -0.4667,
+    latitude: 0,
+    longitude: 0,
   },
-  hasMap: 'https://maps.google.com/?q=Ctra.+Mas+del+Jutge+53+Torrent+Valencia',
+  hasMap: 'https://maps.google.com/?q=Tu+Ciudad',
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -61,12 +61,6 @@ const schemaOrg = {
       closes: '19:00',
     },
   ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.8',
-    reviewCount: '47',
-    bestRating: '5',
-  },
 }
 
 export default function PaginaContacto() {
@@ -88,14 +82,14 @@ export default function PaginaContacto() {
               </h1>
               <p className="relato text-lg md:text-xl text-key/80 leading-snug mb-12">
                 Rellena el formulario y respondemos con presupuesto y prueba de color en menos
-                de 24 h. Visítanos en el Polígono Masía del Juez o llámanos sin compromiso.
+                de 24 h. Visítanos en el Polígono Industrial o llámanos sin compromiso.
               </p>
 
               <ul className="space-y-6">
                 {([
-                  { icono: MapPin, color: 'ambar', titulo: 'Taller', cuerpo: <address className="not-italic">Ctra. Mas del Jutge, 53<br />46900 Torrent (Valencia)<br />Polígono Masía del Juez</address> },
-                  { icono: Phone, color: 'cyan', titulo: 'Teléfono', cuerpo: <a href="tel:+34961553409" className="hover:text-key transition-colors">961 55 34 09</a> },
-                  { icono: Mail, color: 'coral', titulo: 'Email', cuerpo: <a href="mailto:nasve@nasve.com" className="hover:text-key transition-colors">nasve@nasve.com</a> },
+                  { icono: MapPin, color: 'ambar', titulo: 'Taller', cuerpo: <address className="not-italic">Calle de Ejemplo, 1<br />00000 Tu Ciudad (Tu Provincia)<br />Polígono Industrial</address> },
+                  { icono: Phone, color: 'cyan', titulo: 'Teléfono', cuerpo: <a href="tel:+34600000000" className="hover:text-key transition-colors">600 00 00 00</a> },
+                  { icono: Mail, color: 'coral', titulo: 'Email', cuerpo: <a href="mailto:hola@tudominio.com" className="hover:text-key transition-colors">hola@tudominio.com</a> },
                   { icono: Clock, color: 'lavender', titulo: 'Horario', cuerpo: <>Lun–Jue 8:00–18:00<br />Vie 8:00–19:00</> },
                 ] as { icono: typeof MapPin; color: ColorBaldosa; titulo: string; cuerpo: React.ReactNode }[]).map(({ icono: Icono, color, titulo, cuerpo }) => (
                   <li key={titulo} className="flex gap-4 items-start">
@@ -114,7 +108,7 @@ export default function PaginaContacto() {
               <div className="mt-10">
                 <Boton variant="secondary" size="md" asChild>
                   <a
-                    href="https://maps.google.com/?q=Ctra.+Mas+del+Jutge+53+Torrent+Valencia+España"
+                    href="https://maps.google.com/?q=Tu+Ciudad"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2"

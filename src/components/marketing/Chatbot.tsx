@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art — Asistente flotante (maqueta guiada, sin IA)
+ * tudominio.com — Asistente flotante (maqueta guiada, sin IA)
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  *
  * Cualifica el encargo en 4 preguntas amables y pasa el resumen al flujo /encargo.
@@ -80,7 +80,7 @@ export function Chatbot() {
           {/* Cabecera */}
           <div className="bg-key text-paper-100 px-4 py-3 flex items-center justify-between">
             <div>
-              <p className="font-display font-bold text-sm text-paper-0">Asistente nasve 👋</p>
+              <p className="font-display font-bold text-sm text-paper-0">Asistente ejemplo 👋</p>
               <p className="font-mono text-[0.65rem] uppercase tracking-widest text-paper-100/50">
                 En línea · ~30 seg
               </p>

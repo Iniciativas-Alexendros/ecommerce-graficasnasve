@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -40,31 +40,31 @@ export function Footer() {
             <Link
               href="/"
               className="inline-block transition-opacity hover:opacity-80"
-              aria-label="Gráficas NASVE — ir a inicio"
+              aria-label="Gráficas Ejemplo — ir a inicio"
             >
               <Logo variant="dark" />
             </Link>
             <p className="mt-4 text-sm text-gris leading-relaxed">
-              Imprenta offset y digital en Torrent (Valencia) desde 1982.
+              Imprenta offset y digital en Tu Ciudad (Tu Provincia) desde 20XX.
               Calidad que se toca.
             </p>
             <address className="mt-6 not-italic text-sm text-gris leading-loose">
-              <p>Ctra. Mas del Jutge, 53</p>
-              <p>46900 Torrent (Valencia)</p>
+              <p>Calle de Ejemplo, 1</p>
+              <p>00000 Tu Ciudad (Tu Provincia)</p>
               <p className="mt-2">
                 <a
-                  href="tel:+34961553409"
+                  href="tel:+34600000000"
                   className="hover:text-ambar transition-colors duration-150"
                 >
-                  961 55 34 09
+                  600 00 00 00
                 </a>
               </p>
               <p>
                 <a
-                  href="mailto:nasve@nasve.com"
+                  href="mailto:hola@tudominio.com"
                   className="hover:text-ambar transition-colors duration-150"
                 >
-                  nasve@nasve.com
+                  hola@tudominio.com
                 </a>
               </p>
             </address>
@@ -134,7 +134,7 @@ export function Footer() {
         {/* Pie */}
         <div className="mt-16 pt-8 border-t border-papel/10 flex flex-col gap-2 md:flex-row md:justify-between md:items-center">
           <p className="text-xs text-gris">
-            © 2026 Gráficas NASVE, S.L. · CIF B46261210
+            © 2026 Gráficas Ejemplo, S.L. · CIF B00000000
           </p>
           <p className="text-xs text-gris">
             Desarrollado por{' '}

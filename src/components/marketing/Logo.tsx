@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art — Logo (marca cuarto-de-círculo CMYK + wordmark «nasve.»)
+ * tudominio.com — Logo (marca cuarto-de-círculo CMYK + wordmark «ejemplo.»)
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -32,7 +32,7 @@ export function Logo({ variant = 'light', size = 28, className = '', soloMarca =
       <Marca size={size} />
       {!soloMarca && (
         <span className={['font-display font-extrabold text-2xl tracking-tight lowercase', colorTexto].join(' ')}>
-          nasve<span className="text-coral">.</span>
+          ejemplo<span className="text-coral">.</span>
         </span>
       )}
     </span>

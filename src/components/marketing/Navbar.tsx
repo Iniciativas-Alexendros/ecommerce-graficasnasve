@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -31,7 +31,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-paper-100/90 backdrop-blur border-b border-taupe">
       <nav className="contenedor flex items-center justify-between h-16" aria-label="Navegación principal">
-        <Link href="/" aria-label="Gráficas NASVE — ir a inicio" className="transition-opacity hover:opacity-80">
+        <Link href="/" aria-label="Gráficas Ejemplo — ir a inicio" className="transition-opacity hover:opacity-80">
           <Logo />
         </Link>
 
