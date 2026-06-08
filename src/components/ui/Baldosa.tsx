@@ -35,19 +35,42 @@ const tinta: Record<ColorBaldosa, string> = {
   key: 'text-paper-0',
 }
 
+const radios = {
+  baldosa: 'rounded-baldosa',
+  top: 'rounded-t-baldosa',
+  none: '',
+} as const
+
 interface PropsBaldosa {
   color: ColorBaldosa
-  icono: NombreIcono
-  /** lado en px del icono; la baldosa es cuadrada por aspect-ratio */
+  /** icono geométrico (ignorado si se pasan children) */
+  icono?: NombreIcono
+  /** lado en px del icono geométrico */
   iconSize?: number
+  /** fuerza proporción cuadrada (por defecto sí) */
+  cuadrada?: boolean
+  /** redondeo (por defecto baldosa); 'none' para cabeceras de tarjeta */
+  radius?: keyof typeof radios
   className?: string
+  /** contenido alternativo al icono geométrico (p. ej. un icono lucide) */
+  children?: React.ReactNode
 }
 
-export function Baldosa({ color, icono, iconSize = 48, className = '' }: PropsBaldosa) {
+export function Baldosa({
+  color,
+  icono,
+  iconSize = 48,
+  cuadrada = true,
+  radius = 'baldosa',
+  className = '',
+  children,
+}: PropsBaldosa) {
   return (
     <div
       className={[
-        'flex items-center justify-center rounded-baldosa aspect-square',
+        'flex items-center justify-center',
+        radios[radius],
+        cuadrada ? 'aspect-square' : '',
         fondo[color],
         tinta[color],
         className,
@@ -55,7 +78,7 @@ export function Baldosa({ color, icono, iconSize = 48, className = '' }: PropsBa
         .filter(Boolean)
         .join(' ')}
     >
-      <IconoGeometrico nombre={icono} size={iconSize} />
+      {children ?? (icono ? <IconoGeometrico nombre={icono} size={iconSize} /> : null)}
     </div>
   )
 }

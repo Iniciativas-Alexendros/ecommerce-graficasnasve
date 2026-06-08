@@ -17,7 +17,8 @@ import {
 } from '@/lib/precioTienda'
 
 const CLASES_SELECT =
-  'w-full border border-borde bg-blanco text-tinta font-sans text-base px-4 py-3 transition-colors duration-150 focus:outline-none focus:border-oro focus:ring-2 focus:ring-oro/20'
+  'w-full rounded-card border border-taupe bg-paper-0 text-key font-sans text-base px-4 py-3 transition-colors duration-150 focus:outline-none focus:border-ambar focus:ring-2 focus:ring-ambar/25'
+const CLASES_LABEL = 'font-mono text-xs font-medium uppercase tracking-widest text-gris'
 
 interface PropiedadesConfigurador {
   producto: ProductoTienda
@@ -44,20 +45,19 @@ export function ConfiguradorPrecio({ producto }: PropiedadesConfigurador) {
     ? 'Gramaje'
     : 'Soporte'
 
-  // Resumen para prefijar el formulario de presupuesto.
   const detalle = `${producto.nombre} · ${producto.formato} · ${gramaje.etiqueta} · ${acabado.etiqueta} · ${cantidad} ud (estimación orientativa ${formatearEuros(total)})`
   const hrefPresupuesto = `/presupuesto?producto=${tipoPresupuestoDe(producto)}&detalle=${encodeURIComponent(detalle)}`
 
   const idBase = `cfg-${producto.slug}`
 
   return (
-    <div className="border border-borde bg-fondo-alt p-6">
-      <h2 className="font-display text-xl font-bold text-negro mb-5">Configura tu pedido</h2>
+    <div className="rounded-card border border-taupe bg-paper-50 p-6">
+      <h2 className="font-display text-xl font-bold text-key mb-5">Configura tu pedido</h2>
 
       <div className="flex flex-col gap-5">
         {producto.gramajes.length > 1 && (
           <div className="flex flex-col gap-1.5">
-            <label htmlFor={`${idBase}-gramaje`} className="font-sans text-sm font-medium text-tinta">
+            <label htmlFor={`${idBase}-gramaje`} className={CLASES_LABEL}>
               {etiquetaGramaje}
             </label>
             <select
@@ -77,7 +77,7 @@ export function ConfiguradorPrecio({ producto }: PropiedadesConfigurador) {
 
         {producto.acabados.length > 1 && (
           <div className="flex flex-col gap-1.5">
-            <label htmlFor={`${idBase}-acabado`} className="font-sans text-sm font-medium text-tinta">
+            <label htmlFor={`${idBase}-acabado`} className={CLASES_LABEL}>
               Acabado
             </label>
             <select
@@ -96,7 +96,7 @@ export function ConfiguradorPrecio({ producto }: PropiedadesConfigurador) {
         )}
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor={`${idBase}-cantidad`} className="font-sans text-sm font-medium text-tinta">
+          <label htmlFor={`${idBase}-cantidad`} className={CLASES_LABEL}>
             Cantidad
           </label>
           <select
@@ -115,10 +115,10 @@ export function ConfiguradorPrecio({ producto }: PropiedadesConfigurador) {
       </div>
 
       {/* Estimación */}
-      <div className="mt-6 pt-5 border-t border-borde" aria-live="polite">
+      <div className="mt-6 pt-5 border-t border-taupe" aria-live="polite">
         <div className="flex items-baseline justify-between">
           <span className="font-sans text-sm text-gris">Precio por unidad</span>
-          <span className="font-display text-xl font-bold text-negro" data-testid="precio-unidad">
+          <span className="font-display text-xl font-bold text-key" data-testid="precio-unidad">
             {formatearPrecioUnidad(precioUnidad)}
           </span>
         </div>
@@ -126,10 +126,7 @@ export function ConfiguradorPrecio({ producto }: PropiedadesConfigurador) {
           <span className="font-sans text-sm text-gris">
             Total estimado · {cantidad.toLocaleString('es-ES')} ud
           </span>
-          <span
-            className="font-display text-2xl font-bold text-oro-oscuro"
-            data-testid="precio-total"
-          >
+          <span className="font-display text-2xl font-bold text-ambar-700" data-testid="precio-total">
             {formatearEuros(total)}
           </span>
         </div>

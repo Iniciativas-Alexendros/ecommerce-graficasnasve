@@ -9,12 +9,17 @@ import { useState } from 'react'
 import Link from 'next/link'
 import {
   CATEGORIAS_TIENDA,
+  ESTILO_CATEGORIA,
   precioDesdeUnidad,
   etiquetaCategoria,
   type ProductoTienda,
   type CategoriaTienda,
 } from '@/lib/catalogoTienda'
 import { formatearPrecioUnidad } from '@/lib/precioTienda'
+import { Tarjeta } from '@/components/ui/Tarjeta'
+import { Baldosa } from '@/components/ui/Baldosa'
+import { Chip } from '@/components/ui/Chip'
+import { FilterChip } from '@/components/ui/FilterChip'
 
 type FiltroTienda = 'todos' | CategoriaTienda
 
@@ -38,74 +43,70 @@ export function TiendaGrid({ productos }: PropiedadesTiendaGrid) {
   return (
     <>
       {/* Filtros */}
-      <div
-        className="flex flex-wrap gap-2 mb-10"
-        role="group"
-        aria-label="Filtrar por categoría"
-      >
+      <div className="flex flex-wrap items-center gap-2 mb-10" role="group" aria-label="Filtrar por categoría">
+        <span className="font-mono text-xs uppercase tracking-widest text-gris mr-2">Filtrar</span>
         {FILTROS.map((filtro) => (
-          <button
+          <FilterChip
             key={filtro.valor}
+            active={filtroActivo === filtro.valor}
             onClick={() => setFiltroActivo(filtro.valor)}
-            className={[
-              'font-mono text-xs uppercase tracking-widest px-4 py-2 border transition-colors duration-150',
-              filtroActivo === filtro.valor
-                ? 'bg-negro text-papel border-negro'
-                : 'bg-transparent text-gris border-borde hover:border-negro hover:text-negro',
-            ].join(' ')}
-            aria-pressed={filtroActivo === filtro.valor}
           >
             {filtro.etiqueta}
-          </button>
+          </FilterChip>
         ))}
       </div>
 
       {/* Grid */}
       {productosFiltrados.length === 0 ? (
-        <p className="font-sans text-gris text-center py-20">
-          No hay productos en esta categoría aún.
-        </p>
+        <p className="font-sans text-gris text-center py-20">No hay productos en esta categoría aún.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
-          {productosFiltrados.map((producto) => (
-            <Link
-              key={producto.slug}
-              href={`/tienda/${producto.slug}`}
-              className="group flex flex-col border border-borde bg-blanco hover:border-negro transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-oro focus-visible:outline-offset-2"
-            >
-              {/* Imagen (placeholder) */}
-              <div className="relative w-full aspect-[4/3] bg-fondo-alt flex items-center justify-center overflow-hidden">
-                <span className="font-mono text-xs text-gris uppercase tracking-widest">
-                  {etiquetaCategoria(producto.categoria)}
-                </span>
-              </div>
+          {productosFiltrados.map((producto) => {
+            const estilo = ESTILO_CATEGORIA[producto.categoria]
+            return (
+              <Link key={producto.slug} href={`/tienda/${producto.slug}`} className="group">
+                <Tarjeta className="h-full flex flex-col transition-transform duration-200 group-hover:-translate-y-1">
+                  {/* Visual baldosa */}
+                  <div className="relative">
+                    <Baldosa
+                      color={estilo.color}
+                      icono={estilo.icono}
+                      cuadrada={false}
+                      radius="none"
+                      iconSize={56}
+                      className="w-full aspect-[4/3]"
+                    />
+                    <div className="absolute top-3 left-3 flex gap-1.5">
+                      <Chip tono="key">48 H</Chip>
+                    </div>
+                  </div>
 
-              {/* Info */}
-              <div className="flex flex-col flex-1 p-5">
-                <p className="font-mono text-xs text-gris uppercase tracking-wide mb-1">
-                  {etiquetaCategoria(producto.categoria)}
-                </p>
-                <h3 className="font-display text-lg font-bold text-negro group-hover:text-oro transition-colors duration-150">
-                  {producto.nombre}
-                </h3>
-                <p className="font-sans text-sm text-gris mt-1 line-clamp-2">
-                  {producto.descripcionCorta}
-                </p>
-                <div className="mt-4 pt-3 flex items-baseline justify-between border-t border-borde">
-                  <span className="font-sans text-sm text-tinta">
-                    <span className="text-gris text-xs">desde </span>
-                    <span className="font-semibold">
-                      {formatearPrecioUnidad(precioDesdeUnidad(producto))}
-                    </span>
-                    <span className="text-gris text-xs"> /ud</span>
-                  </span>
-                  <span className="font-mono text-xs text-negro group-hover:text-oro transition-colors duration-150">
-                    Configurar →
-                  </span>
-                </div>
-              </div>
-            </Link>
-          ))}
+                  {/* Info */}
+                  <div className="flex flex-col flex-1 p-5">
+                    <p className="font-mono text-xs text-gris uppercase tracking-wide mb-1">
+                      {etiquetaCategoria(producto.categoria)}
+                    </p>
+                    <h3 className="font-display text-lg font-bold text-key">{producto.nombre}</h3>
+                    <p className="font-sans text-sm text-gris mt-1 line-clamp-2">
+                      {producto.descripcionCorta}
+                    </p>
+                    <div className="mt-4 pt-3 flex items-baseline justify-between border-t border-taupe">
+                      <span className="font-sans text-sm text-key">
+                        <span className="text-gris text-xs">desde </span>
+                        <span className="font-semibold">
+                          {formatearPrecioUnidad(precioDesdeUnidad(producto))}
+                        </span>
+                        <span className="text-gris text-xs"> /ud</span>
+                      </span>
+                      <span className="font-mono text-xs text-ambar-700 group-hover:translate-x-0.5 transition-transform">
+                        Configurar →
+                      </span>
+                    </div>
+                  </div>
+                </Tarjeta>
+              </Link>
+            )
+          })}
         </div>
       )}
     </>

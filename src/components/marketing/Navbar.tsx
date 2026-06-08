@@ -10,45 +10,44 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { Boton } from '@/components/ui/Boton'
+import { Logo } from '@/components/marketing/Logo'
 
 const enlaces = [
-  { href: '/historia', label: 'Historia' },
-  { href: '/servicios', label: 'Servicios' },
+  { href: '/', label: 'Inicio' },
   { href: '/tienda', label: 'Tienda' },
-  { href: '/portfolio', label: 'Portfolio' },
-  { href: '/sostenibilidad', label: 'Sostenibilidad' },
+  { href: '/encargo', label: 'Encargo' },
+  { href: '/servicios', label: 'Servicios' },
   { href: '/contacto', label: 'Contacto' },
 ]
+
+function esActivo(pathname: string, href: string) {
+  return href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(href + '/')
+}
 
 export function Navbar() {
   const [menuAbierto, setMenuAbierto] = useState(false)
   const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-50 bg-papel border-b border-borde">
+    <header className="sticky top-0 z-50 bg-paper-100/90 backdrop-blur border-b border-taupe">
       <nav className="contenedor flex items-center justify-between h-16" aria-label="Navegación principal">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="font-display font-bold text-2xl text-negro tracking-tight hover:text-oro transition-colors duration-150"
-          aria-label="Gráficas NASVE — ir a inicio"
-        >
-          nasve
+        <Link href="/" aria-label="Gráficas NASVE — ir a inicio" className="transition-opacity hover:opacity-80">
+          <Logo />
         </Link>
 
         {/* Links escritorio */}
-        <ul className="hidden md:flex items-center gap-6" role="list">
+        <ul className="hidden md:flex items-center gap-7" role="list">
           {enlaces.map(({ href, label }) => {
-            const activo = pathname === href || pathname.startsWith(href + '/')
+            const activo = esActivo(pathname, href)
             return (
               <li key={href}>
                 <Link
                   href={href}
                   className={[
-                    'font-sans text-sm font-medium transition-colors duration-150',
+                    'font-sans text-sm font-medium transition-colors duration-150 pb-1',
                     activo
-                      ? 'text-negro border-b border-negro pb-0.5'
-                      : 'text-gris hover:text-negro',
+                      ? 'text-key border-b-2 border-ambar'
+                      : 'text-gris hover:text-key border-b-2 border-transparent',
                   ].join(' ')}
                 >
                   {label}
@@ -58,16 +57,20 @@ export function Navbar() {
           })}
         </ul>
 
-        {/* CTA escritorio */}
-        <div className="hidden md:flex items-center">
+        {/* Lado derecho escritorio */}
+        <div className="hidden md:flex items-center gap-4">
+          <span className="hidden lg:inline-flex items-center gap-2 rounded-pill border border-taupe px-3 py-1 font-mono text-xs uppercase tracking-widest text-gris">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan" aria-hidden="true" />
+            48 H · Taller
+          </span>
           <Boton variant="primary" size="sm" asChild>
-            <Link href="/presupuesto">Presupuesto</Link>
+            <Link href="/encargo">Pedir presupuesto</Link>
           </Boton>
         </div>
 
         {/* Botón hamburguesa móvil */}
         <button
-          className="md:hidden flex items-center justify-center w-10 h-10 text-negro"
+          className="md:hidden flex items-center justify-center w-10 h-10 text-key"
           onClick={() => setMenuAbierto(!menuAbierto)}
           aria-expanded={menuAbierto}
           aria-label={menuAbierto ? 'Cerrar menú' : 'Abrir menú'}
@@ -78,17 +81,17 @@ export function Navbar() {
 
       {/* Menú móvil */}
       {menuAbierto && (
-        <div className="md:hidden bg-papel border-t border-borde">
+        <div className="md:hidden bg-paper-100 border-t border-taupe">
           <ul className="contenedor flex flex-col py-4 gap-1" role="list">
             {enlaces.map(({ href, label }) => {
-              const activo = pathname === href || pathname.startsWith(href + '/')
+              const activo = esActivo(pathname, href)
               return (
                 <li key={href}>
                   <Link
                     href={href}
                     className={[
                       'block py-3 font-sans text-base font-medium transition-colors duration-150',
-                      activo ? 'text-negro' : 'text-gris hover:text-negro',
+                      activo ? 'text-key' : 'text-gris hover:text-key',
                     ].join(' ')}
                     onClick={() => setMenuAbierto(false)}
                   >
@@ -97,15 +100,10 @@ export function Navbar() {
                 </li>
               )
             })}
-            <li className="pt-3 border-t border-borde mt-2">
-              <Boton
-                variant="primary"
-                size="sm"
-                className="w-full"
-                asChild
-              >
-                <Link href="/presupuesto" onClick={() => setMenuAbierto(false)}>
-                  Solicitar presupuesto
+            <li className="pt-3 border-t border-taupe mt-2">
+              <Boton variant="primary" size="sm" className="w-full" asChild>
+                <Link href="/encargo" onClick={() => setMenuAbierto(false)}>
+                  Pedir presupuesto
                 </Link>
               </Boton>
             </li>
