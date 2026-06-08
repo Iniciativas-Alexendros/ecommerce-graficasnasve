@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art — Baldosa (tile de color con icono geométrico)
+ * tudominio.com — Baldosa (tile de color con icono geométrico)
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 

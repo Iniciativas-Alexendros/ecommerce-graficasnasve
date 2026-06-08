@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
