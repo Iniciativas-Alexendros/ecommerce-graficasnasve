@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -9,7 +9,7 @@ import { SectionLabel } from '@/components/ui/SectionLabel'
 import { EncargoFlow } from './EncargoFlow'
 
 export const metadata: Metadata = {
-  title: 'Encargo asistido — Gráficas NASVE',
+  title: 'Encargo asistido — Gráficas Ejemplo',
   description:
     'Configura tu encargo de imprenta paso a paso: producto, especificaciones, archivo con preflight automático y presupuesto en menos de 24 h.',
 }

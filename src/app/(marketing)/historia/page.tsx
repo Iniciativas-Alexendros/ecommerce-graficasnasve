@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -7,35 +7,35 @@ import type { Metadata } from 'next'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 
 export const metadata: Metadata = {
-  title: 'Historia — Gráficas NASVE',
+  title: 'Historia — Gráficas Ejemplo',
   description:
-    'Más de 40 años de historia gráfica en Valencia. Desde el barrio de Serrería en 1982 hasta el Polígono Industrial Masía del Juez en Torrent hoy.',
+    'Décadas de oficio gráfico. Del pequeño taller de barrio a unas instalaciones modernas, con el mismo compromiso artesanal de siempre.',
 }
 
 const hitos = [
   {
-    año: '1982',
-    titulo: 'El principio',
+    año: 'Inicio',
+    titulo: 'El origen',
     descripcion:
-      'Antonio Arnás funda el taller en el barrio de Serrería, Valencia. Lo que empieza como una pequeña imprenta de barrio con una sola prensa offset se convierte, desde el primer día, en un proyecto de calidad artesanal comprometido con el cliente.',
+      'La imprenta abre como un pequeño taller de barrio con una sola prensa offset. Desde el primer día, una apuesta por la calidad artesanal y el trato cercano con cada cliente.',
   },
   {
-    año: '1993',
-    titulo: 'Traslado a Torrent',
+    año: 'Crecimiento',
+    titulo: 'Nuevas instalaciones',
     descripcion:
-      'El crecimiento sostenido obliga a buscar un espacio mayor. El taller se traslada al Polígono Industrial Masía del Juez en Torrent (Valencia), donde dispone de instalaciones modernas que permiten ampliar la gama de servicios y afrontar tiradas más exigentes.',
+      'El taller se traslada a un espacio mayor en el polígono industrial: más maquinaria, más gama de servicios y capacidad para afrontar tiradas más exigentes.',
   },
   {
-    año: '2000s',
+    año: 'Relevo',
     titulo: 'La segunda generación',
     descripcion:
-      'Los hijos de Antonio toman el relevo. Con ellos llega una fuerte inversión en tecnología: CTP (Computer-to-Plate), equipos de encuadernación automatizada y las primeras máquinas de acabados premium. El espíritu artesanal se mantiene intacto; la capacidad productiva, multiplicada.',
+      'Llega una fuerte inversión en tecnología —CTP (Computer-to-Plate), encuadernación automatizada y los primeros acabados premium— sin perder el espíritu artesanal. La capacidad productiva se multiplica.',
   },
   {
-    año: '2026',
-    titulo: 'Cuatro décadas, mismo compromiso',
+    año: 'Hoy',
+    titulo: 'El mismo compromiso',
     descripcion:
-      'Hoy Gráficas NASVE combina la calidez del trato personal con las técnicas más avanzadas del sector: impresión digital de alto formato, dato variable, impresión directa sobre madera, stamping y UVI selectivo. El mismo compromiso artesanal con el que nació en 1982, adaptado al presente.',
+      'Gráficas Ejemplo combina el trato personal con las técnicas más avanzadas del sector: impresión digital de gran formato, dato variable, impresión directa sobre madera, stamping y UVI selectivo.',
   },
 ]
 
@@ -47,12 +47,12 @@ export default function PaginaHistoria() {
         <div className="max-w-2xl mb-20">
           <SectionLabel>Quiénes somos</SectionLabel>
           <h1 className="mt-4 font-display font-extrabold text-4xl md:text-5xl text-key mb-5">
-            Más de cuatro décadas de oficio gráfico
+            Oficio gráfico, generación tras generación
           </h1>
           <p className="relato text-lg md:text-xl text-key/80 leading-snug">
-            La historia de Gráficas NASVE es la de una familia valenciana que apostó por la
+            La historia de Gráficas Ejemplo es la de un equipo que apostó por la
             calidad cuando la calidad aún requería esfuerzo. Un compromiso que no ha cambiado
-            en 40 años.
+            con el paso de los años.
           </p>
         </div>
 
