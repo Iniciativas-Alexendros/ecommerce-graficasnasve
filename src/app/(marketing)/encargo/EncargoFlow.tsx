@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art — Encargo asistido (4 pasos: producto · specs · archivo · presupuesto)
+ * tudominio.com — Encargo asistido (4 pasos: producto · specs · archivo · presupuesto)
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -321,7 +321,7 @@ export function EncargoFlow({ productoSlugInicial }: PropsEncargoFlow) {
               <label className="flex items-start gap-3 cursor-pointer">
                 <input type="checkbox" checked={rgpd} onChange={(e) => setRgpd(e.target.checked)} className="mt-1 w-4 h-4 accent-key" />
                 <span className="font-sans text-sm text-gris leading-relaxed">
-                  Acepto la política de privacidad. Mis datos serán tratados por Gráficas NASVE, S.L. para gestionar mi encargo (art. 6.1.b RGPD). *
+                  Acepto la política de privacidad. Mis datos serán tratados por Gráficas Ejemplo, S.L. para gestionar mi encargo (art. 6.1.b RGPD). *
                 </span>
               </label>
               {estado === 'error' && (
