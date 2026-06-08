@@ -1,11 +1,11 @@
 /**
- * graficasnasve.art — Imagen Open Graph (marca NASVE, generada con Satori)
+ * tudominio.com — Imagen Open Graph (marca Ejemplo, generada con Satori)
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
 import { ImageResponse } from 'next/og'
 
-export const alt = 'Gráficas NASVE — Imprenta en Torrent desde 1982'
+export const alt = 'Gráficas Ejemplo — Imprenta en Tu Ciudad desde 20XX'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -54,13 +54,13 @@ export default function OpenGraphImage() {
               marginBottom: 24,
             }}
           >
-            Imprenta · Torrent · Valencia
+            Imprenta · Tu Ciudad · Tu Provincia
           </div>
           <div style={{ display: 'flex', fontSize: 104, fontWeight: 800, color: '#16140F', lineHeight: 1 }}>
-            Gráficas NASVE
+            Gráficas Ejemplo
           </div>
           <div style={{ display: 'flex', fontSize: 46, color: '#16140F', marginTop: 28 }}>
-            Impreso preciso desde 1982.
+            Impreso preciso desde 20XX.
           </div>
         </div>
         <Barra />
