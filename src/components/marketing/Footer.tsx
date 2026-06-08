@@ -54,7 +54,7 @@ export function Footer() {
               <p className="mt-2">
                 <a
                   href="tel:+34961553409"
-                  className="hover:text-oro transition-colors duration-150"
+                  className="hover:text-ambar transition-colors duration-150"
                 >
                   961 55 34 09
                 </a>
@@ -62,7 +62,7 @@ export function Footer() {
               <p>
                 <a
                   href="mailto:nasve@nasve.com"
-                  className="hover:text-oro transition-colors duration-150"
+                  className="hover:text-ambar transition-colors duration-150"
                 >
                   nasve@nasve.com
                 </a>
@@ -83,7 +83,7 @@ export function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-sm text-papel/80 hover:text-oro transition-colors duration-150"
+                    className="text-sm text-papel/80 hover:text-ambar transition-colors duration-150"
                   >
                     {label}
                   </Link>
@@ -102,7 +102,7 @@ export function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-sm text-papel/80 hover:text-oro transition-colors duration-150"
+                    className="text-sm text-papel/80 hover:text-ambar transition-colors duration-150"
                   >
                     {label}
                   </Link>
@@ -121,7 +121,7 @@ export function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-sm text-papel/80 hover:text-oro transition-colors duration-150"
+                    className="text-sm text-papel/80 hover:text-ambar transition-colors duration-150"
                   >
                     {label}
                   </Link>

@@ -4,6 +4,7 @@
  */
 
 import type { Metadata } from 'next'
+import { SectionLabel } from '@/components/ui/SectionLabel'
 
 export const metadata: Metadata = {
   title: 'Historia — Gráficas NASVE',
@@ -44,16 +45,14 @@ export default function PaginaHistoria() {
       <div className="contenedor">
         {/* Cabecera */}
         <div className="max-w-2xl mb-20">
-          <p className="font-mono text-xs text-gris uppercase tracking-widest mb-3">
-            Quiénes somos
-          </p>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-negro mb-6">
+          <SectionLabel>Quiénes somos</SectionLabel>
+          <h1 className="mt-4 font-display font-extrabold text-4xl md:text-5xl text-key mb-5">
             Más de cuatro décadas de oficio gráfico
           </h1>
-          <p className="font-sans text-base text-gris leading-relaxed">
-            La historia de Gráficas NASVE es la de una familia valenciana que apostó
-            por la calidad cuando la calidad aún requería esfuerzo. Esta es la historia
-            de un compromiso que no ha cambiado en 40 años.
+          <p className="relato text-lg md:text-xl text-key/80 leading-snug">
+            La historia de Gráficas NASVE es la de una familia valenciana que apostó por la
+            calidad cuando la calidad aún requería esfuerzo. Un compromiso que no ha cambiado
+            en 40 años.
           </p>
         </div>
 
@@ -75,7 +74,7 @@ export default function PaginaHistoria() {
                   </span>
                   {/* Punto dorado */}
                   <div
-                    className="absolute right-0 translate-x-[calc(100%+1px)] top-2 w-3 h-3 rounded-full bg-oro border-2 border-papel"
+                    className="absolute right-0 translate-x-[calc(100%+1px)] top-2 w-3 h-3 rounded-full bg-ambar border-2 border-papel"
                     aria-hidden="true"
                     style={{ transform: 'translateX(calc(50% + 1px))' }}
                   />

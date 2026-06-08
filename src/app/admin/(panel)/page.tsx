@@ -23,7 +23,7 @@ const ETIQUETAS_ESTADO: Record<Presupuesto['estado'], string> = {
 }
 
 const COLORES_ESTADO: Record<Presupuesto['estado'], string> = {
-  nuevo: 'bg-oro/20 text-oro-oscuro',
+  nuevo: 'bg-ambar/20 text-ambar-700',
   en_revision: 'bg-fondo-alt text-gris',
   presupuestado: 'bg-verde/10 text-verde',
   aceptado: 'bg-verde/20 text-verde',
@@ -139,7 +139,7 @@ export default async function PaginaAdminDashboard() {
                   <td className="px-5 py-4 font-sans text-sm text-negro font-medium">
                     <Link
                       href={`/admin/presupuestos/${p.id}`}
-                      className="hover:text-oro transition-colors"
+                      className="hover:text-ambar transition-colors"
                     >
                       {p.nombre}
                     </Link>

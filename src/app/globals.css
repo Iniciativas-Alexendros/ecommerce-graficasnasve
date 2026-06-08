@@ -44,9 +44,6 @@
   --color-gris:       #6B6357;
   --color-rojo:       var(--color-coral);
   --color-verde:      var(--color-cyan);
-  --color-oro:        var(--color-ambar);       /* DEPRECATED → ambar */
-  --color-oro-suave:  var(--color-ambar-200);   /* DEPRECATED → ambar-200 */
-  --color-oro-oscuro: var(--color-ambar-700);   /* DEPRECATED → ambar-700 */
 
   /* Tipografía — tres familias */
   --font-display: 'Archivo', system-ui, sans-serif;
@@ -98,7 +95,6 @@
   --tinta:      var(--key);
   --papel:      var(--paper-100);
   --blanco:     var(--paper-0);
-  --oro:        var(--ambar);
   --borde:      var(--taupe);
   --rojo:       var(--coral);
   --key-70:     rgba(22, 20, 15, 0.70);

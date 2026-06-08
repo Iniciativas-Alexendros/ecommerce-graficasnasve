@@ -196,14 +196,14 @@ export function FormularioPresupuesto({
 
         {/* Producto */}
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="producto" className="font-sans text-sm font-medium text-tinta">
+          <label htmlFor="producto" className="font-mono text-xs font-medium uppercase tracking-widest text-gris">
             Tipo de producto *
           </label>
           <select
             id="producto"
             className={[
-              'w-full border bg-blanco text-tinta font-sans text-base px-4 py-3 transition-colors duration-150 focus:outline-none focus:border-oro focus:ring-2 focus:ring-oro/20',
-              errors.producto ? 'border-rojo' : 'border-borde',
+              'w-full rounded-card border bg-paper-0 text-key font-sans text-base px-4 py-3 transition-colors duration-150 focus:outline-none focus:border-ambar focus:ring-2 focus:ring-ambar/25',
+              errors.producto ? 'border-coral' : 'border-taupe',
             ].join(' ')}
             {...register('producto')}
           >
@@ -266,7 +266,7 @@ export function FormularioPresupuesto({
           Archivo de arte (opcional)
         </legend>
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="archivo" className="font-sans text-sm font-medium text-tinta">
+          <label htmlFor="archivo" className="font-mono text-xs font-medium uppercase tracking-widest text-gris">
             Sube tu archivo
           </label>
           <input
@@ -274,7 +274,7 @@ export function FormularioPresupuesto({
             type="file"
             accept={TIPOS_ARCHIVO}
             onChange={() => setErrorArchivo('')}
-            className="w-full border border-borde bg-blanco font-sans text-sm text-gris file:mr-4 file:py-2 file:px-4 file:border-0 file:bg-fondo-alt file:font-sans file:text-sm file:text-tinta file:cursor-pointer hover:file:bg-negro hover:file:text-papel transition-colors"
+            className="w-full rounded-card border border-taupe bg-paper-0 font-sans text-sm text-gris file:mr-4 file:py-2 file:px-4 file:border-0 file:bg-paper-50 file:font-sans file:text-sm file:text-key file:cursor-pointer hover:file:bg-key hover:file:text-paper-0 transition-colors"
           />
           <p className="font-mono text-xs text-gris">
             Formatos: PDF, AI, EPS, ZIP · Máximo 50 MB
@@ -297,7 +297,7 @@ export function FormularioPresupuesto({
           />
           <span className="font-sans text-sm text-gris leading-relaxed">
             He leído y acepto la{' '}
-            <Link href="/privacidad" className="text-negro underline hover:text-oro transition-colors">
+            <Link href="/privacidad" className="text-negro underline hover:text-ambar transition-colors">
               política de privacidad
             </Link>
             . Mis datos serán tratados por Gráficas NASVE, S.L. con la finalidad de

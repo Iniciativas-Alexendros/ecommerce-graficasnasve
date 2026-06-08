@@ -5,12 +5,16 @@
 
 import type { Metadata } from 'next'
 import { Leaf, Droplets, Recycle, Trash2 } from 'lucide-react'
+import { SectionLabel } from '@/components/ui/SectionLabel'
+import { Baldosa, type ColorBaldosa } from '@/components/ui/Baldosa'
 
 export const metadata: Metadata = {
   title: 'Sostenibilidad — Gráficas NASVE',
   description:
     'Nuestro compromiso con el medioambiente: papeles certificados FSC/PEFC, tintas vegetales, materiales bio/reciclados y gestión responsable de residuos.',
 }
+
+const COLORES_PILAR: ColorBaldosa[] = ['cyan', 'sky', 'lavender', 'spot-blue']
 
 const pilares = [
   {
@@ -49,19 +53,16 @@ export default function PaginaSostenibilidad() {
       <div className="contenedor">
         {/* Cabecera */}
         <div className="max-w-2xl mb-20">
-          <p className="font-mono text-xs text-gris uppercase tracking-widest mb-3">
-            Compromiso medioambiental
-          </p>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-negro mb-6">
+          <SectionLabel>Compromiso medioambiental</SectionLabel>
+          <h1 className="mt-4 font-display font-extrabold text-4xl md:text-5xl text-key mb-5">
             Imprimir bien,
             <br />
-            <span className="text-verde">imprimir limpio</span>
+            <span className="text-cyan">imprimir limpio</span>
           </h1>
-          <p className="font-sans text-base text-gris leading-relaxed">
-            La industria gráfica tiene una responsabilidad medioambiental real. En NASVE
-            llevamos años trabajando para reducir nuestro impacto: materiales
-            certificados, tintas más limpias, gestión rigurosa de residuos. No como
-            marketing, sino como práctica cotidiana.
+          <p className="relato text-lg md:text-xl text-key/80 leading-snug">
+            La industria gráfica tiene una responsabilidad medioambiental real. En NASVE llevamos
+            años reduciendo nuestro impacto: materiales certificados, tintas más limpias, gestión
+            rigurosa de residuos. No como marketing, sino como práctica cotidiana.
           </p>
         </div>
 
@@ -76,7 +77,9 @@ export default function PaginaSostenibilidad() {
             >
               {/* Icono y número */}
               <div className="md:col-span-3 flex flex-col gap-4">
-                <Icono size={36} className="text-verde" />
+                <Baldosa color={COLORES_PILAR[i % COLORES_PILAR.length]} cuadrada={false} className="w-16 h-16">
+                  <Icono size={32} />
+                </Baldosa>
                 <span className="font-mono text-xs text-gris uppercase tracking-widest">
                   0{i + 1} / 04
                 </span>
@@ -84,7 +87,7 @@ export default function PaginaSostenibilidad() {
 
               {/* Texto */}
               <div className="md:col-span-9">
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-negro mb-6">
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-key mb-6">
                   {titulo}
                 </h2>
                 {texto.split('\n\n').map((parrafo, j) => (

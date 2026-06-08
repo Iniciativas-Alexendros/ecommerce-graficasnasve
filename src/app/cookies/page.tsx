@@ -4,6 +4,7 @@
  */
 
 import type { Metadata } from 'next'
+import { SectionLabel } from '@/components/ui/SectionLabel'
 
 export const metadata: Metadata = {
   title: 'Política de Cookies — Gráficas NASVE',
@@ -45,7 +46,7 @@ const cookies: CookieInfo[] = [
 
 const tipoCookie = {
   esencial: { etiqueta: 'Esencial', color: 'bg-negro/10 text-negro' },
-  analitica: { etiqueta: 'Analítica', color: 'bg-oro/20 text-oro-oscuro' },
+  analitica: { etiqueta: 'Analítica', color: 'bg-ambar/20 text-ambar-700' },
   terceros: { etiqueta: 'Terceros', color: 'bg-fondo-alt text-gris' },
 }
 
@@ -53,7 +54,8 @@ export default function PaginaCookies() {
   return (
     <div className="py-24">
       <div className="contenedor max-w-3xl">
-        <h1 className="font-display text-4xl font-bold text-negro mb-8">
+        <SectionLabel>Legal</SectionLabel>
+        <h1 className="mt-4 font-display font-extrabold text-4xl text-key mb-8">
           Política de Cookies
         </h1>
         <p className="font-mono text-xs text-gris mb-12">
@@ -103,7 +105,7 @@ export default function PaginaCookies() {
                 <h3 className="font-sans font-semibold text-negro">
                   Cookies analíticas
                 </h3>
-                <span className="font-mono text-xs uppercase tracking-wide px-2 py-0.5 bg-oro/20 text-oro-oscuro">
+                <span className="font-mono text-xs uppercase tracking-wide px-2 py-0.5 bg-ambar/20 text-ambar-700">
                   Solo con consentimiento
                 </span>
               </div>
@@ -204,7 +206,7 @@ export default function PaginaCookies() {
               de Datos, Alicia Armas, en{' '}
               <a
                 href="mailto:alicia@nasve.com"
-                className="text-negro underline hover:text-oro transition-colors"
+                className="text-negro underline hover:text-ambar transition-colors"
               >
                 alicia@nasve.com
               </a>

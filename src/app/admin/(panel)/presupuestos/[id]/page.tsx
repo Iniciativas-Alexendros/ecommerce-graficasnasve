@@ -155,7 +155,7 @@ export default async function PaginaDetallePresupuesto({ params }: PropiedadesId
                   href={presupuesto.archivo_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-xs text-oro hover:underline"
+                  className="font-mono text-xs text-ambar hover:underline"
                 >
                   {presupuesto.archivo_nombre ?? 'Descargar archivo'} ↗
                 </a>
@@ -186,7 +186,7 @@ export default async function PaginaDetallePresupuesto({ params }: PropiedadesId
                   id="estado"
                   name="estado"
                   defaultValue={presupuesto.estado}
-                  className="w-full border border-borde bg-blanco text-tinta font-sans text-sm px-3 py-2.5 focus:outline-none focus:border-oro focus:ring-2 focus:ring-oro/20"
+                  className="w-full border border-borde bg-blanco text-tinta font-sans text-sm px-3 py-2.5 focus:outline-none focus:border-ambar focus:ring-2 focus:ring-ambar/20"
                 >
                   {Object.entries(ETIQUETAS_ESTADO).map(([valor, etiqueta]) => (
                     <option key={valor} value={valor}>
@@ -210,13 +210,13 @@ export default async function PaginaDetallePresupuesto({ params }: PropiedadesId
                   rows={5}
                   defaultValue={presupuesto.notas_admin ?? ''}
                   placeholder="Notas internas sobre este presupuesto..."
-                  className="w-full border border-borde bg-blanco text-tinta font-sans text-sm px-3 py-2.5 focus:outline-none focus:border-oro focus:ring-2 focus:ring-oro/20 resize-y"
+                  className="w-full border border-borde bg-blanco text-tinta font-sans text-sm px-3 py-2.5 focus:outline-none focus:border-ambar focus:ring-2 focus:ring-ambar/20 resize-y"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-negro text-papel font-sans font-medium text-sm py-2.5 px-4 hover:bg-oro hover:text-negro transition-colors duration-150"
+                className="w-full bg-negro text-papel font-sans font-medium text-sm py-2.5 px-4 hover:bg-ambar hover:text-negro transition-colors duration-150"
               >
                 Guardar cambios
               </button>
