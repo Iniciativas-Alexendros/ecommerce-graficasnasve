@@ -1,13 +1,13 @@
--- graficasnasve.art — Esquema inicial
+-- tudominio.com — Esquema inicial
 -- © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
 --
 -- Fuente de verdad: src/types/supabase.ts
 -- Aplicar con la CLI de Supabase (`supabase db push`) o pegando en el SQL Editor.
 -- RLS activado en todas las tablas.
 
--- ───────────────────────────────────────────────────────────────────────────
+-- ──────────────────────────────────────────────────────────────
 -- Tabla: presupuestos  (solicitudes entrantes del formulario público)
--- ───────────────────────────────────────────────────────────────────────────
+-- ──────────────────────────────────────────────────────────────
 create table if not exists public.presupuestos (
   id             uuid primary key default gen_random_uuid(),
   created_at     timestamptz not null default now(),
@@ -29,11 +29,11 @@ create table if not exists public.presupuestos (
   updated_at     timestamptz
 );
 
--- ───────────────────────────────────────────────────────────────────────────
+-- ──────────────────────────────────────────────────────────────
 -- Tabla: pedidos  (pipeline de producción; puede nacer de un presupuesto)
 -- Nota: NO es una tabla de pedidos de pasarela de pago. La integración de
 -- pagos (Stripe/Redsys/Bizum) se decide en la Fase 4 del ROADMAP.
--- ───────────────────────────────────────────────────────────────────────────
+-- ──────────────────────────────────────────────────────────────
 create table if not exists public.pedidos (
   id                      uuid primary key default gen_random_uuid(),
   created_at              timestamptz not null default now(),
@@ -56,9 +56,9 @@ create table if not exists public.pedidos (
 
 create index if not exists pedidos_presupuesto_id_idx on public.pedidos (presupuesto_id);
 
--- ───────────────────────────────────────────────────────────────────────────
+-- ──────────────────────────────────────────────────────────────
 -- Tabla: portfolio  (galería pública editable por admin)
--- ───────────────────────────────────────────────────────────────────────────
+-- ──────────────────────────────────────────────────────────────
 create table if not exists public.portfolio (
   id          uuid primary key default gen_random_uuid(),
   created_at  timestamptz not null default now(),
@@ -76,9 +76,9 @@ create table if not exists public.portfolio (
 
 create index if not exists portfolio_publicado_orden_idx on public.portfolio (publicado, orden);
 
--- ───────────────────────────────────────────────────────────────────────────
+-- ──────────────────────────────────────────────────────────────
 -- Row Level Security
--- ───────────────────────────────────────────────────────────────────────────
+-- ──────────────────────────────────────────────────────────────
 alter table public.presupuestos enable row level security;
 alter table public.pedidos      enable row level security;
 alter table public.portfolio    enable row level security;
@@ -99,10 +99,10 @@ create policy "portfolio_select_publicado"
 create policy "portfolio_admin_all"
   on public.portfolio for all to authenticated using (true) with check (true);
 
--- ───────────────────────────────────────────────────────────────────────────
+-- ──────────────────────────────────────────────────────────────
 -- Storage: bucket privado para archivos de arte subidos por el cliente.
 -- El acceso de lectura debe hacerse mediante signed URLs (TTL corto).
--- ───────────────────────────────────────────────────────────────────────────
+-- ──────────────────────────────────────────────────────────────
 insert into storage.buckets (id, name, public)
 values ('arte-files', 'arte-files', false)
 on conflict (id) do nothing;

@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -70,7 +70,7 @@ export const ESTILO_CATEGORIA: Record<CategoriaTienda, { color: ColorBaldosa; ic
   producto: { color: 'key', icono: 'cuarto' },
 }
 
-// ── Opciones reutilizables (factores ORIENTATIVOS) ──────────────────────────
+// ── Opciones reutilizables (factores ORIENTATIVOS) ─────────────────────────
 const ACAB_NINGUNO: OpcionConfigurable = { id: 'ninguno', etiqueta: 'Sin acabado', factor: 1 }
 const ACAB_MATE: OpcionConfigurable = { id: 'laminado-mate', etiqueta: 'Laminado mate', factor: 1.15 }
 const ACAB_BRILLO: OpcionConfigurable = { id: 'laminado-brillo', etiqueta: 'Laminado brillo', factor: 1.15 }
@@ -92,7 +92,7 @@ const soporteUnico = (etiqueta: string): OpcionConfigurable[] => [
 ]
 
 export const catalogoTienda: ProductoTienda[] = [
-  // ── Publicidad ──────────────────────────────────────────────────────────
+  // ── Publicidad ─────────────────────────────────────────────────
   {
     slug: 'flyers-a5',
     nombre: 'Flyers A5',
@@ -124,7 +124,7 @@ export const catalogoTienda: ProductoTienda[] = [
     precioBase: 0.95,
     tipoPresupuesto: 'otro',
   },
-  // ── Editorial ───────────────────────────────────────────────────────────
+  // ── Editorial ────────────────────────────────────────────────
   {
     slug: 'catalogo-grapado-a4',
     nombre: 'Catálogo grapado A4',
@@ -146,7 +146,7 @@ export const catalogoTienda: ProductoTienda[] = [
     categoria: 'editorial',
     descripcionCorta: '160 páginas cosidas en rústica. Para que dure.',
     descripcion:
-      'Libro de 160 páginas con encuadernación en rústica fresada, interior en offset ahuesado y cubierta a color. La solución artesanal de NASVE para autoedición y ediciones de calidad.',
+      'Libro de 160 páginas con encuadernación en rústica fresada, interior en offset ahuesado y cubierta a color. La solución artesanal de Ejemplo para autoedición y ediciones de calidad.',
     formato: '15 × 21 cm · 160 págs.',
     material: 'Interior offset ahuesado 90 g',
     gramajes: soporteUnico('Offset ahuesado 90 g/m²'),
@@ -155,7 +155,7 @@ export const catalogoTienda: ProductoTienda[] = [
     precioBase: 6.5,
     tipoPresupuesto: 'libro',
   },
-  // ── Hostelería ──────────────────────────────────────────────────────────
+  // ── Hostelería ───────────────────────────────────────────────
   {
     slug: 'carta-menu',
     nombre: 'Carta de menú',
@@ -186,7 +186,7 @@ export const catalogoTienda: ProductoTienda[] = [
     precioBase: 0.09,
     tipoPresupuesto: 'otro',
   },
-  // ── Identidad ───────────────────────────────────────────────────────────
+  // ── Identidad ────────────────────────────────────────────────
   {
     slug: 'tarjetas-de-visita',
     nombre: 'Tarjetas de visita',
@@ -218,7 +218,7 @@ export const catalogoTienda: ProductoTienda[] = [
     precioBase: 0.12,
     tipoPresupuesto: 'papeleria',
   },
-  // ── Gran formato ────────────────────────────────────────────────────────
+  // ── Gran formato ─────────────────────────────────────────────
   {
     slug: 'lona-publicitaria',
     nombre: 'Lona publicitaria',
@@ -255,7 +255,7 @@ export const catalogoTienda: ProductoTienda[] = [
     precioBase: 38,
     tipoPresupuesto: 'otro',
   },
-  // ── Producto ────────────────────────────────────────────────────────────
+  // ── Producto ─────────────────────────────────────────────────
   {
     slug: 'pegatinas-troqueladas',
     nombre: 'Pegatinas troqueladas',
@@ -279,9 +279,9 @@ export const catalogoTienda: ProductoTienda[] = [
     slug: 'placa-madera',
     nombre: 'Placa impresa sobre madera',
     categoria: 'producto',
-    descripcionCorta: 'Impresión UV directa sobre madera natural. La especialidad NASVE.',
+    descripcionCorta: 'Impresión UV directa sobre madera natural. La especialidad Ejemplo.',
     descripcion:
-      'Placa de madera natural con impresión UV directa, donde la veta forma parte del diseño. La especialidad diferencial de NASVE para señalética premium, decoración, regalo de empresa y packaging de lujo.',
+      'Placa de madera natural con impresión UV directa, donde la veta forma parte del diseño. La especialidad diferencial de Ejemplo para señalética premium, decoración, regalo de empresa y packaging de lujo.',
     formato: '20 × 30 cm · grosor 6 mm',
     material: 'Madera natural (impresión UV directa)',
     gramajes: [
