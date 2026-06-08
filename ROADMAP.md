@@ -1,4 +1,4 @@
-# ROADMAP — graficasnasve.art
+# ROADMAP — tudominio.com
 
 > **Estado:** Pre-producción · base reconciliada con el código real (junio 2026).
 > Hermanos: [`ARCHITECTURE.md`](./ARCHITECTURE.md) · [`DEPLOYMENT.md`](./DEPLOYMENT.md).
@@ -6,7 +6,7 @@
 ## Norte del producto
 
 > *Las soluciones del sector suelen entregarse **tarde, caras o incompatibles**.*
-> graficasnasve.art se mide contra ese dolor: **rápido** (SSG/ISR, 48 h exprés),
+> tudominio.com se mide contra ese dolor: **rápido** (SSG/ISR, 48 h exprés),
 > **precio claro** (catálogo "desde", estimación por unidad) y **compatible**
 > (preflight de archivos antes de máquina). Cada fase debe acercarnos a esos tres ejes.
 
@@ -44,9 +44,9 @@ flowchart LR
 ---
 
 ## Fase 0 — Fundamentos ✅
-- [x] Dominio `graficasnasve.art` + redirect 301 desde `graficasnasve.com`
+- [x] Dominio `tudominio.com` + redirect 301 desde `tudominioantiguo.com`
 - [x] Repo Git + entorno Vercel (`cdg1`)
-- [x] Design System NASVE v1.0 (tokens, tipografía, color, fuentes self-hosted)
+- [x] Design System Ejemplo v1.0 (tokens, tipografía, color, fuentes self-hosted)
 
 ## Fase 1 — MVP ✅
 - [x] Home, Historia, Servicios (hub + 6 fichas), Sostenibilidad, Contacto
@@ -73,7 +73,7 @@ flowchart LR
 - [x] Modelo de datos de productos/preformatos: **catálogo estático en código** (`src/lib/catalogoTienda.ts`), no una tabla Supabase — los preformatos son curados y estables, lo que da SSG total y tests deterministas. El motor de precio vive en `src/lib/precioTienda.ts`
 - [x] Tarjetas con precio "desde" y CTA — la ficha enlaza a `/presupuesto` con el producto prefijado *(el "subir archivo" + preflight llega en Fase 3)*
 - [x] SEO de producto: Schema.org `Product` + `BreadcrumbList` (y `CollectionPage` en `/tienda`)
-- [ ] **Precios reales**: sustituir los coeficientes orientativos de `precioTienda.ts` por la tarifa de NASVE
+- [ ] **Precios reales**: sustituir los coeficientes orientativos de `precioTienda.ts` por la tarifa de Ejemplo
 
 ## Fase 3 — Encargo asistido + preflight ⏳
 > Briefing `/encargo`: configurador guiado de 4 pasos, ref. `NSV-AAAA-NNNN`, respuesta < 24 h.
@@ -114,7 +114,7 @@ flowchart LR
 | Métrica | Baseline | Target |
 |---|---|---|
 | Presupuestos web/mes | ~0 | ≥ 10 |
-| Posición "imprenta Torrent" | no indexado en `.art` | Top 5 |
-| Reseñas Google | 10 (4,8★) | 25+ (≥ 4,8★) |
+| Posición "imprenta Tu Ciudad" | no indexado en `.art` | Top 5 |
+| Reseñas Google | — | Objetivo |
 | Ventas tienda online/mes | 0 | ≥ 5 |
 | Core Web Vitals | N/A | Todo en verde |
