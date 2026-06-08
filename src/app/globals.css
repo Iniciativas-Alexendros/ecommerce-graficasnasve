@@ -101,7 +101,7 @@
   --key-40:     rgba(22, 20, 15, 0.40);
 }
 
-/* ── Fuentes self-hosted ──────────────────────────────────────────────────── */
+/* ── Fuentes self-hosted ────────────────────────────────────────────────── */
 @font-face {
   font-family: 'Archivo';
   src: url('/fonts/archivo/Archivo-variable.woff2') format('woff2');
