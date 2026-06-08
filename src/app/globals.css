@@ -1,15 +1,15 @@
 /**
- * graficasnasve.art — Design System NASVE v2.0 «Cuatricromía + papel»
+ * tudominio.com — Design System Ejemplo v2.0 «Cuatricromía + papel»
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  *
- * Tokens y motivos del deck (GRAFICASNASVEwebDS): cuatricromía evocando CMYK
+ * Tokens y motivos del deck (PlantillaWebDS): cuatricromía evocando CMYK
  * sobre papel cálido; Archivo (display+UI), IBM Plex Mono (oficio) y Spectral
- * itálica (relato 1982). Fuentes self-hosted (convención del repo, no next/font).
+ * itálica (relato 20XX). Fuentes self-hosted (convención del repo, no next/font).
  */
 
 @import "tailwindcss";
 
-/* ── Registro de tokens en Tailwind v4 ───────────────────────────────────── */
+/* ── Registro de tokens en Tailwind v4 ───────────────────────────── */
 @theme {
   /* Cuatricromía (evocación CMYK) */
   --color-ambar:     #F4A52A;
@@ -79,7 +79,7 @@
   --ease-in-out:      cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ── Variables CSS nativas (usadas por reglas de este fichero) ───────────── */
+/* ── Variables CSS nativas (usadas por reglas de este fichero) ─────────── */
 :root {
   --ambar:      #F4A52A;
   --coral:      #E04B35;
@@ -101,7 +101,7 @@
   --key-40:     rgba(22, 20, 15, 0.40);
 }
 
-/* ── Fuentes self-hosted ─────────────────────────────────────────────────── */
+/* ── Fuentes self-hosted ──────────────────────────────────── */
 @font-face {
   font-family: 'Archivo';
   src: url('/fonts/archivo/Archivo-variable.woff2') format('woff2');
@@ -145,7 +145,7 @@
   font-display: swap;
 }
 
-/* ── Reset y base ────────────────────────────────────────────────────────── */
+/* ── Reset y base ─────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -195,21 +195,21 @@ h1, h2, h3, h4 {
   }
 }
 
-/* ── Contenedor ──────────────────────────────────────────────────────────── */
+/* ── Contenedor ──────────────────────────────────────── */
 .contenedor {
   max-width: 1280px;
   margin-inline: auto;
   padding-inline: clamp(1rem, 5vw, 4rem);
 }
 
-/* ── Relato 1982 (Spectral itálica) ──────────────────────────────────────── */
+/* ── Relato 20XX (Spectral itálica) ───────────────────────── */
 .relato {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
 }
 
-/* ── Reveal on scroll ────────────────────────────────────────────────────── */
+/* ── Reveal on scroll ────────────────────────────────── */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -229,7 +229,7 @@ h1, h2, h3, h4 {
 .stagger > *:nth-child(5) { transition-delay: 320ms; }
 .stagger > *:nth-child(6) { transition-delay: 400ms; }
 
-/* ── Separador editorial ─────────────────────────────────────────────────── */
+/* ── Separador editorial ───────────────────────────────── */
 .separador {
   display: flex;
   align-items: center;

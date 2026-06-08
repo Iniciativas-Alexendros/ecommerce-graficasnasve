@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: PropiedadesSlug): Promise<Met
   const { slug } = await params
   const servicio = catalogoServicios.find((s) => s.slug === slug)
   if (!servicio) return { title: 'Servicio no encontrado' }
-  return { title: `${servicio.titulo} — Gráficas NASVE`, description: servicio.descripcionCorta }
+  return { title: `${servicio.titulo} — Gráficas Ejemplo`, description: servicio.descripcionCorta }
 }
 
 export default async function PaginaFichaServicio({ params }: PropiedadesSlug) {
