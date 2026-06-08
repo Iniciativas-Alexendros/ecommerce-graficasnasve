@@ -6,6 +6,7 @@
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { createServidorSupabase } from '@/lib/supabase/servidor'
+import { BarraCMYK } from '@/components/ui/BarraCMYK'
 
 export default async function AdminLayout({
   children,
@@ -69,6 +70,7 @@ export default async function AdminLayout({
             </form>
           </div>
         </nav>
+        <BarraCMYK height={3} />
       </header>
 
       {/* Contenido */}

@@ -7,6 +7,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { createServidorSupabase } from '@/lib/supabase/servidor'
 import type { Presupuesto } from '@/types/supabase'
+import { SectionLabel } from '@/components/ui/SectionLabel'
+import { Stat } from '@/components/ui/Stat'
+import { Tarjeta } from '@/components/ui/Tarjeta'
 
 export const metadata: Metadata = {
   title: 'Dashboard — Admin NASVE',
@@ -24,11 +27,11 @@ const ETIQUETAS_ESTADO: Record<Presupuesto['estado'], string> = {
 
 const COLORES_ESTADO: Record<Presupuesto['estado'], string> = {
   nuevo: 'bg-ambar/20 text-ambar-700',
-  en_revision: 'bg-fondo-alt text-gris',
-  presupuestado: 'bg-verde/10 text-verde',
-  aceptado: 'bg-verde/20 text-verde',
-  rechazado: 'bg-rojo/10 text-rojo',
-  completado: 'bg-negro/10 text-negro',
+  en_revision: 'bg-paper-50 text-gris border border-taupe',
+  presupuestado: 'bg-spot-blue/15 text-spot-blue',
+  aceptado: 'bg-cyan/20 text-cyan',
+  rechazado: 'bg-coral/15 text-coral',
+  completado: 'bg-key/10 text-key',
 }
 
 const ETIQUETAS_PRODUCTO: Record<Presupuesto['producto'], string> = {
@@ -70,9 +73,8 @@ export default async function PaginaAdminDashboard() {
   return (
     <div>
       <div className="mb-10">
-        <h1 className="font-display text-3xl font-bold text-negro mb-2">
-          Presupuestos
-        </h1>
+        <SectionLabel>Panel · Admin</SectionLabel>
+        <h1 className="mt-3 font-display font-extrabold text-3xl text-key mb-1">Presupuestos</h1>
         <p className="font-sans text-sm text-gris">
           Gestión de solicitudes recibidas a través de graficasnasve.art
         </p>
@@ -86,49 +88,39 @@ export default async function PaginaAdminDashboard() {
           { label: 'En revisión', valor: stats.enRevision },
           { label: 'Completados', valor: stats.completados },
         ].map(({ label, valor }) => (
-          <div key={label} className="bg-blanco border border-borde p-5">
-            <p className="font-mono text-xs text-gris uppercase tracking-wide mb-2">
-              {label}
-            </p>
-            <p className="font-display text-3xl font-bold text-negro">{valor}</p>
-          </div>
+          <Tarjeta key={label} className="p-5">
+            <Stat valor={String(valor)} caption={label} />
+          </Tarjeta>
         ))}
       </div>
 
       {/* Tabla */}
       {presupuestos.length === 0 ? (
-        <div className="bg-blanco border border-borde p-12 text-center">
-          <p className="font-sans text-gris">
-            No hay solicitudes de presupuesto todavía.
-          </p>
-        </div>
+        <Tarjeta className="p-12 text-center">
+          <p className="font-sans text-gris">No hay solicitudes de presupuesto todavía.</p>
+        </Tarjeta>
       ) : (
-        <div className="bg-blanco border border-borde overflow-x-auto">
+        <Tarjeta className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-borde">
-                {['Fecha', 'Nombre', 'Empresa', 'Email', 'Producto', 'Estado'].map(
-                  (col) => (
-                    <th
-                      key={col}
-                      className="text-left font-mono text-xs text-gris uppercase tracking-wide px-5 py-4"
-                    >
-                      {col}
-                    </th>
-                  ),
-                )}
+              <tr className="border-b border-taupe">
+                {['Fecha', 'Nombre', 'Empresa', 'Email', 'Producto', 'Estado'].map((col) => (
+                  <th key={col} className="text-left font-mono text-xs text-gris uppercase tracking-wide px-5 py-4">
+                    {col}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
               {presupuestos.map((p, i) => (
                 <tr
                   key={p.id}
-                  className={`border-b border-borde last:border-0 hover:bg-fondo-alt transition-colors ${
-                    i % 2 === 0 ? '' : 'bg-fondo-alt/30'
+                  className={`border-b border-taupe last:border-0 hover:bg-paper-50 transition-colors ${
+                    i % 2 === 0 ? '' : 'bg-paper-50/40'
                   }`}
                 >
                   <td className="px-5 py-4 font-mono text-xs text-gris whitespace-nowrap">
-                    <Link href={`/admin/presupuestos/${p.id}`} className="hover:text-negro transition-colors">
+                    <Link href={`/admin/presupuestos/${p.id}`} className="hover:text-key transition-colors">
                       {new Date(p.created_at).toLocaleDateString('es-ES', {
                         day: '2-digit',
                         month: '2-digit',
@@ -136,32 +128,20 @@ export default async function PaginaAdminDashboard() {
                       })}
                     </Link>
                   </td>
-                  <td className="px-5 py-4 font-sans text-sm text-negro font-medium">
-                    <Link
-                      href={`/admin/presupuestos/${p.id}`}
-                      className="hover:text-ambar transition-colors"
-                    >
+                  <td className="px-5 py-4 font-sans text-sm text-key font-medium">
+                    <Link href={`/admin/presupuestos/${p.id}`} className="hover:text-ambar-700 transition-colors">
                       {p.nombre}
                     </Link>
                   </td>
+                  <td className="px-5 py-4 font-sans text-sm text-gris">{p.empresa ?? '—'}</td>
                   <td className="px-5 py-4 font-sans text-sm text-gris">
-                    {p.empresa ?? '—'}
-                  </td>
-                  <td className="px-5 py-4 font-sans text-sm text-gris">
-                    <a
-                      href={`mailto:${p.email}`}
-                      className="hover:text-negro transition-colors"
-                    >
+                    <a href={`mailto:${p.email}`} className="hover:text-key transition-colors">
                       {p.email}
                     </a>
                   </td>
-                  <td className="px-5 py-4 font-mono text-xs text-gris">
-                    {ETIQUETAS_PRODUCTO[p.producto]}
-                  </td>
+                  <td className="px-5 py-4 font-mono text-xs text-gris">{ETIQUETAS_PRODUCTO[p.producto]}</td>
                   <td className="px-5 py-4">
-                    <span
-                      className={`inline-block font-mono text-xs uppercase tracking-wide px-2.5 py-1 ${COLORES_ESTADO[p.estado]}`}
-                    >
+                    <span className={`inline-block rounded-pill font-mono text-xs uppercase tracking-wide px-2.5 py-1 ${COLORES_ESTADO[p.estado]}`}>
                       {ETIQUETAS_ESTADO[p.estado]}
                     </span>
                   </td>
@@ -169,7 +149,7 @@ export default async function PaginaAdminDashboard() {
               ))}
             </tbody>
           </table>
-        </div>
+        </Tarjeta>
       )}
     </div>
   )
