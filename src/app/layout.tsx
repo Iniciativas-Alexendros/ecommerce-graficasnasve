@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     default: 'Gráficas Ejemplo — Imprenta en Tu Ciudad desde 20XX',
   },
   description:
-    'Imprenta offset y digital en Tu Ciudad (Tu Provincia). Encuadernación artesanal, acabados premium (stamping, UVI, relieves), personalización e impresión sobre madera. Décadas de experiencia. Presupuesto sin compromiso.',
+    'Imprenta offset y digital en Tu Ciudad (Tu Provincia). Encuadernación artesanal, acabados premium (stamping, UVI, relieves), personalización y impresión sobre madera. Décadas de experiencia. Presupuesto sin compromiso.',
   keywords: [
     'imprenta Tu Ciudad',
     'imprenta Tu Provincia',
