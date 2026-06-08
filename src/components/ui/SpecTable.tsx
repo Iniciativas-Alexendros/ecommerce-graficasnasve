@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art — SpecTable (tabla de specs con filas alternas)
+ * tudominio.com — SpecTable (tabla de specs con filas alternas)
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
