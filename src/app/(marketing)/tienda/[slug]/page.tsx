@@ -11,9 +11,13 @@ import {
   obtenerProductoTienda,
   etiquetaCategoria,
   precioDesdeUnidad,
+  ESTILO_CATEGORIA,
 } from '@/lib/catalogoTienda'
 import { formatearPrecioUnidad } from '@/lib/precioTienda'
 import { ConfiguradorPrecio } from './ConfiguradorPrecio'
+import { Baldosa } from '@/components/ui/Baldosa'
+import { SpecTable } from '@/components/ui/SpecTable'
+import { Chip } from '@/components/ui/Chip'
 
 const BASE_URL = 'https://graficasnasve.art'
 
@@ -97,39 +101,43 @@ export default async function PaginaProducto({ params }: PropiedadesSlug) {
         <nav aria-label="Migas de pan" className="mb-10">
           <ol className="flex items-center gap-2 font-mono text-xs text-gris">
             <li>
-              <Link href="/tienda" className="hover:text-negro transition-colors">
+              <Link href="/tienda" className="hover:text-key transition-colors">
                 Tienda
               </Link>
             </li>
             <li aria-hidden="true">›</li>
-            <li className="text-tinta">{producto.nombre}</li>
+            <li className="text-key">{producto.nombre}</li>
           </ol>
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Imagen + especificaciones */}
+          {/* Visual + especificaciones */}
           <div>
-            <div className="relative w-full aspect-[4/3] bg-fondo-alt border border-borde flex items-center justify-center">
-              <span className="font-mono text-xs text-gris uppercase tracking-widest">
-                {etiquetaCategoria(producto.categoria)}
-              </span>
+            <Baldosa
+              color={ESTILO_CATEGORIA[producto.categoria].color}
+              icono={ESTILO_CATEGORIA[producto.categoria].icono}
+              cuadrada={false}
+              iconSize={88}
+              className="w-full aspect-[4/3]"
+            />
+            <div className="mt-3 grid grid-cols-4 gap-3" aria-hidden="true">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="aspect-square rounded-card bg-paper-50 border border-taupe" />
+              ))}
             </div>
-            <dl className="mt-6 border-t border-b border-borde divide-y divide-borde">
-              <div className="flex justify-between gap-4 py-3">
-                <dt className="font-mono text-xs text-gris uppercase tracking-wide">Formato</dt>
-                <dd className="font-sans text-sm text-tinta text-right">{producto.formato}</dd>
-              </div>
-              <div className="flex justify-between gap-4 py-3">
-                <dt className="font-mono text-xs text-gris uppercase tracking-wide">Material</dt>
-                <dd className="font-sans text-sm text-tinta text-right">{producto.material}</dd>
-              </div>
-              <div className="flex justify-between gap-4 py-3">
-                <dt className="font-mono text-xs text-gris uppercase tracking-wide">Desde</dt>
-                <dd className="font-sans text-sm text-tinta text-right">
-                  {formatearPrecioUnidad(desde)} /ud
-                </dd>
-              </div>
-            </dl>
+            <SpecTable
+              className="mt-6"
+              filas={[
+                { label: 'Formato', valor: producto.formato },
+                { label: 'Material', valor: producto.material },
+                {
+                  label: producto.gramajes.some((g) => g.etiqueta.includes('g/m²')) ? 'Gramaje' : 'Soporte',
+                  valor: producto.gramajes.map((g) => g.etiqueta).join(' · '),
+                },
+                { label: 'Acabados', valor: producto.acabados.map((a) => a.etiqueta).join(' · ') },
+                { label: 'Desde', valor: `${formatearPrecioUnidad(desde)} /ud` },
+              ]}
+            />
           </div>
 
           {/* Descripción + configurador */}
@@ -137,12 +145,18 @@ export default async function PaginaProducto({ params }: PropiedadesSlug) {
             <p className="font-mono text-xs text-gris uppercase tracking-widest mb-3">
               {etiquetaCategoria(producto.categoria)}
             </p>
-            <h1 className="font-display text-3xl md:text-4xl font-bold text-negro mb-4">
+            <h1 className="font-display font-extrabold text-3xl md:text-4xl text-key mb-4">
               {producto.nombre}
             </h1>
-            <p className="font-sans text-base text-gris leading-relaxed mb-8">
+            <p className="font-sans text-base text-gris leading-relaxed mb-5">
               {producto.descripcion}
             </p>
+            <div className="flex flex-wrap gap-2 mb-8">
+              <Chip tono={ESTILO_CATEGORIA[producto.categoria].color === 'key' ? 'plain' : ESTILO_CATEGORIA[producto.categoria].color}>
+                {etiquetaCategoria(producto.categoria)}
+              </Chip>
+              <Chip tono="plain">48 H · Taller</Chip>
+            </div>
 
             <ConfiguradorPrecio producto={producto} />
           </div>

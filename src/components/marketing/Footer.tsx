@@ -4,6 +4,8 @@
  */
 
 import Link from 'next/link'
+import { Logo } from '@/components/marketing/Logo'
+import { BarraCMYK } from '@/components/ui/BarraCMYK'
 
 const serviciosLinks = [
   { href: '/servicios/impresion-offset', label: 'Impresión Offset' },
@@ -29,17 +31,18 @@ const legalLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-negro text-papel">
+    <footer className="bg-key text-paper-100">
+      <BarraCMYK height={6} />
       <div className="contenedor py-16">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Logo e info */}
           <div className="lg:col-span-1">
             <Link
               href="/"
-              className="font-display font-bold text-3xl text-papel hover:text-oro transition-colors duration-150"
+              className="inline-block transition-opacity hover:opacity-80"
               aria-label="Gráficas NASVE — ir a inicio"
             >
-              nasve
+              <Logo variant="dark" />
             </Link>
             <p className="mt-4 text-sm text-gris leading-relaxed">
               Imprenta offset y digital en Torrent (Valencia) desde 1982.
@@ -51,7 +54,7 @@ export function Footer() {
               <p className="mt-2">
                 <a
                   href="tel:+34961553409"
-                  className="hover:text-oro transition-colors duration-150"
+                  className="hover:text-ambar transition-colors duration-150"
                 >
                   961 55 34 09
                 </a>
@@ -59,7 +62,7 @@ export function Footer() {
               <p>
                 <a
                   href="mailto:nasve@nasve.com"
-                  className="hover:text-oro transition-colors duration-150"
+                  className="hover:text-ambar transition-colors duration-150"
                 >
                   nasve@nasve.com
                 </a>
@@ -80,7 +83,7 @@ export function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-sm text-papel/80 hover:text-oro transition-colors duration-150"
+                    className="text-sm text-papel/80 hover:text-ambar transition-colors duration-150"
                   >
                     {label}
                   </Link>
@@ -99,7 +102,7 @@ export function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-sm text-papel/80 hover:text-oro transition-colors duration-150"
+                    className="text-sm text-papel/80 hover:text-ambar transition-colors duration-150"
                   >
                     {label}
                   </Link>
@@ -118,7 +121,7 @@ export function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-sm text-papel/80 hover:text-oro transition-colors duration-150"
+                    className="text-sm text-papel/80 hover:text-ambar transition-colors duration-150"
                   >
                     {label}
                   </Link>

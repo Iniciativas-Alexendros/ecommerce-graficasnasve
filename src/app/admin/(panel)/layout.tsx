@@ -6,6 +6,7 @@
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { createServidorSupabase } from '@/lib/supabase/servidor'
+import { BarraCMYK } from '@/components/ui/BarraCMYK'
 
 export default async function AdminLayout({
   children,
@@ -34,7 +35,7 @@ export default async function AdminLayout({
           <div className="flex items-center gap-6">
             <Link
               href="/admin"
-              className="font-display font-bold text-xl text-papel hover:text-oro transition-colors"
+              className="font-display font-bold text-xl text-papel hover:text-ambar transition-colors"
             >
               nasve admin
             </Link>
@@ -69,6 +70,7 @@ export default async function AdminLayout({
             </form>
           </div>
         </nav>
+        <BarraCMYK height={3} />
       </header>
 
       {/* Contenido */}

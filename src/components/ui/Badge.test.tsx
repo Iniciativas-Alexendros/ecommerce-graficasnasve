@@ -9,7 +9,7 @@ describe('Badge', () => {
   })
 
   it('admite className adicional', () => {
-    render(<Badge className="text-oro">Destacado</Badge>)
-    expect(screen.getByText('Destacado').className).toContain('text-oro')
+    render(<Badge className="text-ambar">Destacado</Badge>)
+    expect(screen.getByText('Destacado').className).toContain('text-ambar')
   })
 })

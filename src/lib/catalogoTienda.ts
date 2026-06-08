@@ -4,6 +4,8 @@
  */
 
 import type { ProductoPresupuesto } from '@/types/supabase'
+import type { ColorBaldosa } from '@/components/ui/Baldosa'
+import type { NombreIcono } from '@/components/ui/iconosGeometricos'
 import { estimarPrecioUnitario } from './precioTienda'
 
 export type CategoriaTienda =
@@ -57,6 +59,16 @@ export const CATEGORIAS_TIENDA: CategoriaTiendaInfo[] = [
   { valor: 'gran-formato', etiqueta: 'Gran formato' },
   { valor: 'producto', etiqueta: 'Producto' },
 ]
+
+/** Color de baldosa e icono geométrico por categoría (motivo del DS). */
+export const ESTILO_CATEGORIA: Record<CategoriaTienda, { color: ColorBaldosa; icono: NombreIcono }> = {
+  publicidad: { color: 'ambar', icono: 'barras' },
+  editorial: { color: 'spot-blue', icono: 'mediaLuna' },
+  hosteleria: { color: 'cyan', icono: 'anillo' },
+  identidad: { color: 'lavender', icono: 'estrella' },
+  'gran-formato': { color: 'coral', icono: 'puntos' },
+  producto: { color: 'key', icono: 'cuarto' },
+}
 
 // ── Opciones reutilizables (factores ORIENTATIVOS) ──────────────────────────
 const ACAB_NINGUNO: OpcionConfigurable = { id: 'ninguno', etiqueta: 'Sin acabado', factor: 1 }

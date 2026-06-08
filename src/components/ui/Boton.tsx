@@ -5,7 +5,7 @@
 
 import React from 'react'
 
-type VarianteBoton = 'primary' | 'secondary' | 'ghost'
+type VarianteBoton = 'primary' | 'secondary' | 'ghost' | 'dark'
 type TamanoBoton = 'sm' | 'md' | 'lg'
 
 interface PropiedadesBoton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -22,16 +22,22 @@ const clasesTamano: Record<TamanoBoton, string> = {
 }
 
 const clasesVariante: Record<VarianteBoton, string> = {
+  // Ámbar con sombra dura offset que se «hunde» al pulsar (motivo imprenta).
   primary:
-    'bg-negro text-oro border border-negro hover:bg-oro hover:text-negro focus-visible:bg-oro focus-visible:text-negro',
+    'bg-ambar text-key border border-key shadow-duro-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none',
+  // Contorno key sobre papel.
   secondary:
-    'bg-transparent text-negro border border-negro hover:bg-negro hover:text-papel focus-visible:bg-negro focus-visible:text-papel',
+    'bg-transparent text-key border border-key hover:bg-key hover:text-paper-0 focus-visible:bg-key focus-visible:text-paper-0',
+  // Para superficies oscuras (key): contorno papel.
   ghost:
-    'bg-transparent text-papel border border-papel hover:bg-papel hover:text-negro focus-visible:bg-papel focus-visible:text-negro',
+    'bg-transparent text-paper-0 border border-paper-0 hover:bg-paper-0 hover:text-key focus-visible:bg-paper-0 focus-visible:text-key',
+  // Relleno key (submit del formulario).
+  dark:
+    'bg-key text-paper-0 border border-key hover:bg-ambar hover:text-key hover:border-key focus-visible:bg-ambar focus-visible:text-key',
 }
 
 const clasesBase =
-  'inline-flex items-center justify-center gap-2 font-sans font-medium tracking-wide transition-colors duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-oro'
+  'inline-flex items-center justify-center gap-2 rounded-pill font-sans font-semibold tracking-wide transition-all duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ambar'
 
 export function Boton({
   variant = 'primary',

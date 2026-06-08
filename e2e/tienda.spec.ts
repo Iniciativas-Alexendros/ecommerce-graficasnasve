@@ -2,7 +2,9 @@ import { test, expect } from '@playwright/test'
 
 test('la tienda lista productos y permite filtrar por categoría', async ({ page }) => {
   await page.goto('/tienda')
-  await expect(page.getByRole('heading', { level: 1, name: 'Tienda' })).toBeVisible()
+  await expect(
+    page.getByRole('heading', { level: 1, name: /encarga tu impresión/i }),
+  ).toBeVisible()
 
   // Hay tarjetas de producto (enlaces a /tienda/<slug>).
   const tarjetas = page.locator('a[href^="/tienda/"]')
@@ -27,7 +29,7 @@ test('la ficha de producto estima precio y enlaza al presupuesto', async ({ page
   await expect(total).not.toHaveText(totalInicial)
 
   // El CTA lleva al presupuesto con el producto preseleccionado.
-  const cta = page.getByRole('link', { name: /pedir presupuesto/i })
+  const cta = page.getByRole('link', { name: /pedir presupuesto de este producto/i })
   await expect(cta).toHaveAttribute('href', /\/presupuesto\?producto=/)
 })
 

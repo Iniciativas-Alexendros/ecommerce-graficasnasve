@@ -4,9 +4,12 @@
  */
 
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { MapPin, Phone, Mail, Clock, ExternalLink } from 'lucide-react'
 import { Boton } from '@/components/ui/Boton'
+import { Baldosa, type ColorBaldosa } from '@/components/ui/Baldosa'
+import { Tarjeta } from '@/components/ui/Tarjeta'
+import { SectionLabel } from '@/components/ui/SectionLabel'
+import { FormularioPresupuesto } from '@/components/formularios/FormularioPresupuesto'
 
 export const metadata: Metadata = {
   title: 'Contacto — Gráficas NASVE',
@@ -79,69 +82,32 @@ export default function PaginaContacto() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Info de contacto */}
             <div>
-              <p className="font-mono text-xs text-gris uppercase tracking-widest mb-3">
-                Contacto
-              </p>
-              <h1 className="font-display text-4xl md:text-5xl font-bold text-negro mb-6">
-                Estamos en Torrent
+              <SectionLabel>Hablemos de tu impreso</SectionLabel>
+              <h1 className="mt-4 font-display font-extrabold text-4xl md:text-5xl text-key mb-5">
+                Cuéntanos tu proyecto
               </h1>
-              <p className="font-sans text-base text-gris leading-relaxed mb-12">
-                Visítanos en el Polígono Industrial Masía del Juez, llámanos o
-                escríbenos. Estaremos encantados de asesorarte sin compromiso.
+              <p className="relato text-lg md:text-xl text-key/80 leading-snug mb-12">
+                Rellena el formulario y respondemos con presupuesto y prueba de color en menos
+                de 24 h. Visítanos en el Polígono Masía del Juez o llámanos sin compromiso.
               </p>
 
-              <ul className="space-y-8">
-                <li className="flex gap-4">
-                  <MapPin size={22} className="text-oro shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-sans font-medium text-negro mb-1">Dirección</p>
-                    <address className="not-italic font-sans text-sm text-gris leading-relaxed">
-                      Ctra. Mas del Jutge, 53
-                      <br />
-                      46900 Torrent (Valencia)
-                      <br />
-                      Polígono Industrial Masía del Juez
-                    </address>
-                  </div>
-                </li>
-
-                <li className="flex gap-4">
-                  <Phone size={22} className="text-oro shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-sans font-medium text-negro mb-1">Teléfono</p>
-                    <a
-                      href="tel:+34961553409"
-                      className="font-sans text-sm text-gris hover:text-negro transition-colors"
-                    >
-                      961 55 34 09
-                    </a>
-                  </div>
-                </li>
-
-                <li className="flex gap-4">
-                  <Mail size={22} className="text-oro shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-sans font-medium text-negro mb-1">Email</p>
-                    <a
-                      href="mailto:nasve@nasve.com"
-                      className="font-sans text-sm text-gris hover:text-negro transition-colors"
-                    >
-                      nasve@nasve.com
-                    </a>
-                  </div>
-                </li>
-
-                <li className="flex gap-4">
-                  <Clock size={22} className="text-oro shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-sans font-medium text-negro mb-1">Horario</p>
-                    <p className="font-sans text-sm text-gris">
-                      Lunes a jueves: 8:00 – 18:00
-                      <br />
-                      Viernes: 8:00 – 19:00
-                    </p>
-                  </div>
-                </li>
+              <ul className="space-y-6">
+                {([
+                  { icono: MapPin, color: 'ambar', titulo: 'Taller', cuerpo: <address className="not-italic">Ctra. Mas del Jutge, 53<br />46900 Torrent (Valencia)<br />Polígono Masía del Juez</address> },
+                  { icono: Phone, color: 'cyan', titulo: 'Teléfono', cuerpo: <a href="tel:+34961553409" className="hover:text-key transition-colors">961 55 34 09</a> },
+                  { icono: Mail, color: 'coral', titulo: 'Email', cuerpo: <a href="mailto:nasve@nasve.com" className="hover:text-key transition-colors">nasve@nasve.com</a> },
+                  { icono: Clock, color: 'lavender', titulo: 'Horario', cuerpo: <>Lun–Jue 8:00–18:00<br />Vie 8:00–19:00</> },
+                ] as { icono: typeof MapPin; color: ColorBaldosa; titulo: string; cuerpo: React.ReactNode }[]).map(({ icono: Icono, color, titulo, cuerpo }) => (
+                  <li key={titulo} className="flex gap-4 items-start">
+                    <Baldosa color={color} cuadrada={false} className="w-11 h-11 shrink-0">
+                      <Icono size={20} />
+                    </Baldosa>
+                    <div>
+                      <p className="font-mono text-xs uppercase tracking-widest text-gris mb-1">{titulo}</p>
+                      <div className="font-sans text-sm text-key/80 leading-relaxed">{cuerpo}</div>
+                    </div>
+                  </li>
+                ))}
               </ul>
 
               {/* Enlace a Google Maps */}
@@ -160,22 +126,13 @@ export default function PaginaContacto() {
               </div>
             </div>
 
-            {/* Bloque CTA */}
-            <div className="flex flex-col justify-center">
-              <div className="bg-fondo-alt border border-borde p-10">
-                <h2 className="font-display text-2xl font-bold text-negro mb-4">
-                  ¿Tienes un proyecto?
-                </h2>
-                <p className="font-sans text-sm text-gris leading-relaxed mb-8">
-                  La forma más rápida de obtener un presupuesto es a través de nuestro
-                  formulario online. Cuéntanos qué necesitas y te respondemos en menos
-                  de 24 horas laborables.
-                </p>
-                <Boton variant="primary" size="md" asChild>
-                  <Link href="/presupuesto">Solicitar presupuesto</Link>
-                </Boton>
-              </div>
-            </div>
+            {/* Formulario de presupuesto */}
+            <Tarjeta barraCMYK className="p-8 md:p-10 self-start">
+              <h2 className="font-display font-extrabold text-2xl text-key mb-6">
+                Formulario de presupuesto
+              </h2>
+              <FormularioPresupuesto />
+            </Tarjeta>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@
  */
 
 import type { Metadata } from 'next'
+import { SectionLabel } from '@/components/ui/SectionLabel'
 
 export const metadata: Metadata = {
   title: 'Política de Privacidad — Gráficas NASVE',
@@ -15,7 +16,8 @@ export default function PaginaPrivacidad() {
   return (
     <div className="py-24">
       <div className="contenedor max-w-3xl">
-        <h1 className="font-display text-4xl font-bold text-negro mb-8">
+        <SectionLabel>Legal</SectionLabel>
+        <h1 className="mt-4 font-display font-extrabold text-4xl text-key mb-8">
           Política de Privacidad
         </h1>
         <p className="font-mono text-xs text-gris mb-12">
@@ -38,7 +40,7 @@ export default function PaginaPrivacidad() {
               <p><strong className="text-negro">Domicilio:</strong> Ctra. Mas del Jutge, 53 · 46900 Torrent (Valencia)</p>
               <p>
                 <strong className="text-negro">Delegada de Protección de Datos:</strong>{' '}
-                Alicia Armas · <a href="mailto:alicia@nasve.com" className="text-negro hover:text-oro transition-colors">alicia@nasve.com</a>
+                Alicia Armas · <a href="mailto:alicia@nasve.com" className="text-negro hover:text-ambar transition-colors">alicia@nasve.com</a>
               </p>
             </div>
           </section>
@@ -156,7 +158,7 @@ export default function PaginaPrivacidad() {
             </ul>
             <p className="font-sans text-sm text-gris leading-relaxed">
               Para ejercer estos derechos, puede dirigirse a:{' '}
-              <a href="mailto:alicia@nasve.com" className="text-negro underline hover:text-oro transition-colors">
+              <a href="mailto:alicia@nasve.com" className="text-negro underline hover:text-ambar transition-colors">
                 alicia@nasve.com
               </a>
               {' '}o mediante escrito postal a Ctra. Mas del Jutge, 53 · 46900 Torrent (Valencia).

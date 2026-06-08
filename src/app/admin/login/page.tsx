@@ -11,6 +11,7 @@ import { Loader2, AlertCircle } from 'lucide-react'
 import { createClienteSupabase } from '@/lib/supabase/cliente'
 import { Campo } from '@/components/ui/Campo'
 import { Boton } from '@/components/ui/Boton'
+import { Logo } from '@/components/marketing/Logo'
 
 export default function PaginaAdminLogin() {
   const router = useRouter()
@@ -49,9 +50,9 @@ export default function PaginaAdminLogin() {
   return (
     <div className="min-h-screen bg-fondo-alt flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
-        <div className="text-center mb-10">
-          <p className="font-display font-bold text-3xl text-negro mb-1">nasve</p>
-          <p className="font-mono text-xs text-gris uppercase tracking-widest">
+        <div className="flex flex-col items-center mb-10">
+          <Logo />
+          <p className="mt-2 font-mono text-xs text-gris uppercase tracking-widest">
             Panel de administración
           </p>
         </div>

@@ -6,6 +6,7 @@
 import type { Metadata } from 'next'
 import { catalogoTienda } from '@/lib/catalogoTienda'
 import { TiendaGrid } from './TiendaGrid'
+import { SectionLabel } from '@/components/ui/SectionLabel'
 
 export const metadata: Metadata = {
   title: 'Tienda — Gráficas NASVE',
@@ -31,16 +32,13 @@ export default function PaginaTienda() {
       <div className="contenedor">
         {/* Cabecera */}
         <div className="max-w-2xl mb-12">
-          <p className="font-mono text-xs text-gris uppercase tracking-widest mb-3">
-            Listos para encargar
-          </p>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-negro mb-6">
-            Tienda
+          <SectionLabel>Tienda online</SectionLabel>
+          <h1 className="mt-4 font-display font-extrabold text-4xl md:text-5xl text-key mb-5">
+            Encarga tu impresión
           </h1>
-          <p className="font-sans text-base text-gris leading-relaxed">
-            Productos preconfigurados con estimación de precio por unidad al instante. Elige
-            formato, gramaje y acabado, ajusta la cantidad y pide presupuesto sin compromiso —
-            <span className="text-tinta"> ni tarde, ni caro, ni incompatible</span>.
+          <p className="relato text-lg md:text-xl text-key/80 leading-snug">
+            Elige un producto y te llevamos paso a paso para que tu archivo llegue perfecto a
+            máquina. Estimación de precio por unidad al instante, sin compromiso.
           </p>
         </div>
 

@@ -7,6 +7,7 @@ import type { Metadata } from 'next'
 import { createServidorSupabase } from '@/lib/supabase/servidor'
 import type { PortfolioItem } from '@/types/supabase'
 import { PortfolioGrid } from './PortfolioGrid'
+import { SectionLabel } from '@/components/ui/SectionLabel'
 
 export const revalidate = 3600
 
@@ -42,15 +43,13 @@ export default async function PaginaPortfolio() {
       <div className="contenedor">
         {/* Cabecera */}
         <div className="max-w-2xl mb-12">
-          <p className="font-mono text-xs text-gris uppercase tracking-widest mb-3">
-            Nuestros trabajos
-          </p>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-negro mb-6">
+          <SectionLabel>Nuestros trabajos</SectionLabel>
+          <h1 className="mt-4 font-display font-extrabold text-4xl md:text-5xl text-key mb-5">
             Portfolio
           </h1>
-          <p className="font-sans text-base text-gris leading-relaxed">
-            Una selección de proyectos realizados. Cada pieza es el resultado de la
-            colaboración con el cliente, del rigor técnico y de cuatro décadas de oficio.
+          <p className="relato text-lg md:text-xl text-key/80 leading-snug">
+            Una selección de proyectos realizados. Cada pieza es el resultado de la colaboración
+            con el cliente, del rigor técnico y de cuatro décadas de oficio.
           </p>
         </div>
 

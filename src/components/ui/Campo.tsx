@@ -24,20 +24,20 @@ type PropiedadesTextarea = PropiedadesCampoBase &
 type PropiedadesCampo = PropiedadesInput | PropiedadesTextarea
 
 const clasesControl =
-  'w-full border border-borde bg-blanco text-tinta font-sans text-base px-4 py-3 placeholder:text-gris transition-colors duration-150 focus:outline-none focus:border-oro focus:ring-2 focus:ring-oro/20 disabled:opacity-50 disabled:cursor-not-allowed'
+  'w-full rounded-card border border-taupe bg-paper-0 text-key font-sans text-base px-4 py-3 placeholder:text-gris transition-colors duration-150 focus:outline-none focus:border-ambar focus:ring-2 focus:ring-ambar/25 disabled:opacity-50 disabled:cursor-not-allowed'
 
 export const Campo = React.forwardRef<
   HTMLInputElement | HTMLTextAreaElement,
   PropiedadesCampo
 >(function Campo({ label, error, className = '', as, ...props }, ref) {
   const id = (props as { id?: string }).id ?? label.toLowerCase().replace(/\s+/g, '-')
-  const clases = [clasesControl, error ? 'border-rojo focus:border-rojo focus:ring-rojo/20' : '', className]
+  const clases = [clasesControl, error ? 'border-coral focus:border-coral focus:ring-coral/20' : '', className]
     .filter(Boolean)
     .join(' ')
 
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={id} className="font-sans text-sm font-medium text-tinta">
+      <label htmlFor={id} className="font-mono text-xs font-medium uppercase tracking-widest text-gris">
         {label}
       </label>
       {as === 'textarea' ? (
@@ -57,7 +57,7 @@ export const Campo = React.forwardRef<
         />
       )}
       {error && (
-        <p className="text-xs font-sans text-rojo" role="alert">
+        <p className="text-xs font-sans text-coral" role="alert">
           {error}
         </p>
       )}

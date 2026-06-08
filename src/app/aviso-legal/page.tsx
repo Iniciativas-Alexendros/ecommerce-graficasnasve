@@ -5,6 +5,7 @@
 
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { SectionLabel } from '@/components/ui/SectionLabel'
 
 export const metadata: Metadata = {
   title: 'Aviso Legal — Gráficas NASVE',
@@ -16,7 +17,8 @@ export default function PaginaAvisoLegal() {
   return (
     <div className="py-24">
       <div className="contenedor max-w-3xl">
-        <h1 className="font-display text-4xl font-bold text-negro mb-8">
+        <SectionLabel>Legal</SectionLabel>
+        <h1 className="mt-4 font-display font-extrabold text-4xl text-key mb-8">
           Aviso Legal
         </h1>
         <p className="font-mono text-xs text-gris mb-12">
@@ -121,7 +123,7 @@ export default function PaginaAvisoLegal() {
             <p className="font-sans text-base text-gris leading-relaxed">
               El tratamiento de los datos personales recabados a través del Sitio se
               regula por la{' '}
-              <Link href="/privacidad" className="text-negro underline hover:text-oro transition-colors">
+              <Link href="/privacidad" className="text-negro underline hover:text-ambar transition-colors">
                 Política de Privacidad
               </Link>{' '}
               de GRÁFICAS NASVE, S.L., de conformidad con el Reglamento (UE) 2016/679
