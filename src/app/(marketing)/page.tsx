@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -26,9 +26,9 @@ import { CropMarks } from '@/components/ui/CropMarks'
 import { catalogoServicios } from '@/lib/catalogoServicios'
 
 export const metadata: Metadata = {
-  title: 'Gráficas NASVE — Imprenta en Torrent desde 1982',
+  title: 'Gráficas Ejemplo — Imprenta en Tu Ciudad desde 20XX',
   description:
-    'Imprenta offset y digital en Torrent (Valencia). Encuadernación artesanal, acabados premium (stamping, UVI, relieves), personalización y impresión sobre madera. Más de 40 años de experiencia.',
+    'Imprenta offset y digital en Tu Ciudad (Tu Provincia). Encuadernación artesanal, acabados premium (stamping, UVI, relieves), personalización y impresión sobre madera. Décadas de experiencia.',
 }
 
 const ICONOS_SERVICIO: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -46,27 +46,27 @@ const COLORES_SERVICIO: ColorBaldosa[] = ['ambar', 'cyan', 'coral', 'lavender', 
 const schemaOrg = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': 'https://graficasnasve.art/#empresa',
-  name: 'Gráficas NASVE, S.L.',
-  alternateName: 'NASVE',
+  '@id': 'https://tudominio.com/#empresa',
+  name: 'Gráficas Ejemplo, S.L.',
+  alternateName: 'Ejemplo',
   description:
-    'Imprenta offset y digital en Torrent (Valencia). Encuadernación artesanal, acabados premium, personalización e impresión sobre madera. Fundada en 1982.',
-  url: 'https://graficasnasve.art',
-  telephone: '+34961553409',
-  email: 'nasve@nasve.com',
-  foundingDate: '1982',
+    'Imprenta offset y digital en Tu Ciudad (Tu Provincia). Encuadernación artesanal, acabados premium, personalización e impresión sobre madera. Fundada en 20XX.',
+  url: 'https://tudominio.com',
+  telephone: '+34600000000',
+  email: 'hola@tudominio.com',
+  foundingDate: '20XX',
   currenciesAccepted: 'EUR',
   paymentAccepted: 'Transferencia, tarjeta',
   priceRange: '€€',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Ctra. Mas del Jutge, 53',
-    addressLocality: 'Torrent',
-    addressRegion: 'Valencia',
-    postalCode: '46900',
+    streetAddress: 'Calle de Ejemplo, 1',
+    addressLocality: 'Tu Ciudad',
+    addressRegion: 'Tu Provincia',
+    postalCode: '00000',
     addressCountry: 'ES',
   },
-  geo: { '@type': 'GeoCoordinates', latitude: 39.4333, longitude: -0.4667 },
+  geo: { '@type': 'GeoCoordinates', latitude: 0, longitude: 0 },
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -81,13 +81,6 @@ const schemaOrg = {
       closes: '19:00',
     },
   ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.8',
-    reviewCount: '47',
-    bestRating: '5',
-  },
-  sameAs: ['https://www.google.com/maps?cid=NASVE'],
 }
 
 export default function PaginaInicio() {
@@ -102,9 +95,9 @@ export default function PaginaInicio() {
       <section aria-label="Inicio" className="bg-paper-100">
         <div className="contenedor py-20 lg:py-28 grid lg:grid-cols-2 gap-14 items-center">
           <div>
-            <SectionLabel>Imprenta familiar · Torrent · desde 1982</SectionLabel>
+            <SectionLabel>Imprenta familiar · Tu Ciudad · desde 20XX</SectionLabel>
             <h1 className="mt-6 font-display font-extrabold text-key text-4xl md:text-5xl leading-[1.02]">
-              Impreso preciso<br />desde <span className="text-coral">1982</span>.
+              Impreso preciso<br />desde <span className="text-coral">20XX</span>.
             </h1>
             <p className="relato mt-6 text-key/80 text-lg md:text-xl max-w-md leading-snug">
               Servicio integral offset y digital, con gestión de color de verdad. Tú nos cuentas
@@ -119,9 +112,9 @@ export default function PaginaInicio() {
               </Boton>
             </div>
             <dl className="mt-12 flex flex-wrap gap-x-12 gap-y-6">
-              <Stat valor="4,8/5" caption="Valoración" />
+              <Stat valor="CMYK" caption="Color gestionado" />
               <Stat valor="48 h" caption="Entrega exprés" />
-              <Stat valor="+40" caption="Años de oficio" />
+              <Stat valor="+XX" caption="Años de oficio" />
             </dl>
           </div>
 
@@ -142,10 +135,10 @@ export default function PaginaInicio() {
       <section aria-label="Credenciales" className="bg-paper-50 border-b border-taupe">
         <div className="contenedor py-10">
           <dl className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <Stat valor="+40 años" caption="de experiencia" />
-            <Stat valor="4,8 ★" caption="Google Reviews" />
-            <Stat valor="Torrent" caption="Valencia, España" />
-            <Stat valor="Duplo" caption="Bookletmaker" />
+            <Stat valor="Décadas" caption="de experiencia" />
+            <Stat valor="Offset" caption="y digital" />
+            <Stat valor="Tu Ciudad" caption="Tu Provincia, España" />
+            <Stat valor="Acabados" caption="premium" />
           </dl>
         </div>
       </section>
@@ -186,16 +179,16 @@ export default function PaginaInicio() {
         </div>
       </section>
 
-      {/* 4. HERENCIA 1982 */}
-      <section aria-label="Sobre Gráficas NASVE" className="bg-key py-24">
+      {/* 4. HERENCIA 20XX */}
+      <section aria-label="Sobre Gráficas Ejemplo" className="bg-key py-24">
         <div className="contenedor max-w-3xl">
           <SectionLabel numero="02" tono="dark">
             Nuestra historia
           </SectionLabel>
           <blockquote className="relato mt-6 text-2xl md:text-3xl text-paper-100 leading-snug">
-            «En 1982, Antonio Arnás abrió un pequeño taller en el barrio de Serrería. Hoy,
-            cuarenta años después, la segunda generación sigue fabricando impresos con el
-            mismo rigor artesanal y las tecnologías más avanzadas.»
+            «Empezamos como un pequeño taller de barrio con una sola prensa. Hoy,
+            generaciones después, seguimos fabricando impresos con el mismo rigor
+            artesanal y las tecnologías más avanzadas.»
           </blockquote>
           <div className="mt-10">
             <Boton variant="ghost" size="md" asChild>
@@ -209,7 +202,7 @@ export default function PaginaInicio() {
       <section aria-labelledby="titulo-diferenciadores" className="py-24 bg-paper-100">
         <div className="contenedor">
           <div className="mb-14 max-w-2xl">
-            <SectionLabel numero="03">Por qué NASVE</SectionLabel>
+            <SectionLabel numero="03">Por qué Ejemplo</SectionLabel>
             <h2 id="titulo-diferenciadores" className="mt-4 font-display font-extrabold text-3xl md:text-4xl text-key">
               Más que una imprenta
             </h2>

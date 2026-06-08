@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -300,7 +300,7 @@ export function FormularioPresupuesto({
             <Link href="/privacidad" className="text-negro underline hover:text-ambar transition-colors">
               política de privacidad
             </Link>
-            . Mis datos serán tratados por Gráficas NASVE, S.L. con la finalidad de
+            . Mis datos serán tratados por Gráficas Ejemplo, S.L. con la finalidad de
             gestionar mi solicitud de presupuesto (art. 6.1.b RGPD). *
           </span>
         </label>
