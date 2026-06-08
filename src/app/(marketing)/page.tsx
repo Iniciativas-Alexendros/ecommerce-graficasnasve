@@ -12,7 +12,6 @@ import {
   Sparkles,
   QrCode,
   TreePine,
-  CheckCircle,
   Clock,
   Leaf,
   Headphones,

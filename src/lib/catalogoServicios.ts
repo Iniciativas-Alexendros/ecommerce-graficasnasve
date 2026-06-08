@@ -36,7 +36,7 @@ export const catalogoServicios: Servicio[] = [
     slug: 'impresion-digital',
     titulo: 'Impresión Digital',
     descripcionCorta:
-      'Tiradas cortas sin mínimos absurdos. Entrega rápida, calidad professional.',
+      'Tiradas cortas sin mínimos absurdos. Entrega rápida, calidad profesional.',
     descripcion:
       'La impresión digital permite producir desde un único ejemplar hasta tiradas de cientos de copias con la misma calidad que el offset, sin los costes de preparación de plancha. Perfecta para prototipos, ediciones limitadas, libros bajo demanda y cualquier proyecto donde la flexibilidad y la velocidad de entrega son cruciales. Sin mínimos que penalicen tu presupuesto.',
     beneficios: [
