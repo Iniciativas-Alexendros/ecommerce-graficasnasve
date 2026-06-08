@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -107,7 +107,7 @@ export default function PaginaAdminLogin() {
         </form>
 
         <p className="text-center mt-6 font-mono text-xs text-gris">
-          graficasnasve.art © 2026
+          tudominio.com © 2026
         </p>
       </div>
     </div>

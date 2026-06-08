@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art — 404 con identidad NASVE
+ * tudominio.com — 404 con identidad Ejemplo
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -15,7 +15,7 @@ export default function NoEncontrado() {
     <div className="min-h-screen flex flex-col bg-paper-100">
       <header className="border-b border-taupe">
         <div className="contenedor h-16 flex items-center">
-          <Link href="/" aria-label="Gráficas NASVE — inicio" className="transition-opacity hover:opacity-80">
+          <Link href="/" aria-label="Gráficas Ejemplo — inicio" className="transition-opacity hover:opacity-80">
             <Logo />
           </Link>
         </div>
