@@ -4,7 +4,7 @@ import { test as base, expect } from "@playwright/test";
 // siembra `nasve:tour-visto` antes de cargar la página para que el tour
 // (driver.js) no se autolance y su overlay no intercepte clics.
 export const test = base.extend({
-  page: async ({ page }, use) => {
+  page: async ({ page }, run) => {
     await page.addInitScript(() => {
       try {
         window.localStorage.setItem("nasve:tour-visto:v1", "1");
@@ -12,7 +12,7 @@ export const test = base.extend({
         /* almacenamiento no disponible en este contexto */
       }
     });
-    await use(page);
+    await run(page);
   },
 });
 
