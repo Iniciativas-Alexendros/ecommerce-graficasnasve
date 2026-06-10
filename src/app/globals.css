@@ -247,3 +247,59 @@ h1, h2, h3, h4 {
   height: 1px;
   background: var(--borde);
 }
+
+/* ── Visita guiada (driver.js) — tema NASVE «papel + cuatricromía» ────────── */
+.driver-popover.nasve-tour,
+.driver-popover {
+  background: var(--color-paper-0);
+  color: var(--color-key);
+  border: 1px solid var(--color-key);
+  border-radius: 0.75rem;
+  box-shadow: 4px 4px 0 0 var(--color-key);
+  font-family: var(--font-sans);
+  max-width: 22rem;
+}
+.driver-popover .driver-popover-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-key);
+}
+.driver-popover .driver-popover-description {
+  color: var(--color-gris);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+.driver-popover .driver-popover-progress-text {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gris);
+}
+.driver-popover .driver-popover-footer button {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-shadow: none;
+  border-radius: 9999px;
+  border: 1px solid var(--color-key);
+  background: var(--color-paper-0);
+  color: var(--color-key);
+  padding: 0.35rem 0.9rem;
+}
+.driver-popover .driver-popover-footer button:hover {
+  background: var(--color-ambar);
+}
+.driver-popover .driver-popover-next-btn {
+  background: var(--color-ambar) !important;
+}
+.driver-popover .driver-popover-arrow {
+  border-color: var(--color-key);
+}
+.driver-popover .driver-popover-close-btn {
+  color: var(--color-gris);
+}
+.driver-popover .driver-popover-close-btn:hover {
+  color: var(--color-key);
+}

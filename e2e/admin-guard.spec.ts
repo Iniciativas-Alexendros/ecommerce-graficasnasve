@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from './fixtures'
 
 test('una visita a /admin sin sesión redirige al login', async ({ page }) => {
   await page.goto('/admin')
