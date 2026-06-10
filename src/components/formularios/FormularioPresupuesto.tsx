@@ -14,6 +14,7 @@ import { schemaPresupuesto, type DatosPresupuesto } from '@/lib/validaciones/pre
 import type { ProductoPresupuesto } from '@/types/supabase'
 import { Campo } from '@/components/ui/Campo'
 import { Boton } from '@/components/ui/Boton'
+import { empresa } from '@/config/empresa'
 
 const MAX_ARCHIVO_BYTES = 50 * 1024 * 1024 // 50 MB
 const TIPOS_ARCHIVO = '.pdf,.ai,.eps,.zip'
@@ -300,7 +301,7 @@ export function FormularioPresupuesto({
             <Link href="/privacidad" className="text-negro underline hover:text-ambar transition-colors">
               política de privacidad
             </Link>
-            . Mis datos serán tratados por Gráficas Ejemplo, S.L. con la finalidad de
+            . Mis datos serán tratados por {empresa.nombreLegal} con la finalidad de
             gestionar mi solicitud de presupuesto (art. 6.1.b RGPD). *
           </span>
         </label>

@@ -5,10 +5,11 @@
 
 import type { Metadata } from 'next'
 import { SectionLabel } from '@/components/ui/SectionLabel'
+import { empresa } from '@/config/empresa'
 
 export const metadata: Metadata = {
-  title: 'Política de Cookies — Gráficas Ejemplo',
-  description: 'Política de cookies del sitio web de Gráficas Ejemplo, S.L.',
+  title: `Política de Cookies — ${empresa.nombre}`,
+  description: `Política de cookies del sitio web de ${empresa.nombreLegal}`,
   robots: { index: false, follow: false },
 }
 
@@ -205,10 +206,10 @@ export default function PaginaCookies() {
               de tus datos personales, puedes contactar con nuestra Delegada de Protección
               de Datos, Alicia Armas, en{' '}
               <a
-                href="mailto:privacidad@tudominio.com"
+                href={`mailto:${empresa.emailPrivacidad}`}
                 className="text-negro underline hover:text-ambar transition-colors"
               >
-                privacidad@tudominio.com
+                {empresa.emailPrivacidad}
               </a>
               .
             </p>
