@@ -3,42 +3,43 @@
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 import type { Metadata } from 'next'
+import { empresa, SITIO_URL, ciudadProvincia } from '@/config/empresa'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://tudominio.com'),
+  metadataBase: new URL(SITIO_URL),
   title: {
-    template: '%s | Gráficas Ejemplo',
-    default: 'Gráficas Ejemplo — Imprenta en Tu Ciudad desde 20XX',
+    template: `%s | ${empresa.nombre}`,
+    default: `${empresa.nombre} — Imprenta en ${empresa.direccion.ciudad} desde ${empresa.anioFundacion}`,
   },
   description:
-    'Imprenta offset y digital en Tu Ciudad (Tu Provincia). Encuadernación artesanal, acabados premium (stamping, UVI, relieves), personalización y impresión sobre madera. Décadas de experiencia. Presupuesto sin compromiso.',
+    `Imprenta offset y digital en ${ciudadProvincia}. Encuadernación artesanal, acabados premium (stamping, UVI, relieves), personalización y impresión sobre madera. Décadas de experiencia. Presupuesto sin compromiso.`,
   keywords: [
-    'imprenta Tu Ciudad',
-    'imprenta Tu Provincia',
+    `imprenta ${empresa.direccion.ciudad}`,
+    `imprenta ${empresa.direccion.provincia}`,
     'imprenta offset',
     'encuadernación artesanal',
     'acabados stamping',
     'tarjetas de visita',
     'folletos',
     'impresión digital',
-    'Gráficas Ejemplo',
+    empresa.nombre,
   ],
-  authors: [{ name: 'Gráficas Ejemplo, S.L.' }],
+  authors: [{ name: empresa.nombreLegal }],
   creator: 'Iniciativas Alexendros S.L.U.',
   openGraph: {
     type: 'website',
     locale: 'es_ES',
-    url: 'https://tudominio.com',
-    siteName: 'Gráficas Ejemplo',
-    title: 'Gráficas Ejemplo — Imprenta en Tu Ciudad desde 20XX',
+    url: SITIO_URL,
+    siteName: empresa.nombre,
+    title: `${empresa.nombre} — Imprenta en ${empresa.direccion.ciudad} desde ${empresa.anioFundacion}`,
     description:
-      'Imprenta offset y digital en Tu Ciudad (Tu Provincia). Acabados premium, encuadernación artesanal, personalización. Décadas. Presupuesto sin compromiso.',
+      `Imprenta offset y digital en ${ciudadProvincia}. Acabados premium, encuadernación artesanal, personalización. Décadas. Presupuesto sin compromiso.`,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Gráficas Ejemplo — Imprenta en Tu Ciudad desde 20XX',
-    description: 'Imprenta offset y digital en Tu Ciudad (Tu Provincia). Décadas de experiencia.',
+    title: `${empresa.nombre} — Imprenta en ${empresa.direccion.ciudad} desde ${empresa.anioFundacion}`,
+    description: `Imprenta offset y digital en ${ciudadProvincia}. Décadas de experiencia.`,
   },
   robots: {
     index: true,

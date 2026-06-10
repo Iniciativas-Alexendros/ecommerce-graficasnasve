@@ -5,9 +5,10 @@
 
 import type { Metadata } from 'next'
 import { SectionLabel } from '@/components/ui/SectionLabel'
+import { empresa } from '@/config/empresa'
 
 export const metadata: Metadata = {
-  title: 'Historia — Gráficas Ejemplo',
+  title: `Historia — ${empresa.nombre}`,
   description:
     'Décadas de oficio gráfico. Del pequeño taller de barrio a unas instalaciones modernas, con el mismo compromiso artesanal de siempre.',
 }
@@ -35,7 +36,7 @@ const hitos = [
     año: 'Hoy',
     titulo: 'El mismo compromiso',
     descripcion:
-      'Gráficas Ejemplo combina el trato personal con las técnicas más avanzadas del sector: impresión digital de gran formato, dato variable, impresión directa sobre madera, stamping y UVI selectivo.',
+      `${empresa.nombre} combina el trato personal con las técnicas más avanzadas del sector: impresión digital de gran formato, dato variable, impresión directa sobre madera, stamping y UVI selectivo.`,
   },
 ]
 
@@ -50,7 +51,7 @@ export default function PaginaHistoria() {
             Oficio gráfico, generación tras generación
           </h1>
           <p className="relato text-lg md:text-xl text-key/80 leading-snug">
-            La historia de Gráficas Ejemplo es la de un equipo que apostó por la
+            La historia de {empresa.nombre} es la de un equipo que apostó por la
             calidad cuando la calidad aún requería esfuerzo. Un compromiso que no ha cambiado
             con el paso de los años.
           </p>

@@ -7,9 +7,10 @@ import type { Metadata } from 'next'
 import { catalogoTienda } from '@/lib/catalogoTienda'
 import { TiendaGrid } from './TiendaGrid'
 import { SectionLabel } from '@/components/ui/SectionLabel'
+import { empresa, SITIO_URL } from '@/config/empresa'
 
 export const metadata: Metadata = {
-  title: 'Tienda — Gráficas Ejemplo',
+  title: `Tienda — ${empresa.nombre}`,
   description:
     'Productos de imprenta listos para encargar: flyers, catálogos, tarjetas de visita, cartas de menú, gran formato y más. Estimación de precio por unidad al instante.',
 }
@@ -17,9 +18,9 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'Tienda — Gráficas Ejemplo',
+  name: `Tienda — ${empresa.nombre}`,
   description: 'Catálogo de productos de imprenta listos para configurar y encargar.',
-  url: 'https://tudominio.com/tienda',
+  url: `${SITIO_URL}/tienda`,
 }
 
 export default function PaginaTienda() {
