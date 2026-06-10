@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from './fixtures'
 
 test('el encargo asistido arranca y avanza de producto a especificaciones', async ({ page }) => {
   await page.goto('/encargo')
