@@ -11,17 +11,17 @@
 
 Copiar `.env.local.example` → `.env.local` y rellenar (nunca subir `.env.local`):
 
-| Variable | Ámbito | Descripción |
-|---|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | público | URL del proyecto Supabase |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | público | Clave anónima |
-| `SUPABASE_SERVICE_ROLE_KEY` | **servidor** | Solo server-side (upload + insert) |
-| `RESEND_API_KEY` | servidor | API key de Resend |
-| `RESEND_FROM` | servidor | Remitente verificado (p. ej. `no-reply@graficasnasve.art`) |
-| `RESEND_PRESUPUESTO_TO` | servidor | Destinatario interno (p. ej. `alicia@nasve.com`) |
-| `NEXT_PUBLIC_APP_URL` | público | `https://graficasnasve.art` |
+| Variable                        | Ámbito       | Descripción                                                |
+| ------------------------------- | ------------ | ---------------------------------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`      | público      | URL del proyecto Supabase                                  |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | público      | Clave anónima                                              |
+| `SUPABASE_SERVICE_ROLE_KEY`     | **servidor** | Solo server-side (upload + insert)                         |
+| `RESEND_API_KEY`                | servidor     | API key de Resend                                          |
+| `RESEND_FROM`                   | servidor     | Remitente verificado (p. ej. `no-reply@graficasnasve.art`) |
+| `RESEND_PRESUPUESTO_TO`         | servidor     | Destinatario interno (p. ej. `alicia@nasve.com`)           |
+| `NEXT_PUBLIC_APP_URL`           | público      | `https://graficasnasve.art`                                |
 
-> Las claves de pasarela de pago (Stripe/Redsys/…) se añadirán en la **Fase 4** (ver §8).
+> Las claves de pasarela de pago (Stripe/Redsys/…) se añadirán en la **Fase 5** (ver §8).
 
 ## 3. Supabase
 
@@ -39,7 +39,7 @@ Copiar `.env.local.example` → `.env.local` y rellenar (nunca subir `.env.local
 
 > **La tienda no usa Supabase.** El catálogo de productos/preformatos vive en código
 > (`src/lib/catalogoTienda.ts`) y el motor de precio en `src/lib/precioTienda.ts`; no requiere
-> migración ni *seed*. ⚠️ Los **precios son orientativos**: para producción, sustituir los
+> migración ni _seed_. ⚠️ Los **precios son orientativos**: para producción, sustituir los
 > coeficientes de `precioTienda.ts` (precio base por producto, tramos de volumen y factores de
 > gramaje/acabado) por la tarifa real de NASVE.
 
@@ -53,7 +53,7 @@ Copiar `.env.local.example` → `.env.local` y rellenar (nunca subir `.env.local
 
 1. Importar el repo. Región **`cdg1`** (París) — ver `vercel.json`.
 2. Definir todas las variables de §2 en **Project → Settings → Environment Variables**
-   (producción y *preview*).
+   (producción y _preview_).
 3. Build: `pnpm build` (Turbopack por defecto en Next 16). Deploy automático por rama.
 
 ## 6. Cloudflare (DNS)
@@ -71,7 +71,7 @@ Copiar `.env.local.example` → `.env.local` y rellenar (nunca subir `.env.local
 
 Los despliegues los gestiona Vercel (previews por PR, producción en `main`).
 
-## 8. Pagos (futuro — Fase 4)
+## 8. Pagos (futuro — Fase 5)
 
 La pasarela **no** está activada: `/api/webhooks/stripe` responde **501**. Antes de integrar,
 decidir proveedor (ver comparativa en [`ROADMAP.md`](./ROADMAP.md) › Fase 5):
