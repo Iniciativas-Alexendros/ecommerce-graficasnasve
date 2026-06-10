@@ -7,9 +7,10 @@ import type { Metadata } from 'next'
 import { Leaf, Droplets, Recycle, Trash2 } from 'lucide-react'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { Baldosa, type ColorBaldosa } from '@/components/ui/Baldosa'
+import { empresa } from '@/config/empresa'
 
 export const metadata: Metadata = {
-  title: 'Sostenibilidad — Gráficas Ejemplo',
+  title: `Sostenibilidad — ${empresa.nombre}`,
   description:
     'Nuestro compromiso con el medioambiente: papeles certificados FSC/PEFC, tintas vegetales, materiales bio/reciclados y gestión responsable de residuos.',
 }
@@ -29,7 +30,7 @@ La cadena de custodia certificada nos permite ofrecer a nuestros clientes impres
     titulo: 'Tintas vegetales y de base acuosa',
     texto: `Las tintas convencionales basadas en aceites minerales y disolventes petroquímicos son una de las fuentes de contaminación más significativas en la industria gráfica. En Ejemplo hemos transitado progresivamente hacia tintas de base vegetal —fundamentalmente aceite de soja y linaza— y tintas de base acuosa para la impresión digital.
 
-Las tintas vegetales ofrecen colores más vivos, son más fáciles de destiñar en el proceso de reciclaje del papel y emiten menos compuestos orgánicos volátiles (COV) durante la impresión. Un beneficio doble: para el planeta y para la calidad final del impreso.`,
+Las tintas vegetales ofrecen colores más vivos, son más fáciles de desteñir en el proceso de reciclaje del papel y emiten menos compuestos orgánicos volátiles (COV) durante la impresión. Un beneficio doble: para el planeta y para la calidad final del impreso.`,
   },
   {
     icono: Recycle,

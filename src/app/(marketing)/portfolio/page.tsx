@@ -8,11 +8,12 @@ import { createServidorSupabase } from '@/lib/supabase/servidor'
 import type { PortfolioItem } from '@/types/supabase'
 import { PortfolioGrid } from './PortfolioGrid'
 import { SectionLabel } from '@/components/ui/SectionLabel'
+import { empresa } from '@/config/empresa'
 
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Portfolio — Gráficas Ejemplo',
+  title: `Portfolio — ${empresa.nombre}`,
   description:
     'Trabajos de impresión offset, digital, encuadernación artesanal, acabados premium e impresión sobre madera. Cientos de proyectos realizados.',
 }

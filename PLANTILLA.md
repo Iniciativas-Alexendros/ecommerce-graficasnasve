@@ -9,43 +9,67 @@ el sitio como base de un nuevo proyecto.
 
 > La web real de NASVE vive en `main` y **no se ha tocado**.
 
-## Cómo personalizarla (buscar y reemplazar)
+## Cómo personalizarla — edita **un solo fichero**
 
-| Dato | Placeholder en la plantilla | Sustituye por |
-|---|---|---|
-| Nombre comercial | `Gráficas Ejemplo` | tu marca |
-| Razón social | `Gráficas Ejemplo, S.L.` / `GRÁFICAS EJEMPLO, S.L.` | tu razón social |
-| Marca corta / wordmark | `Ejemplo` / `ejemplo.` | tu marca |
-| Dominio | `tudominio.com` | tu dominio |
-| Dominio antiguo (redirect 301) | `tudominioantiguo.com` | el tuyo (o elimina el redirect en `next.config.ts`) |
-| Email general | `hola@tudominio.com` | tu email |
-| Email privacidad / DPO | `privacidad@tudominio.com` | tu email de RGPD |
-| Email remitente | `noreply@tudominio.com` | tu remitente |
-| Teléfono | `+34600000000` / `600 00 00 00` | tu teléfono |
-| Dirección | `Calle de Ejemplo, 1` · `Polígono Industrial` | tu dirección |
-| Ciudad | `Tu Ciudad` | tu ciudad |
-| Provincia | `Tu Provincia` | tu provincia |
-| Código postal | `00000` | tu CP |
-| CIF | `B00000000` | tu CIF |
-| Año de fundación / trayectoria | `20XX` / `+XX` | tu año / tus años |
-| Coordenadas del mapa | `latitude: 0, longitude: 0` | tus coordenadas |
-| Datos registrales | `Tomo 0000 · Folio 000 · Hoja 00000` | los tuyos |
+Todos los datos de identidad de la empresa están centralizados en una **fuente
+única de verdad**:
 
-## Dónde viven los datos (ficheros a editar)
+### `src/config/empresa.ts` ← **el único fichero a editar**
 
-Los datos están **hardcodeados** (no hay aún un config central). Tras la
-búsqueda y reemplazo de arriba, revisa especialmente:
+Cambia ahí el nombre, la razón social, la marca/wordmark, el dominio (y el
+dominio antiguo del redirect 301), los correos (general, privacidad/DPO,
+remitente), el teléfono, la dirección, las coordenadas del mapa, el CIF, los
+datos registrales, el año de fundación, los años de trayectoria y el horario.
+Esos valores se propagan automáticamente a **toda la web**: cabeceras y
+metadatos globales, `siteName`/keywords, footer, páginas legales
+(aviso-legal, privacidad, cookies), schema.org `LocalBusiness`/`Product`,
+plantillas de email (`resend`), `manifest`, Open Graph, `sitemap`, `robots`,
+canónicas, redirects de `next.config.ts`, panel admin y formularios.
 
-- `src/app/layout.tsx` y `src/app/(marketing)/layout.tsx` — metadatos globales, `siteName`, keywords.
-- `src/app/(marketing)/page.tsx` — home: schema `LocalBusiness`, hero, stats, cita de «Nuestra historia».
-- `src/app/(marketing)/contacto/page.tsx` — schema, dirección, teléfono, email, enlace a Maps.
-- `src/app/(marketing)/historia/page.tsx` — relato y *timeline* (hitos genéricos).
-- `src/app/aviso-legal/`, `privacidad/`, `cookies/` — legales: razón social, CIF, registro, DPO.
-- `src/components/marketing/Footer.tsx` y `Logo.tsx` — pie (dirección/contacto/CIF) y *wordmark*.
-- `src/lib/resend.ts` — plantillas de email (pie con dirección y contacto).
-- `src/lib/catalogoTienda.ts` y `src/lib/catalogoServicios.ts` — catálogo de productos y servicios.
-- `src/app/manifest.ts`, `opengraph-image.tsx`, `robots.ts`, `sitemap.ts` — marca de sitio.
-- `next.config.ts` — redirects de dominio antiguo y CSP. `package.json` — `name`.
+El fichero exporta el objeto `empresa` y tres constantes derivadas listas para
+usar: `SITIO_URL` (`https://<dominio>`), `ciudadProvincia`
+(`Ciudad (Provincia)`) y `direccionLinea` (dirección postal en una línea).
+
+> Tras editarlo, valida con `pnpm typecheck && pnpm lint && pnpm test`.
+
+> **El catálogo va aparte.** Los productos y servicios **no** están en
+> `empresa.ts`: viven en `src/lib/catalogoTienda.ts` y
+> `src/lib/catalogoServicios.ts`. Ajústalos a tu oferta real por separado.
+
+## Referencia: dónde se usa cada valor
+
+Ya no hace falta buscar y reemplazar; basta con editar `empresa.ts`. Esta tabla
+queda solo como referencia de **qué placeholder corresponde a cada campo** y
+**dónde se consume**.
+
+| Dato | Campo en `empresa.ts` | Placeholder | Se usa en |
+|---|---|---|---|
+| Nombre comercial | `empresa.nombre` | `Gráficas Ejemplo` | títulos, footer, schema, OG, emails |
+| Razón social | `empresa.nombreLegal` (en mayúsculas: `.toUpperCase()`) | `Gráficas Ejemplo, S.L.` / `GRÁFICAS EJEMPLO, S.L.` | legales, footer, schema, emails |
+| Marca / wordmark | `empresa.marca` | `ejemplo` | `Logo`, cabecera admin, emails, chatbot |
+| Dominio | `empresa.dominio` / `SITIO_URL` | `tudominio.com` | URLs, canónicas, schema, sitemap, robots |
+| Dominio antiguo (redirect 301) | `empresa.dominioAntiguo` | `tudominioantiguo.com` | `next.config.ts` |
+| Email general | `empresa.email` | `hola@tudominio.com` | contacto, footer, schema, emails |
+| Email privacidad / DPO | `empresa.emailPrivacidad` | `privacidad@tudominio.com` | privacidad, cookies, remitente interno |
+| Email remitente | `empresa.emailRemitente` | `noreply@tudominio.com` | `src/lib/resend.ts` (`from`) |
+| Teléfono | `empresa.telefono.{e164,display}` | `+34600000000` / `600 00 00 00` | contacto, footer, schema, emails |
+| Dirección | `empresa.direccion.{calle,detalle}` / `direccionLinea` | `Calle de Ejemplo, 1` · `Polígono Industrial` | contacto, footer, legales, emails |
+| Ciudad / Provincia | `empresa.direccion.{ciudad,provincia}` / `ciudadProvincia` | `Tu Ciudad` / `Tu Provincia` | títulos, schema, OG, legales |
+| Código postal | `empresa.direccion.cp` | `00000` | dirección postal |
+| País | `empresa.direccion.pais` | `ES` | schema `addressCountry` |
+| Coordenadas del mapa | `empresa.direccion.geo.{lat,lng}` | `0, 0` | schema `geo` |
+| CIF | `empresa.cif` | `B00000000` | footer, legales, schema `taxID`, emails |
+| Datos registrales | `empresa.registroMercantil` | `Tomo 0000 · Folio 000 · Hoja 00000` | aviso legal |
+| Año de fundación / trayectoria | `empresa.anioFundacion` / `empresa.aniosExperiencia` | `20XX` / `+XX` | hero, títulos, schema, footer |
+| Horario | `empresa.horario.{laborable,viernes}` | `08:00`–`18:00` / `19:00` | schema `openingHours` |
+| Descripción | `empresa.descripcion` | (texto de ejemplo) | metadatos, manifest, schema |
+
+Ficheros que **consumen** `empresa.ts` (no necesitas editarlos para rebrandear):
+`layout.tsx`, `(marketing)/{page,contacto,historia,servicios,servicios/[slug],tienda,tienda/[slug],presupuesto,portfolio,sostenibilidad,encargo}`,
+`aviso-legal/`, `privacidad/`, `cookies/`, `Footer.tsx`, `Logo.tsx`, `Navbar.tsx`, `Chatbot.tsx`,
+`resend.ts`, `manifest.ts`, `opengraph-image.tsx`, `robots.ts`, `sitemap.ts`, `not-found.tsx`,
+`next.config.ts`, `admin/**` y los formularios. Aún tendrás que ajustar a mano el
+catálogo (`catalogoTienda.ts`, `catalogoServicios.ts`) y `package.json` (`name`).
 
 ## Qué se ha **retirado** (no se envía dato falso)
 
@@ -60,6 +84,6 @@ búsqueda y reemplazo de arriba, revisa especialmente:
 - Las cabeceras de fichero mantienen `© Iniciativas Alexendros S.L.U.` (la agencia
   desarrolladora); cámbialo si procede para cada cliente.
 - El catálogo conserva productos/servicios **de ejemplo** representativos de una
-  imprenta; ajústalos a tu oferta real.
-- Mejora futura sugerida: centralizar todos estos datos en un único
-  `src/config/empresa.ts` para que personalizar sea editar **un solo fichero**.
+  imprenta; ajústalos a tu oferta real (`catalogoTienda.ts` / `catalogoServicios.ts`).
+- Los datos de empresa ya están centralizados en `src/config/empresa.ts`:
+  personalizar la plantilla es editar **un solo fichero**.

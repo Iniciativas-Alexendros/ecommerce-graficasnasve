@@ -7,9 +7,10 @@ import type { Metadata } from 'next'
 import { obtenerProductoTienda } from '@/lib/catalogoTienda'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { EncargoFlow } from './EncargoFlow'
+import { empresa } from '@/config/empresa'
 
 export const metadata: Metadata = {
-  title: 'Encargo asistido — Gráficas Ejemplo',
+  title: `Encargo asistido — ${empresa.nombre}`,
   description:
     'Configura tu encargo de imprenta paso a paso: producto, especificaciones, archivo con preflight automático y presupuesto en menos de 24 h.',
 }
