@@ -30,7 +30,7 @@ La cadena de custodia certificada nos permite ofrecer a nuestros clientes impres
     titulo: 'Tintas vegetales y de base acuosa',
     texto: `Las tintas convencionales basadas en aceites minerales y disolventes petroquímicos son una de las fuentes de contaminación más significativas en la industria gráfica. En Ejemplo hemos transitado progresivamente hacia tintas de base vegetal —fundamentalmente aceite de soja y linaza— y tintas de base acuosa para la impresión digital.
 
-Las tintas vegetales ofrecen colores más vivos, son más fáciles de desteñir en el proceso de reciclaje del papel y emiten menos compuestos orgánicos volátiles (COV) durante la impresión. Un beneficio doble: para el planeta y para la calidad final del impreso.`,
+Las tintas vegetales ofrecen colores más vivos, son más fáciles de destiñar en el proceso de reciclaje del papel y emiten menos compuestos orgánicos volátiles (COV) durante la impresión. Un beneficio doble: para el planeta y para la calidad final del impreso.`,
   },
   {
     icono: Recycle,
