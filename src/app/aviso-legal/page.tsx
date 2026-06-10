@@ -6,10 +6,13 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SectionLabel } from '@/components/ui/SectionLabel'
+import { empresa, direccionLinea } from '@/config/empresa'
+
+const NOMBRE_LEGAL_MAY = empresa.nombreLegal.toUpperCase()
 
 export const metadata: Metadata = {
-  title: 'Aviso Legal — Gráficas Ejemplo',
-  description: 'Aviso legal y condiciones de uso del sitio web de Gráficas Ejemplo, S.L.',
+  title: `Aviso Legal — ${empresa.nombre}`,
+  description: `Aviso legal y condiciones de uso del sitio web de ${empresa.nombreLegal}`,
   robots: { index: false, follow: false },
 }
 
@@ -40,14 +43,14 @@ export default function PaginaAvisoLegal() {
             <table className="w-full border-collapse border border-borde text-sm mb-4">
               <tbody>
                 {[
-                  ['Denominación social', 'GRÁFICAS EJEMPLO, S.L.'],
-                  ['CIF', 'B00000000'],
-                  ['Domicilio social', 'Calle de Ejemplo, 1 · 00000 Tu Ciudad (Tu Provincia)'],
-                  ['Teléfono', '600 00 00 00'],
-                  ['Email', 'hola@tudominio.com'],
+                  ['Denominación social', NOMBRE_LEGAL_MAY],
+                  ['CIF', empresa.cif],
+                  ['Domicilio social', direccionLinea],
+                  ['Teléfono', empresa.telefono.display],
+                  ['Email', empresa.email],
                   [
                     'Registro Mercantil',
-                    'Registro Mercantil de Tu Provincia · Tomo 0000 · Folio 000 · Hoja 00000',
+                    empresa.registroMercantil,
                   ],
                 ].map(([campo, valor]) => (
                   <tr key={campo} className="border-b border-borde">
@@ -68,8 +71,8 @@ export default function PaginaAvisoLegal() {
             </h2>
             <p className="font-sans text-base text-gris leading-relaxed">
               El presente aviso legal regula el acceso y uso del sitio web{' '}
-              <strong className="text-negro">tudominio.com</strong> (en adelante,
-              &ldquo;el Sitio&rdquo;), propiedad de GRÁFICAS EJEMPLO, S.L. El acceso al Sitio y la
+              <strong className="text-negro">{empresa.dominio}</strong> (en adelante,
+              &ldquo;el Sitio&rdquo;), propiedad de {NOMBRE_LEGAL_MAY} El acceso al Sitio y la
               utilización de su contenido implica la aceptación expresa de las condiciones
               establecidas en este aviso legal. Si el usuario no está de acuerdo con las
               presentes condiciones, deberá abstenerse de utilizar el Sitio.
@@ -84,15 +87,14 @@ export default function PaginaAvisoLegal() {
             <p className="font-sans text-base text-gris leading-relaxed mb-4">
               Todos los contenidos del Sitio —incluyendo, sin carácter limitativo, textos,
               fotografías, gráficos, imágenes, iconos, tecnología, software, vínculos y
-              demás contenidos audiovisuales y sonoros— son propiedad de GRÁFICAS EJEMPLO,
-              S.L. o de terceros que han autorizado su uso, y están protegidos por los
+              demás contenidos audiovisuales y sonoros— son propiedad de {NOMBRE_LEGAL_MAY} o de terceros que han autorizado su uso, y están protegidos por los
               derechos de propiedad intelectual e industrial.
             </p>
             <p className="font-sans text-base text-gris leading-relaxed">
               Queda expresamente prohibida la reproducción, distribución, comunicación
               pública, transformación o cualquier otra forma de explotación, total o
-              parcial, de los contenidos del Sitio sin la autorización previa y escrita de
-              GRÁFICAS EJEMPLO, S.L.
+              parcial, de los contenidos del Sitio sin la autorización previa y escrita de{' '}
+              {NOMBRE_LEGAL_MAY}
             </p>
           </section>
 
@@ -102,15 +104,14 @@ export default function PaginaAvisoLegal() {
               4. Responsabilidad y exoneración
             </h2>
             <p className="font-sans text-base text-gris leading-relaxed mb-4">
-              GRÁFICAS EJEMPLO, S.L. no garantiza la ausencia de virus u otros elementos
+              {NOMBRE_LEGAL_MAY} no garantiza la ausencia de virus u otros elementos
               en los contenidos que puedan producir alteraciones en el sistema informático
               del usuario. La empresa no se hace responsable de los daños y perjuicios de
               cualquier naturaleza que pudieran derivarse del acceso, uso o imposibilidad
               de uso del Sitio.
             </p>
             <p className="font-sans text-base text-gris leading-relaxed">
-              El Sitio puede contener enlaces a sitios web de terceros. GRÁFICAS EJEMPLO,
-              S.L. no se responsabiliza del contenido, información o servicios que aparezcan
+              El Sitio puede contener enlaces a sitios web de terceros. {NOMBRE_LEGAL_MAY} no se responsabiliza del contenido, información o servicios que aparezcan
               en dichos sitios, que son responsabilidad exclusiva de sus titulares.
             </p>
           </section>
@@ -126,7 +127,7 @@ export default function PaginaAvisoLegal() {
               <Link href="/privacidad" className="text-negro underline hover:text-ambar transition-colors">
                 Política de Privacidad
               </Link>{' '}
-              de GRÁFICAS EJEMPLO, S.L., de conformidad con el Reglamento (UE) 2016/679
+              de {NOMBRE_LEGAL_MAY}, de conformidad con el Reglamento (UE) 2016/679
               del Parlamento Europeo y del Consejo (RGPD) y la Ley Orgánica 3/2018, de 5
               de diciembre (LOPDGDD).
             </p>
@@ -140,9 +141,9 @@ export default function PaginaAvisoLegal() {
             <p className="font-sans text-base text-gris leading-relaxed">
               Las presentes condiciones se rigen e interpretan conforme a la legislación
               española. Para la resolución de cualquier controversia derivada del acceso o
-              uso del Sitio, GRÁFICAS EJEMPLO, S.L. y el usuario se someten, con renuncia
+              uso del Sitio, {NOMBRE_LEGAL_MAY} y el usuario se someten, con renuncia
               expresa a cualquier otro fuero, a la jurisdicción de los Juzgados y Tribunales
-              de Tu Provincia (España).
+              de {empresa.direccion.provincia} (España).
             </p>
           </section>
         </div>

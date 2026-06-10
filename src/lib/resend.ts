@@ -5,6 +5,7 @@
 
 import { Resend } from 'resend'
 import type { DatosPresupuesto } from '@/lib/validaciones/presupuesto'
+import { empresa, ciudadProvincia } from '@/config/empresa'
 
 function getResendClient(): Resend | null {
   const apiKey = process.env.RESEND_API_KEY
@@ -66,8 +67,8 @@ export async function sendEmailPresupuesto(
     return { ok: false, error: 'Servicio de email no configurado' }
   }
 
-  const from = process.env.RESEND_FROM ?? 'noreply@tudominio.com'
-  const to = process.env.RESEND_PRESUPUESTO_TO ?? 'privacidad@tudominio.com'
+  const from = process.env.RESEND_FROM ?? empresa.emailRemitente
+  const to = process.env.RESEND_PRESUPUESTO_TO ?? empresa.emailPrivacidad
   const tablaHtml = buildTablaHtml(datos, archivoNombre)
 
   // Email interno a Ejemplo
@@ -82,18 +83,18 @@ export async function sendEmailPresupuesto(
       <body style="margin:0;padding:32px;background:#edebe4;font-family:sans-serif;">
         <div style="max-width:640px;margin:auto;background:#fafaf7;border-radius:4px;overflow:hidden;">
           <div style="background:#0d0d0b;padding:24px 32px;">
-            <p style="margin:0;font-size:24px;font-weight:700;color:#f5f0e8;letter-spacing:-0.02em;">ejemplo</p>
+            <p style="margin:0;font-size:24px;font-weight:700;color:#f5f0e8;letter-spacing:-0.02em;">${empresa.marca}</p>
             <p style="margin:4px 0 0;font-size:13px;color:#c9a84c;text-transform:uppercase;letter-spacing:0.1em;">Nuevo presupuesto recibido</p>
           </div>
           <div style="padding:32px;">
-            <p style="color:#1a1a17;margin-top:0;">Se ha recibido una nueva solicitud de presupuesto a través de tudominio.com.</p>
+            <p style="color:#1a1a17;margin-top:0;">Se ha recibido una nueva solicitud de presupuesto a través de ${empresa.dominio}.</p>
             ${tablaHtml}
             <p style="color:#6b6b60;font-size:13px;margin-top:24px;">
               Responde directamente a ${datos.email} o accede al panel de administración para gestionar esta solicitud.
             </p>
           </div>
           <div style="padding:16px 32px;background:#f5f0e8;font-size:12px;color:#6b6b60;text-align:center;">
-            Gráficas Ejemplo, S.L. · Calle de Ejemplo, 1 · 00000 Tu Ciudad (Tu Provincia) · 600 00 00 00
+            ${empresa.nombreLegal} · ${empresa.direccion.calle} · ${empresa.direccion.cp} ${ciudadProvincia} · ${empresa.telefono.display}
           </div>
         </div>
       </body>
@@ -105,7 +106,7 @@ export async function sendEmailPresupuesto(
   const emailAcuse = resend.emails.send({
     from,
     to: datos.email,
-    subject: `Tu solicitud de presupuesto ha llegado — Gráficas Ejemplo`,
+    subject: `Tu solicitud de presupuesto ha llegado — ${empresa.nombre}`,
     html: `
       <!DOCTYPE html>
       <html lang="es">
@@ -113,7 +114,7 @@ export async function sendEmailPresupuesto(
       <body style="margin:0;padding:32px;background:#edebe4;font-family:sans-serif;">
         <div style="max-width:640px;margin:auto;background:#fafaf7;border-radius:4px;overflow:hidden;">
           <div style="background:#0d0d0b;padding:24px 32px;">
-            <p style="margin:0;font-size:24px;font-weight:700;color:#f5f0e8;letter-spacing:-0.02em;">ejemplo</p>
+            <p style="margin:0;font-size:24px;font-weight:700;color:#f5f0e8;letter-spacing:-0.02em;">${empresa.marca}</p>
             <p style="margin:4px 0 0;font-size:13px;color:#c9a84c;text-transform:uppercase;letter-spacing:0.1em;">Solicitud recibida</p>
           </div>
           <div style="padding:32px;">
@@ -123,14 +124,14 @@ export async function sendEmailPresupuesto(
             ${tablaHtml}
             <p style="color:#1a1a17;margin-top:24px;">Si necesitas ampliar información o tienes alguna duda, puedes contactarnos en:</p>
             <ul style="color:#1a1a17;padding-left:20px;">
-              <li>Email: <a href="mailto:hola@tudominio.com" style="color:#c9a84c;">hola@tudominio.com</a></li>
-              <li>Teléfono: <a href="tel:+34600000000" style="color:#c9a84c;">600 00 00 00</a></li>
+              <li>Email: <a href="mailto:${empresa.email}" style="color:#c9a84c;">${empresa.email}</a></li>
+              <li>Teléfono: <a href="tel:${empresa.telefono.e164}" style="color:#c9a84c;">${empresa.telefono.display}</a></li>
               <li>Horario: L–J 8:00–18:00 · V 8:00–19:00</li>
             </ul>
           </div>
           <div style="padding:16px 32px;background:#f5f0e8;font-size:12px;color:#6b6b60;text-align:center;">
-            Gráficas Ejemplo, S.L. · Calle de Ejemplo, 1 · 00000 Tu Ciudad (Tu Provincia) · 600 00 00 00
-            <br/>© 2026 Gráficas Ejemplo, S.L. · CIF B00000000
+            ${empresa.nombreLegal} · ${empresa.direccion.calle} · ${empresa.direccion.cp} ${ciudadProvincia} · ${empresa.telefono.display}
+            <br/>© 2026 ${empresa.nombreLegal} · CIF ${empresa.cif}
           </div>
         </div>
       </body>

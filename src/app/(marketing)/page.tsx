@@ -24,11 +24,12 @@ import { SectionLabel } from '@/components/ui/SectionLabel'
 import { BarraCMYK } from '@/components/ui/BarraCMYK'
 import { CropMarks } from '@/components/ui/CropMarks'
 import { catalogoServicios } from '@/lib/catalogoServicios'
+import { empresa, SITIO_URL, ciudadProvincia } from '@/config/empresa'
 
 export const metadata: Metadata = {
-  title: 'Gráficas Ejemplo — Imprenta en Tu Ciudad desde 20XX',
+  title: `${empresa.nombre} — Imprenta en ${empresa.direccion.ciudad} desde ${empresa.anioFundacion}`,
   description:
-    'Imprenta offset y digital en Tu Ciudad (Tu Provincia). Encuadernación artesanal, acabados premium (stamping, UVI, relieves), personalización y impresión sobre madera. Décadas de experiencia.',
+    `Imprenta offset y digital en ${ciudadProvincia}. Encuadernación artesanal, acabados premium (stamping, UVI, relieves), personalización y impresión sobre madera. Décadas de experiencia.`,
 }
 
 const ICONOS_SERVICIO: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -46,39 +47,39 @@ const COLORES_SERVICIO: ColorBaldosa[] = ['ambar', 'cyan', 'coral', 'lavender', 
 const schemaOrg = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': 'https://tudominio.com/#empresa',
-  name: 'Gráficas Ejemplo, S.L.',
+  '@id': `${SITIO_URL}/#empresa`,
+  name: empresa.nombreLegal,
   alternateName: 'Ejemplo',
   description:
-    'Imprenta offset y digital en Tu Ciudad (Tu Provincia). Encuadernación artesanal, acabados premium, personalización e impresión sobre madera. Fundada en 20XX.',
-  url: 'https://tudominio.com',
-  telephone: '+34600000000',
-  email: 'hola@tudominio.com',
-  foundingDate: '20XX',
+    `${empresa.descripcion} Fundada en ${empresa.anioFundacion}.`,
+  url: SITIO_URL,
+  telephone: empresa.telefono.e164,
+  email: empresa.email,
+  foundingDate: empresa.anioFundacion,
   currenciesAccepted: 'EUR',
   paymentAccepted: 'Transferencia, tarjeta',
   priceRange: '€€',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Calle de Ejemplo, 1',
-    addressLocality: 'Tu Ciudad',
-    addressRegion: 'Tu Provincia',
-    postalCode: '00000',
-    addressCountry: 'ES',
+    streetAddress: empresa.direccion.calle,
+    addressLocality: empresa.direccion.ciudad,
+    addressRegion: empresa.direccion.provincia,
+    postalCode: empresa.direccion.cp,
+    addressCountry: empresa.direccion.pais,
   },
-  geo: { '@type': 'GeoCoordinates', latitude: 0, longitude: 0 },
+  geo: { '@type': 'GeoCoordinates', latitude: empresa.direccion.geo.lat, longitude: empresa.direccion.geo.lng },
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-      opens: '08:00',
-      closes: '18:00',
+      opens: empresa.horario.laborable.abre,
+      closes: empresa.horario.laborable.cierra,
     },
     {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Friday'],
-      opens: '08:00',
-      closes: '19:00',
+      opens: empresa.horario.viernes.abre,
+      closes: empresa.horario.viernes.cierra,
     },
   ],
 }
@@ -95,9 +96,9 @@ export default function PaginaInicio() {
       <section aria-label="Inicio" className="bg-paper-100">
         <div className="contenedor py-20 lg:py-28 grid lg:grid-cols-2 gap-14 items-center">
           <div>
-            <SectionLabel>Imprenta familiar · Tu Ciudad · desde 20XX</SectionLabel>
+            <SectionLabel>Imprenta familiar · {empresa.direccion.ciudad} · desde {empresa.anioFundacion}</SectionLabel>
             <h1 className="mt-6 font-display font-extrabold text-key text-4xl md:text-5xl leading-[1.02]">
-              Impreso preciso<br />desde <span className="text-coral">20XX</span>.
+              Impreso preciso<br />desde <span className="text-coral">{empresa.anioFundacion}</span>.
             </h1>
             <p className="relato mt-6 text-key/80 text-lg md:text-xl max-w-md leading-snug">
               Servicio integral offset y digital, con gestión de color de verdad. Tú nos cuentas
@@ -114,7 +115,7 @@ export default function PaginaInicio() {
             <dl className="mt-12 flex flex-wrap gap-x-12 gap-y-6">
               <Stat valor="CMYK" caption="Color gestionado" />
               <Stat valor="48 h" caption="Entrega exprés" />
-              <Stat valor="+XX" caption="Años de oficio" />
+              <Stat valor={empresa.aniosExperiencia} caption="Años de oficio" />
             </dl>
           </div>
 
@@ -137,7 +138,7 @@ export default function PaginaInicio() {
           <dl className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <Stat valor="Décadas" caption="de experiencia" />
             <Stat valor="Offset" caption="y digital" />
-            <Stat valor="Tu Ciudad" caption="Tu Provincia, España" />
+            <Stat valor={empresa.direccion.ciudad} caption={`${empresa.direccion.provincia}, España`} />
             <Stat valor="Acabados" caption="premium" />
           </dl>
         </div>
@@ -180,7 +181,7 @@ export default function PaginaInicio() {
       </section>
 
       {/* 4. HERENCIA 20XX */}
-      <section aria-label="Sobre Gráficas Ejemplo" className="bg-key py-24">
+      <section aria-label={`Sobre ${empresa.nombre}`} className="bg-key py-24">
         <div className="contenedor max-w-3xl">
           <SectionLabel numero="02" tono="dark">
             Nuestra historia

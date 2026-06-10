@@ -10,55 +10,58 @@ import { Baldosa, type ColorBaldosa } from '@/components/ui/Baldosa'
 import { Tarjeta } from '@/components/ui/Tarjeta'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { FormularioPresupuesto } from '@/components/formularios/FormularioPresupuesto'
+import { empresa, SITIO_URL, ciudadProvincia } from '@/config/empresa'
+
+const mapaUrl = `https://maps.google.com/?q=${empresa.direccion.ciudad.replace(/ /g, '+')}`
 
 export const metadata: Metadata = {
-  title: 'Contacto — Gráficas Ejemplo',
+  title: `Contacto — ${empresa.nombre}`,
   description:
-    'Contacta con Gráficas Ejemplo en Tu Ciudad (Tu Provincia). Teléfono: 600 00 00 00. Email: hola@tudominio.com. Lunes a viernes de 8:00 a 18:00.',
+    `Contacta con ${empresa.nombre} en ${ciudadProvincia}. Teléfono: ${empresa.telefono.display}. Email: ${empresa.email}. Lunes a viernes de 8:00 a 18:00.`,
 }
 
 const schemaOrg = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': 'https://tudominio.com/#empresa',
-  name: 'Gráficas Ejemplo, S.L.',
+  '@id': `${SITIO_URL}/#empresa`,
+  name: empresa.nombreLegal,
   alternateName: 'Ejemplo',
   description:
-    'Imprenta offset y digital en Tu Ciudad (Tu Provincia). Encuadernación artesanal, acabados premium, personalización e impresión sobre madera. Fundada en 20XX.',
-  url: 'https://tudominio.com',
-  telephone: '+34600000000',
-  email: 'hola@tudominio.com',
-  taxID: 'B00000000',
-  foundingDate: '20XX',
+    `${empresa.descripcion} Fundada en ${empresa.anioFundacion}.`,
+  url: SITIO_URL,
+  telephone: empresa.telefono.e164,
+  email: empresa.email,
+  taxID: empresa.cif,
+  foundingDate: empresa.anioFundacion,
   currenciesAccepted: 'EUR',
   paymentAccepted: 'Transferencia, tarjeta',
   priceRange: '€€',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Calle de Ejemplo, 1',
-    addressLocality: 'Tu Ciudad',
-    addressRegion: 'Tu Provincia',
-    postalCode: '00000',
-    addressCountry: 'ES',
+    streetAddress: empresa.direccion.calle,
+    addressLocality: empresa.direccion.ciudad,
+    addressRegion: empresa.direccion.provincia,
+    postalCode: empresa.direccion.cp,
+    addressCountry: empresa.direccion.pais,
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 0,
-    longitude: 0,
+    latitude: empresa.direccion.geo.lat,
+    longitude: empresa.direccion.geo.lng,
   },
-  hasMap: 'https://maps.google.com/?q=Tu+Ciudad',
+  hasMap: mapaUrl,
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-      opens: '08:00',
-      closes: '18:00',
+      opens: empresa.horario.laborable.abre,
+      closes: empresa.horario.laborable.cierra,
     },
     {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Friday'],
-      opens: '08:00',
-      closes: '19:00',
+      opens: empresa.horario.viernes.abre,
+      closes: empresa.horario.viernes.cierra,
     },
   ],
 }
@@ -82,14 +85,14 @@ export default function PaginaContacto() {
               </h1>
               <p className="relato text-lg md:text-xl text-key/80 leading-snug mb-12">
                 Rellena el formulario y respondemos con presupuesto y prueba de color en menos
-                de 24 h. Visítanos en el Polígono Industrial o llámanos sin compromiso.
+                de 24 h. Visítanos en el {empresa.direccion.detalle} o llámanos sin compromiso.
               </p>
 
               <ul className="space-y-6">
                 {([
-                  { icono: MapPin, color: 'ambar', titulo: 'Taller', cuerpo: <address className="not-italic">Calle de Ejemplo, 1<br />00000 Tu Ciudad (Tu Provincia)<br />Polígono Industrial</address> },
-                  { icono: Phone, color: 'cyan', titulo: 'Teléfono', cuerpo: <a href="tel:+34600000000" className="hover:text-key transition-colors">600 00 00 00</a> },
-                  { icono: Mail, color: 'coral', titulo: 'Email', cuerpo: <a href="mailto:hola@tudominio.com" className="hover:text-key transition-colors">hola@tudominio.com</a> },
+                  { icono: MapPin, color: 'ambar', titulo: 'Taller', cuerpo: <address className="not-italic">{empresa.direccion.calle}<br />{empresa.direccion.cp} {ciudadProvincia}<br />{empresa.direccion.detalle}</address> },
+                  { icono: Phone, color: 'cyan', titulo: 'Teléfono', cuerpo: <a href={`tel:${empresa.telefono.e164}`} className="hover:text-key transition-colors">{empresa.telefono.display}</a> },
+                  { icono: Mail, color: 'coral', titulo: 'Email', cuerpo: <a href={`mailto:${empresa.email}`} className="hover:text-key transition-colors">{empresa.email}</a> },
                   { icono: Clock, color: 'lavender', titulo: 'Horario', cuerpo: <>Lun–Jue 8:00–18:00<br />Vie 8:00–19:00</> },
                 ] as { icono: typeof MapPin; color: ColorBaldosa; titulo: string; cuerpo: React.ReactNode }[]).map(({ icono: Icono, color, titulo, cuerpo }) => (
                   <li key={titulo} className="flex gap-4 items-start">
@@ -108,7 +111,7 @@ export default function PaginaContacto() {
               <div className="mt-10">
                 <Boton variant="secondary" size="md" asChild>
                   <a
-                    href="https://maps.google.com/?q=Tu+Ciudad"
+                    href={mapaUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2"
