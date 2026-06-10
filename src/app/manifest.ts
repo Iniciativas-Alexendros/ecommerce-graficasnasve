@@ -4,13 +4,13 @@
  */
 
 import type { MetadataRoute } from 'next'
+import { empresa } from '@/config/empresa'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Gráficas Ejemplo — Imprenta en Tu Ciudad desde 20XX',
+    name: `${empresa.nombre} — Imprenta en ${empresa.direccion.ciudad} desde ${empresa.anioFundacion}`,
     short_name: 'Ejemplo',
-    description:
-      'Imprenta offset y digital en Tu Ciudad (Tu Provincia). Encuadernación artesanal, acabados premium, personalización e impresión sobre madera.',
+    description: empresa.descripcion,
     start_url: '/',
     display: 'standalone',
     background_color: '#EFE7D7',

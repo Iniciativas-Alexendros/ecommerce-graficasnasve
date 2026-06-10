@@ -3,6 +3,8 @@
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
+import { empresa } from '@/config/empresa'
+
 interface PropsLogo {
   /** color del wordmark según la superficie */
   variant?: 'light' | 'dark'
@@ -32,7 +34,7 @@ export function Logo({ variant = 'light', size = 28, className = '', soloMarca =
       <Marca size={size} />
       {!soloMarca && (
         <span className={['font-display font-extrabold text-2xl tracking-tight lowercase', colorTexto].join(' ')}>
-          ejemplo<span className="text-coral">.</span>
+          {empresa.marca}<span className="text-coral">.</span>
         </span>
       )}
     </span>

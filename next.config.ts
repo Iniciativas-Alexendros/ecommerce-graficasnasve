@@ -4,6 +4,7 @@
  * Desarrollado para Gráficas Ejemplo, S.L. (CIF B00000000)
  */
 import type { NextConfig } from 'next'
+import { empresa, SITIO_URL } from './src/config/empresa'
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -55,14 +56,14 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'www.tudominioantiguo.com' }],
-        destination: 'https://tudominio.com/:path*',
+        has: [{ type: 'host', value: `www.${empresa.dominioAntiguo}` }],
+        destination: `${SITIO_URL}/:path*`,
         permanent: true,
       },
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'tudominioantiguo.com' }],
-        destination: 'https://tudominio.com/:path*',
+        has: [{ type: 'host', value: empresa.dominioAntiguo }],
+        destination: `${SITIO_URL}/:path*`,
         permanent: true,
       },
     ]

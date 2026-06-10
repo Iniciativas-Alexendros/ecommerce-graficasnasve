@@ -4,8 +4,9 @@
  */
 
 import { ImageResponse } from 'next/og'
+import { empresa } from '@/config/empresa'
 
-export const alt = 'Gráficas Ejemplo — Imprenta en Tu Ciudad desde 20XX'
+export const alt = `${empresa.nombre} — Imprenta en ${empresa.direccion.ciudad} desde ${empresa.anioFundacion}`
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -54,13 +55,13 @@ export default function OpenGraphImage() {
               marginBottom: 24,
             }}
           >
-            Imprenta · Tu Ciudad · Tu Provincia
+            Imprenta · {empresa.direccion.ciudad} · {empresa.direccion.provincia}
           </div>
           <div style={{ display: 'flex', fontSize: 104, fontWeight: 800, color: '#16140F', lineHeight: 1 }}>
-            Gráficas Ejemplo
+            {empresa.nombre}
           </div>
           <div style={{ display: 'flex', fontSize: 46, color: '#16140F', marginTop: 28 }}>
-            Impreso preciso desde 20XX.
+            Impreso preciso desde {empresa.anioFundacion}.
           </div>
         </div>
         <Barra />

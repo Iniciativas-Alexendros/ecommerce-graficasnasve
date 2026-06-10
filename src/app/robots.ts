@@ -4,6 +4,7 @@
  */
 
 import type { MetadataRoute } from 'next'
+import { SITIO_URL } from '@/config/empresa'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -14,6 +15,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/admin', '/api'],
       },
     ],
-    sitemap: 'https://tudominio.com/sitemap.xml',
+    sitemap: `${SITIO_URL}/sitemap.xml`,
   }
 }

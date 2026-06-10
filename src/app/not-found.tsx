@@ -9,13 +9,14 @@ import { Logo } from '@/components/marketing/Logo'
 import { Baldosa } from '@/components/ui/Baldosa'
 import { CropMarks } from '@/components/ui/CropMarks'
 import { BarraCMYK } from '@/components/ui/BarraCMYK'
+import { empresa } from '@/config/empresa'
 
 export default function NoEncontrado() {
   return (
     <div className="min-h-screen flex flex-col bg-paper-100">
       <header className="border-b border-taupe">
         <div className="contenedor h-16 flex items-center">
-          <Link href="/" aria-label="Gráficas Ejemplo — inicio" className="transition-opacity hover:opacity-80">
+          <Link href="/" aria-label={`${empresa.nombre} — inicio`} className="transition-opacity hover:opacity-80">
             <Logo />
           </Link>
         </div>
