@@ -10,6 +10,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { MessageCircle, X, ArrowRight } from 'lucide-react'
+import { empresa } from '@/config/empresa'
 
 type De = 'bot' | 'user'
 interface Mensaje {
@@ -80,7 +81,7 @@ export function Chatbot() {
           {/* Cabecera */}
           <div className="bg-key text-paper-100 px-4 py-3 flex items-center justify-between">
             <div>
-              <p className="font-display font-bold text-sm text-paper-0">Asistente ejemplo 👋</p>
+              <p className="font-display font-bold text-sm text-paper-0">Asistente {empresa.marca} 👋</p>
               <p className="font-mono text-[0.65rem] uppercase tracking-widest text-paper-100/50">
                 En línea · ~30 seg
               </p>

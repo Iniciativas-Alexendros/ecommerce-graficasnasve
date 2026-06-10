@@ -6,6 +6,7 @@
 import Link from 'next/link'
 import { Logo } from '@/components/marketing/Logo'
 import { BarraCMYK } from '@/components/ui/BarraCMYK'
+import { empresa, ciudadProvincia } from '@/config/empresa'
 
 const serviciosLinks = [
   { href: '/servicios/impresion-offset', label: 'Impresión Offset' },
@@ -40,31 +41,31 @@ export function Footer() {
             <Link
               href="/"
               className="inline-block transition-opacity hover:opacity-80"
-              aria-label="Gráficas Ejemplo — ir a inicio"
+              aria-label={`${empresa.nombre} — ir a inicio`}
             >
               <Logo variant="dark" />
             </Link>
             <p className="mt-4 text-sm text-gris leading-relaxed">
-              Imprenta offset y digital en Tu Ciudad (Tu Provincia) desde 20XX.
+              Imprenta offset y digital en {ciudadProvincia} desde {empresa.anioFundacion}.
               Calidad que se toca.
             </p>
             <address className="mt-6 not-italic text-sm text-gris leading-loose">
-              <p>Calle de Ejemplo, 1</p>
-              <p>00000 Tu Ciudad (Tu Provincia)</p>
+              <p>{empresa.direccion.calle}</p>
+              <p>{empresa.direccion.cp} {ciudadProvincia}</p>
               <p className="mt-2">
                 <a
-                  href="tel:+34600000000"
+                  href={`tel:${empresa.telefono.e164}`}
                   className="hover:text-ambar transition-colors duration-150"
                 >
-                  600 00 00 00
+                  {empresa.telefono.display}
                 </a>
               </p>
               <p>
                 <a
-                  href="mailto:hola@tudominio.com"
+                  href={`mailto:${empresa.email}`}
                   className="hover:text-ambar transition-colors duration-150"
                 >
-                  hola@tudominio.com
+                  {empresa.email}
                 </a>
               </p>
             </address>
@@ -134,7 +135,7 @@ export function Footer() {
         {/* Pie */}
         <div className="mt-16 pt-8 border-t border-papel/10 flex flex-col gap-2 md:flex-row md:justify-between md:items-center">
           <p className="text-xs text-gris">
-            © 2026 Gráficas Ejemplo, S.L. · CIF B00000000
+            © 2026 {empresa.nombreLegal} · CIF {empresa.cif}
           </p>
           <p className="text-xs text-gris">
             Desarrollado por{' '}

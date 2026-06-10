@@ -11,6 +11,7 @@ import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { Boton } from '@/components/ui/Boton'
 import { Logo } from '@/components/marketing/Logo'
+import { empresa } from '@/config/empresa'
 
 const enlaces = [
   { href: '/', label: 'Inicio' },
@@ -31,7 +32,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-paper-100/90 backdrop-blur border-b border-taupe">
       <nav className="contenedor flex items-center justify-between h-16" aria-label="Navegación principal">
-        <Link href="/" aria-label="Gráficas Ejemplo — ir a inicio" className="transition-opacity hover:opacity-80">
+        <Link href="/" aria-label={`${empresa.nombre} — ir a inicio`} className="transition-opacity hover:opacity-80">
           <Logo />
         </Link>
 
