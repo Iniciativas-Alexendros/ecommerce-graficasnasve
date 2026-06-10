@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from './fixtures'
 
 test('la tienda lista productos y permite filtrar por categoría', async ({ page }) => {
   await page.goto('/tienda')

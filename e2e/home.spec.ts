@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from './fixtures'
 
 test('la home carga con título y encabezado principal', async ({ page }) => {
   const res = await page.goto('/')

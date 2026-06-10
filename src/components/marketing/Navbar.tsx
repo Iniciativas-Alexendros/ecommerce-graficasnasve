@@ -3,7 +3,7 @@
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
-'use client'
+"use client";
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -14,20 +14,22 @@ import { Logo } from '@/components/marketing/Logo'
 import { empresa } from '@/config/empresa'
 
 const enlaces = [
-  { href: '/', label: 'Inicio' },
-  { href: '/tienda', label: 'Tienda' },
-  { href: '/encargo', label: 'Encargo' },
-  { href: '/servicios', label: 'Servicios' },
-  { href: '/contacto', label: 'Contacto' },
-]
+  { href: "/", label: "Inicio" },
+  { href: "/tienda", label: "Tienda" },
+  { href: "/encargo", label: "Encargo" },
+  { href: "/servicios", label: "Servicios" },
+  { href: "/contacto", label: "Contacto" },
+];
 
 function esActivo(pathname: string, href: string) {
-  return href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(href + '/')
+  return href === "/"
+    ? pathname === "/"
+    : pathname === href || pathname.startsWith(href + "/");
 }
 
 export function Navbar() {
-  const [menuAbierto, setMenuAbierto] = useState(false)
-  const pathname = usePathname()
+  const [menuAbierto, setMenuAbierto] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 bg-paper-100/90 backdrop-blur border-b border-taupe">
@@ -39,33 +41,45 @@ export function Navbar() {
         {/* Links escritorio */}
         <ul className="hidden md:flex items-center gap-7" role="list">
           {enlaces.map(({ href, label }) => {
-            const activo = esActivo(pathname, href)
+            const activo = esActivo(pathname, href);
             return (
               <li key={href}>
                 <Link
                   href={href}
+                  data-tour={
+                    href === "/tienda"
+                      ? "tienda"
+                      : href === "/encargo"
+                        ? "encargo"
+                        : undefined
+                  }
                   className={[
-                    'font-sans text-sm font-medium transition-colors duration-150 pb-1',
+                    "font-sans text-sm font-medium transition-colors duration-150 pb-1",
                     activo
-                      ? 'text-key border-b-2 border-ambar'
-                      : 'text-gris hover:text-key border-b-2 border-transparent',
-                  ].join(' ')}
+                      ? "text-key border-b-2 border-ambar"
+                      : "text-gris hover:text-key border-b-2 border-transparent",
+                  ].join(" ")}
                 >
                   {label}
                 </Link>
               </li>
-            )
+            );
           })}
         </ul>
 
         {/* Lado derecho escritorio */}
         <div className="hidden md:flex items-center gap-4">
           <span className="hidden lg:inline-flex items-center gap-2 rounded-pill border border-taupe px-3 py-1 font-mono text-xs uppercase tracking-widest text-gris">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan" aria-hidden="true" />
+            <span
+              className="w-1.5 h-1.5 rounded-full bg-cyan"
+              aria-hidden="true"
+            />
             48 H · Taller
           </span>
           <Boton variant="primary" size="sm" asChild>
-            <Link href="/encargo">Pedir presupuesto</Link>
+            <Link href="/encargo" data-tour="cta">
+              Pedir presupuesto
+            </Link>
           </Boton>
         </div>
 
@@ -74,7 +88,7 @@ export function Navbar() {
           className="md:hidden flex items-center justify-center w-10 h-10 text-key"
           onClick={() => setMenuAbierto(!menuAbierto)}
           aria-expanded={menuAbierto}
-          aria-label={menuAbierto ? 'Cerrar menú' : 'Abrir menú'}
+          aria-label={menuAbierto ? "Cerrar menú" : "Abrir menú"}
         >
           {menuAbierto ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -85,21 +99,21 @@ export function Navbar() {
         <div className="md:hidden bg-paper-100 border-t border-taupe">
           <ul className="contenedor flex flex-col py-4 gap-1" role="list">
             {enlaces.map(({ href, label }) => {
-              const activo = esActivo(pathname, href)
+              const activo = esActivo(pathname, href);
               return (
                 <li key={href}>
                   <Link
                     href={href}
                     className={[
-                      'block py-3 font-sans text-base font-medium transition-colors duration-150',
-                      activo ? 'text-key' : 'text-gris hover:text-key',
-                    ].join(' ')}
+                      "block py-3 font-sans text-base font-medium transition-colors duration-150",
+                      activo ? "text-key" : "text-gris hover:text-key",
+                    ].join(" ")}
                     onClick={() => setMenuAbierto(false)}
                   >
                     {label}
                   </Link>
                 </li>
-              )
+              );
             })}
             <li className="pt-3 border-t border-taupe mt-2">
               <Boton variant="primary" size="sm" className="w-full" asChild>
@@ -112,5 +126,5 @@ export function Navbar() {
         </div>
       )}
     </header>
-  )
+  );
 }

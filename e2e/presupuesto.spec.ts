@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from './fixtures'
 
 test('el formulario de presupuesto valida los campos requeridos', async ({ page }) => {
   await page.goto('/presupuesto')

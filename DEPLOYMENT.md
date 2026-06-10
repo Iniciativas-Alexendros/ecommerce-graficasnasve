@@ -39,7 +39,7 @@ Copiar `.env.local.example` → `.env.local` y rellenar (nunca subir `.env.local
 
 > **La tienda no usa Supabase.** El catálogo de productos/preformatos vive en código
 > (`src/lib/catalogoTienda.ts`) y el motor de precio en `src/lib/precioTienda.ts`; no requiere
-> migración ni *seed*. ⚠️ Los **precios son orientativos**: para producción, sustituir los
+> migración ni _seed_. ⚠️ Los **precios son orientativos**: para producción, sustituir los
 > coeficientes de `precioTienda.ts` (precio base por producto, tramos de volumen y factores de
 > gramaje/acabado) por la tarifa real de Ejemplo.
 
@@ -53,7 +53,7 @@ Copiar `.env.local.example` → `.env.local` y rellenar (nunca subir `.env.local
 
 1. Importar el repo. Región **`cdg1`** (París) — ver `vercel.json`.
 2. Definir todas las variables de §2 en **Project → Settings → Environment Variables**
-   (producción y *preview*).
+   (producción y _preview_).
 3. Build: `pnpm build` (Turbopack por defecto en Next 16). Deploy automático por rama.
 
 ## 6. Cloudflare (DNS)
@@ -71,7 +71,7 @@ Copiar `.env.local.example` → `.env.local` y rellenar (nunca subir `.env.local
 
 Los despliegues los gestiona Vercel (previews por PR, producción en `main`).
 
-## 8. Pagos (futuro — Fase 4)
+## 8. Pagos (futuro — Fase 5)
 
 La pasarela **no** está activada: `/api/webhooks/stripe` responde **501**. Antes de integrar,
 decidir proveedor (ver comparativa en [`ROADMAP.md`](./ROADMAP.md) › Fase 5):
