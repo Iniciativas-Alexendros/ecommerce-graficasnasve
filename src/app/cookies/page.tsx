@@ -1,14 +1,15 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
 import type { Metadata } from 'next'
 import { SectionLabel } from '@/components/ui/SectionLabel'
+import { empresa } from '@/config/empresa'
 
 export const metadata: Metadata = {
-  title: 'Política de Cookies — Gráficas NASVE',
-  description: 'Política de cookies del sitio web de Gráficas NASVE, S.L.',
+  title: `Política de Cookies — ${empresa.nombre}`,
+  description: `Política de cookies del sitio web de ${empresa.nombreLegal}`,
   robots: { index: false, follow: false },
 }
 
@@ -23,7 +24,7 @@ interface CookieInfo {
 const cookies: CookieInfo[] = [
   {
     nombre: 'sb-*-auth-token',
-    proveedor: 'Supabase (NASVE)',
+    proveedor: 'Supabase (Ejemplo)',
     finalidad: 'Gestión de sesión autenticada en el panel de administración',
     duracion: 'Sesión',
     tipo: 'esencial',
@@ -205,10 +206,10 @@ export default function PaginaCookies() {
               de tus datos personales, puedes contactar con nuestra Delegada de Protección
               de Datos, Alicia Armas, en{' '}
               <a
-                href="mailto:alicia@nasve.com"
+                href={`mailto:${empresa.emailPrivacidad}`}
                 className="text-negro underline hover:text-ambar transition-colors"
               >
-                alicia@nasve.com
+                {empresa.emailPrivacidad}
               </a>
               .
             </p>

@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -7,9 +7,10 @@ import type { Metadata } from 'next'
 import { Leaf, Droplets, Recycle, Trash2 } from 'lucide-react'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { Baldosa, type ColorBaldosa } from '@/components/ui/Baldosa'
+import { empresa } from '@/config/empresa'
 
 export const metadata: Metadata = {
-  title: 'Sostenibilidad — Gráficas NASVE',
+  title: `Sostenibilidad — ${empresa.nombre}`,
   description:
     'Nuestro compromiso con el medioambiente: papeles certificados FSC/PEFC, tintas vegetales, materiales bio/reciclados y gestión responsable de residuos.',
 }
@@ -27,7 +28,7 @@ La cadena de custodia certificada nos permite ofrecer a nuestros clientes impres
   {
     icono: Droplets,
     titulo: 'Tintas vegetales y de base acuosa',
-    texto: `Las tintas convencionales basadas en aceites minerales y disolventes petroquímicos son una de las fuentes de contaminación más significativas en la industria gráfica. En NASVE hemos transitado progresivamente hacia tintas de base vegetal —fundamentalmente aceite de soja y linaza— y tintas de base acuosa para la impresión digital.
+    texto: `Las tintas convencionales basadas en aceites minerales y disolventes petroquímicos son una de las fuentes de contaminación más significativas en la industria gráfica. En Ejemplo hemos transitado progresivamente hacia tintas de base vegetal —fundamentalmente aceite de soja y linaza— y tintas de base acuosa para la impresión digital.
 
 Las tintas vegetales ofrecen colores más vivos, son más fáciles de destiñar en el proceso de reciclaje del papel y emiten menos compuestos orgánicos volátiles (COV) durante la impresión. Un beneficio doble: para el planeta y para la calidad final del impreso.`,
   },
@@ -41,7 +42,7 @@ Para proyectos de packaging, ofrecemos alternativas al plástico: laminados biod
   {
     icono: Trash2,
     titulo: 'Gestión responsable de residuos',
-    texto: `Un taller de impresión genera residuos específicos: recortes de papel y cartón, planchas de aluminio, cartuchos de tinta y, en ocasiones, productos químicos de limpieza. En NASVE hemos implementado un sistema interno de separación y gestión de residuos conforme a la normativa vigente.
+    texto: `Un taller de impresión genera residuos específicos: recortes de papel y cartón, planchas de aluminio, cartuchos de tinta y, en ocasiones, productos químicos de limpieza. En Ejemplo hemos implementado un sistema interno de separación y gestión de residuos conforme a la normativa vigente.
 
 Los recortes de papel y cartón se destinan íntegramente a reciclaje. Las planchas de aluminio offset se reciclan a través de gestores autorizados. Los residuos químicos se gestionan con empresas especializadas en tratamiento de residuos peligrosos. Y optimizamos constantemente los formatos de impresión para minimizar el papel sobrante en cada trabajo.`,
   },
@@ -60,7 +61,7 @@ export default function PaginaSostenibilidad() {
             <span className="text-cyan">imprimir limpio</span>
           </h1>
           <p className="relato text-lg md:text-xl text-key/80 leading-snug">
-            La industria gráfica tiene una responsabilidad medioambiental real. En NASVE llevamos
+            La industria gráfica tiene una responsabilidad medioambiental real. En Ejemplo llevamos
             años reduciendo nuestro impacto: materiales certificados, tintas más limpias, gestión
             rigurosa de residuos. No como marketing, sino como práctica cotidiana.
           </p>

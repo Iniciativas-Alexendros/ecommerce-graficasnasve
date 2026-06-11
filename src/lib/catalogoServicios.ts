@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -110,7 +110,7 @@ export const catalogoServicios: Servicio[] = [
     descripcionCorta:
       'Impresión digital directa sobre madera natural. Packaging premium y señalética única.',
     descripcion:
-      'La impresión digital directa sobre madera es una especialidad diferencial de NASVE. Trabajamos con madera natural y contrachapado de distintos grosores para crear productos únicos: packaging de lujo, señalética corporativa, souvenirs, menús de restaurante sobre tablilla de madera, decoración interior y objetos de regalo personalizados. La veta natural de la madera forma parte del diseño, creando piezas que no pueden replicarse.',
+      'La impresión digital directa sobre madera es una especialidad diferencial de Ejemplo. Trabajamos con madera natural y contrachapado de distintos grosores para crear productos únicos: packaging de lujo, señalética corporativa, souvenirs, menús de restaurante sobre tablilla de madera, decoración interior y objetos de regalo personalizados. La veta natural de la madera forma parte del diseño, creando piezas que no pueden replicarse.',
     beneficios: [
       'Impresión directa UV sobre madera natural y laminada',
       'Tablillas de 3, 6 y 10 mm de grosor',

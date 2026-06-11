@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -10,11 +10,12 @@ import { catalogoServicios } from '@/lib/catalogoServicios'
 import { Tarjeta } from '@/components/ui/Tarjeta'
 import { Baldosa, type ColorBaldosa } from '@/components/ui/Baldosa'
 import { SectionLabel } from '@/components/ui/SectionLabel'
+import { empresa } from '@/config/empresa'
 
 export const metadata: Metadata = {
-  title: 'Servicios de Impresión y Acabado — Gráficas NASVE',
+  title: `Servicios de Impresión y Acabado — ${empresa.nombre}`,
   description:
-    'Impresión offset, digital, encuadernación artesanal, acabados premium, personalización con dato variable e impresión sobre madera. Todo en un mismo taller en Torrent.',
+    `Impresión offset, digital, encuadernación artesanal, acabados premium, personalización con dato variable e impresión sobre madera. Todo en un mismo taller en ${empresa.direccion.ciudad}.`,
 }
 
 const ICONOS_SERVICIO: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {

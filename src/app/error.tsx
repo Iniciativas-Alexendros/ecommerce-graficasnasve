@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art — Error boundary con identidad NASVE
+ * tudominio.com — Error boundary con identidad Ejemplo
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 

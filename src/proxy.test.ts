@@ -19,18 +19,18 @@ describe('proxy (sin configuración de Supabase)', () => {
   })
 
   it('redirige /admin a /admin/login', async () => {
-    const res = await proxy(new NextRequest('https://graficasnasve.art/admin'))
+    const res = await proxy(new NextRequest('https://tudominio.com/admin'))
     expect(res.status).toBe(307)
     expect(res.headers.get('location')).toContain('/admin/login')
   })
 
   it('NO redirige /admin/login (evita el bucle de redirección)', async () => {
-    const res = await proxy(new NextRequest('https://graficasnasve.art/admin/login'))
+    const res = await proxy(new NextRequest('https://tudominio.com/admin/login'))
     expect(res.headers.get('location')).toBeNull()
   })
 
   it('deja pasar las rutas públicas', async () => {
-    const res = await proxy(new NextRequest('https://graficasnasve.art/'))
+    const res = await proxy(new NextRequest('https://tudominio.com/'))
     expect(res.headers.get('location')).toBeNull()
   })
 })

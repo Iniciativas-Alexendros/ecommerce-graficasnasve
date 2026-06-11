@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art — SectionLabel (nº de lámina + marca de registro + rótulo)
+ * tudominio.com — SectionLabel (nº de lámina + marca de registro + rótulo)
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 

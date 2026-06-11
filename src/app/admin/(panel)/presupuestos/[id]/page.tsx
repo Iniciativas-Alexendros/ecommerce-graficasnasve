@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -11,13 +11,14 @@ import type { Presupuesto } from '@/types/supabase'
 import { Tarjeta } from '@/components/ui/Tarjeta'
 import { Boton } from '@/components/ui/Boton'
 import { Chip, type TonoChip } from '@/components/ui/Chip'
+import { empresa } from '@/config/empresa'
 
 interface PropiedadesId {
   params: Promise<{ id: string }>
 }
 
 export const metadata: Metadata = {
-  title: 'Detalle de presupuesto — Admin NASVE',
+  title: 'Detalle de presupuesto — Admin Ejemplo',
   robots: { index: false, follow: false },
 }
 
@@ -223,7 +224,7 @@ export default async function PaginaDetallePresupuesto({ params }: PropiedadesId
             {/* Enlace a email */}
             <div className="mt-6 pt-6 border-t border-taupe">
               <Boton variant="secondary" size="md" asChild className="w-full">
-                <a href={`mailto:${presupuesto.email}?subject=Re: Tu solicitud de presupuesto — Gráficas NASVE`}>
+                <a href={`mailto:${presupuesto.email}?subject=Re: Tu solicitud de presupuesto — ${empresa.nombre}`}>
                   Responder por email
                 </a>
               </Boton>

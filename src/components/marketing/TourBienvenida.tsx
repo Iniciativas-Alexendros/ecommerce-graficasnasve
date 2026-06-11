@@ -5,7 +5,7 @@
  * Tour de primera visita con driver.js: presenta el taller y la ruta
  * Tienda → Encargo → Presupuesto → Asistente. Se lanza solo una vez
  * (recordado en localStorage) y puede relanzarse con el evento
- * `nasve:tour` o el botón flotante. Respeta `prefers-reduced-motion`.
+ * `app:tour` o el botón flotante. Respeta `prefers-reduced-motion`.
  */
 
 "use client";
@@ -14,16 +14,16 @@ import { useCallback, useEffect, useRef } from "react";
 import { driver, type Driver } from "driver.js";
 import "driver.js/dist/driver.css";
 import { Compass } from "lucide-react";
+import { empresa } from "@/config/empresa";
 
-const CLAVE_VISTO = "nasve:tour-visto:v1";
+const CLAVE_VISTO = "tour-visto:v1";
 
 const PASOS = [
   {
     element: '[data-tour="logo"]',
     popover: {
-      title: "Bienvenida a Gráficas NASVE",
-      description:
-        "Imprenta de Torrent desde 1982. Te enseño el sitio en 30 segundos: cómo pedir, qué ofrecemos y dónde resolver dudas.",
+      title: `Bienvenida a ${empresa.nombre}`,
+      description: `Imprenta de ${empresa.direccion.ciudad} desde ${empresa.anioFundacion}. Te enseño el sitio en 30 segundos: cómo pedir, qué ofrecemos y dónde resolver dudas.`,
     },
   },
   {
@@ -116,11 +116,11 @@ export function TourBienvenida() {
     }
   }, [lanzar]);
 
-  // Permite relanzar desde cualquier sitio: window.dispatchEvent(new Event('nasve:tour'))
+  // Permite relanzar desde cualquier sitio: window.dispatchEvent(new Event('app:tour'))
   useEffect(() => {
     const handler = () => lanzar();
-    window.addEventListener("nasve:tour", handler);
-    return () => window.removeEventListener("nasve:tour", handler);
+    window.addEventListener("app:tour", handler);
+    return () => window.removeEventListener("app:tour", handler);
   }, [lanzar]);
 
   useEffect(() => () => driverRef.current?.destroy(), []);

@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art — Stat (cifra grande Archivo + caption mono)
+ * tudominio.com — Stat (cifra grande Archivo + caption mono)
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 

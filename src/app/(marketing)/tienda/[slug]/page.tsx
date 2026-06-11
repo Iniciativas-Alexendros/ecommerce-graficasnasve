@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -18,8 +18,9 @@ import { ConfiguradorPrecio } from './ConfiguradorPrecio'
 import { Baldosa } from '@/components/ui/Baldosa'
 import { SpecTable } from '@/components/ui/SpecTable'
 import { Chip } from '@/components/ui/Chip'
+import { empresa, SITIO_URL } from '@/config/empresa'
 
-const BASE_URL = 'https://graficasnasve.art'
+const BASE_URL = SITIO_URL
 
 interface PropiedadesSlug {
   params: Promise<{ slug: string }>
@@ -38,7 +39,7 @@ export async function generateMetadata({ params }: PropiedadesSlug): Promise<Met
   }
 
   return {
-    title: `${producto.nombre} — Tienda Gráficas NASVE`,
+    title: `${producto.nombre} — Tienda ${empresa.nombre}`,
     description: producto.descripcionCorta,
   }
 }
@@ -59,14 +60,14 @@ export default async function PaginaProducto({ params }: PropiedadesSlug) {
     name: producto.nombre,
     description: producto.descripcion,
     category: etiquetaCategoria(producto.categoria),
-    brand: { '@type': 'Brand', name: 'Gráficas NASVE' },
+    brand: { '@type': 'Brand', name: empresa.nombre },
     offers: {
       '@type': 'AggregateOffer',
       priceCurrency: 'EUR',
       lowPrice: desde,
       offerCount: producto.cantidades.length,
       availability: 'https://schema.org/InStock',
-      seller: { '@type': 'Organization', name: 'Gráficas NASVE, S.L.' },
+      seller: { '@type': 'Organization', name: empresa.nombreLegal },
     },
   }
 

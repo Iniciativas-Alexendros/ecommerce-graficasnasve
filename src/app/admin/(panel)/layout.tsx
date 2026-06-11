@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -7,6 +7,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { createServidorSupabase } from '@/lib/supabase/servidor'
 import { BarraCMYK } from '@/components/ui/BarraCMYK'
+import { empresa } from '@/config/empresa'
 
 export default async function AdminLayout({
   children,
@@ -37,7 +38,7 @@ export default async function AdminLayout({
               href="/admin"
               className="font-display font-bold text-xl text-papel hover:text-ambar transition-colors"
             >
-              nasve admin
+              {empresa.marca} admin
             </Link>
             <div className="hidden md:flex items-center gap-4">
               <Link

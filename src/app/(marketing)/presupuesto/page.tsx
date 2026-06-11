@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -8,9 +8,10 @@ import { FormularioPresupuesto } from '@/components/formularios/FormularioPresup
 import type { ProductoPresupuesto } from '@/types/supabase'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { Tarjeta } from '@/components/ui/Tarjeta'
+import { empresa } from '@/config/empresa'
 
 export const metadata: Metadata = {
-  title: 'Solicitar Presupuesto — Gráficas NASVE',
+  title: `Solicitar Presupuesto — ${empresa.nombre}`,
   description:
     'Solicita presupuesto sin compromiso para tu proyecto de impresión. Respondemos en menos de 24 horas laborables.',
 }
@@ -56,14 +57,14 @@ export default async function PaginaPresupuesto({ searchParams }: PropiedadesPag
             <div className="space-y-6 border-t border-taupe pt-8">
               <div>
                 <p className="font-mono text-xs uppercase tracking-widest text-gris mb-1">Teléfono</p>
-                <a href="tel:+34961553409" className="font-sans text-sm text-key hover:text-ambar-700 transition-colors">
-                  961 55 34 09
+                <a href={`tel:${empresa.telefono.e164}`} className="font-sans text-sm text-key hover:text-ambar-700 transition-colors">
+                  {empresa.telefono.display}
                 </a>
               </div>
               <div>
                 <p className="font-mono text-xs uppercase tracking-widest text-gris mb-1">Email</p>
-                <a href="mailto:nasve@nasve.com" className="font-sans text-sm text-key hover:text-ambar-700 transition-colors">
-                  nasve@nasve.com
+                <a href={`mailto:${empresa.email}`} className="font-sans text-sm text-key hover:text-ambar-700 transition-colors">
+                  {empresa.email}
                 </a>
               </div>
               <div>

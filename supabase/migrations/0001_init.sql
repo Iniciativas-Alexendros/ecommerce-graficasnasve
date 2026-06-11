@@ -1,4 +1,4 @@
--- graficasnasve.art — Esquema inicial
+-- tudominio.com — Esquema inicial
 -- © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
 --
 -- Fuente de verdad: src/types/supabase.ts

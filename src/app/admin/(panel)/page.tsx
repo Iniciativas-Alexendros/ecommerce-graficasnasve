@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -10,9 +10,10 @@ import type { Presupuesto } from '@/types/supabase'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { Stat } from '@/components/ui/Stat'
 import { Tarjeta } from '@/components/ui/Tarjeta'
+import { empresa } from '@/config/empresa'
 
 export const metadata: Metadata = {
-  title: 'Dashboard — Admin NASVE',
+  title: 'Dashboard — Admin Ejemplo',
   robots: { index: false, follow: false },
 }
 
@@ -76,7 +77,7 @@ export default async function PaginaAdminDashboard() {
         <SectionLabel>Panel · Admin</SectionLabel>
         <h1 className="mt-3 font-display font-extrabold text-3xl text-key mb-1">Presupuestos</h1>
         <p className="font-sans text-sm text-gris">
-          Gestión de solicitudes recibidas a través de graficasnasve.art
+          Gestión de solicitudes recibidas a través de {empresa.dominio}
         </p>
       </div>
 

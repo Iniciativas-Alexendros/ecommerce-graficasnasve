@@ -1,16 +1,16 @@
 /**
- * graficasnasve.art — Web App Manifest (marca NASVE)
+ * tudominio.com — Web App Manifest (marca Ejemplo)
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
 import type { MetadataRoute } from 'next'
+import { empresa } from '@/config/empresa'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Gráficas NASVE — Imprenta en Torrent desde 1982',
-    short_name: 'NASVE',
-    description:
-      'Imprenta offset y digital en Torrent (Valencia). Encuadernación artesanal, acabados premium, personalización e impresión sobre madera.',
+    name: `${empresa.nombre} — Imprenta en ${empresa.direccion.ciudad} desde ${empresa.anioFundacion}`,
+    short_name: 'Ejemplo',
+    description: empresa.descripcion,
     start_url: '/',
     display: 'standalone',
     background_color: '#EFE7D7',

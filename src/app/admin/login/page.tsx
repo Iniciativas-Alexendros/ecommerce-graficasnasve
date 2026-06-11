@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * tudominio.com
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -12,6 +12,7 @@ import { createClienteSupabase } from '@/lib/supabase/cliente'
 import { Campo } from '@/components/ui/Campo'
 import { Boton } from '@/components/ui/Boton'
 import { Logo } from '@/components/marketing/Logo'
+import { empresa } from '@/config/empresa'
 
 export default function PaginaAdminLogin() {
   const router = useRouter()
@@ -107,7 +108,7 @@ export default function PaginaAdminLogin() {
         </form>
 
         <p className="text-center mt-6 font-mono text-xs text-gris">
-          graficasnasve.art © 2026
+          {empresa.dominio} © 2026
         </p>
       </div>
     </div>
