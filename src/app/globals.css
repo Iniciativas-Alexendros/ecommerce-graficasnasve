@@ -248,8 +248,7 @@ h1, h2, h3, h4 {
   background: var(--borde);
 }
 
-/* ── Visita guiada (driver.js) — tema NASVE «papel + cuatricromía» ────────── */
-.driver-popover.nasve-tour,
+/* ── Visita guiada (driver.js) — tema de marca «papel + cuatricromía» ────────── */
 .driver-popover {
   background: var(--color-paper-0);
   color: var(--color-key);

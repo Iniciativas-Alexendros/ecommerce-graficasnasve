@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art — Visita guiada de bienvenida (onboarding)
+ * tudominio.com — Visita guiada de bienvenida (onboarding)
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  *
  * Tour de primera visita con driver.js: presenta el taller y la ruta

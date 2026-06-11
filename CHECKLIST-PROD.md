@@ -1,7 +1,7 @@
 # CHECKLIST PRE-PRODUCCIÓN — web a producción
 
 > Lista reutilizable para sacar **cualquier** web a producción. La columna **Estado**
-> refleja `graficasnasve.art` a fecha de este PR. Leyenda: ✅ hecho · 🟡 parcial/manual · ⬜ pendiente.
+> refleja `tudominio.com` a fecha de este PR. Leyenda: ✅ hecho · 🟡 parcial/manual · ⬜ pendiente.
 > Hermanos: [`DEPLOYMENT.md`](./DEPLOYMENT.md) · [`ROADMAP.md`](./ROADMAP.md) · [`ARCHITECTURE.md`](./ARCHITECTURE.md).
 
 ## 1. Calidad de código

@@ -10,7 +10,7 @@ y [Versionado Semántico](https://semver.org/lang/es/).
 - **Visita guiada de bienvenida** (`driver.js`): onboarding de primera visita
   (recordado en `localStorage`) que recorre Logo → Tienda → Encargo → CTA →
   Asistente. Accesible (respeta `prefers-reduced-motion`, navegable por teclado),
-  popovers tematizados con el Design System NASVE y botón flotante para relanzarlo.
+  popovers tematizados con el Design System Ejemplo y botón flotante para relanzarlo.
 - **`e2e/tour.spec.ts`**: cobertura E2E del tour (autolanzado, no-repetición, relanzar).
 - **`e2e/fixtures.ts`**: fixture que neutraliza el tour en el resto de la suite.
 - **`CHECKLIST-PROD.md`**: checklist reutilizable web→producción (11 bloques).

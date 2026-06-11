@@ -119,7 +119,7 @@ flowchart LR
 - [x] **Onboarding interactivo** (`src/components/marketing/TourBienvenida.tsx`, driver.js):
       se autolanza una vez por visitante (recordado en `localStorage`), recorre
       Logo → Tienda → Encargo → CTA presupuesto → Asistente, respeta
-      `prefers-reduced-motion`, popovers tematizados con el DS NASVE y botón flotante
+      `prefers-reduced-motion`, popovers tematizados con el DS Ejemplo y botón flotante
       «Visita guiada» para relanzarlo. Cubierto por `e2e/tour.spec.ts`.
 
 ## Deuda técnica / transversal

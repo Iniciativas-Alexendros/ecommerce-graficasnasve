@@ -1,4 +1,4 @@
-# COSTES — graficasnasve.art
+# COSTES — tudominio.com
 
 > Doble lectura: **coste interno real** (lo que cuesta operar el sitio) y
 > **propuesta de venta** (lo que se factura al cliente). Cifras verificadas en
@@ -63,7 +63,7 @@ No es caja, es tiempo. A tarifa interna de referencia **40 €/h**:
 | **Coste interno total (arranque)**                     | **≈ 140 €/mes** |
 | **Coste interno total (infra madura: + Supabase Pro)** | **≈ 162 €/mes** |
 
-**Setup inicial (one-off):** el Design System NASVE + las 6 fases ya construidas
+**Setup inicial (one-off):** el Design System Ejemplo + las 6 fases ya construidas
 representan, a 40 €/h, del orden de **80–120 h** de desarrollo ≈ **3.200–4.800 €**
 de coste hundido (ya invertido; relevante para amortización, no recurrente).
 
@@ -78,7 +78,7 @@ sobre coste interno (~2× en cuota, estándar en mantenimiento web para PyME).
 
 | Concepto                                                                  | Precio            |
 | ------------------------------------------------------------------------- | ----------------- |
-| Diseño + desarrollo web (DS NASVE, tienda, presupuesto, admin, SEO, tour) | **2.500–3.500 €** |
+| Diseño + desarrollo web (DS Ejemplo, tienda, presupuesto, admin, SEO, tour) | **2.500–3.500 €** |
 | _(Alternativa "amortizado")_: 0 € setup a cambio de permanencia 12 meses  | —                 |
 
 > El setup se posiciona como inversión cerrada; si la clienta prefiere CAPEX bajo,
@@ -126,12 +126,12 @@ no en la cuota: la cuota cubre infra + disponibilidad y fideliza.
 
 ## 3. Design System como activo
 
-El **DS NASVE v2.0** («Cuatricromía + papel») ya está construido y versionado en
+El **DS Ejemplo v2.0** («Cuatricromía + papel») ya está construido y versionado en
 `src/app/globals.css` + `src/components/ui/`. Implicaciones de coste:
 
 - **No se re-cobra** en cada cambio: reduce el coste-hora de evolutivos (componentes
   reutilizables → menos horas por feature).
-- **Reutilizable**: si NASVE quiere materiales coherentes (mailings, fichas), el DS
+- **Reutilizable**: si Ejemplo quiere materiales coherentes (mailings, fichas), el DS
   ya define tokens, tipografía y color — base para venderle más (extensible a otros
   soportes).
 - **Mantenimiento del DS**: prácticamente nulo mientras no cambie marca; cualquier
