@@ -1,5 +1,5 @@
 /**
- * tudominio.com
+ * graficasnasve.art
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -7,10 +7,9 @@ import type { Metadata } from 'next'
 import { catalogoTienda } from '@/lib/catalogoTienda'
 import { TiendaGrid } from './TiendaGrid'
 import { SectionLabel } from '@/components/ui/SectionLabel'
-import { empresa, SITIO_URL } from '@/config/empresa'
 
 export const metadata: Metadata = {
-  title: `Tienda — ${empresa.nombre}`,
+  title: 'Tienda — Gráficas NASVE',
   description:
     'Productos de imprenta listos para encargar: flyers, catálogos, tarjetas de visita, cartas de menú, gran formato y más. Estimación de precio por unidad al instante.',
 }
@@ -18,9 +17,9 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: `Tienda — ${empresa.nombre}`,
+  name: 'Tienda — Gráficas NASVE',
   description: 'Catálogo de productos de imprenta listos para configurar y encargar.',
-  url: `${SITIO_URL}/tienda`,
+  url: 'https://graficasnasve.art/tienda',
 }
 
 export default function PaginaTienda() {

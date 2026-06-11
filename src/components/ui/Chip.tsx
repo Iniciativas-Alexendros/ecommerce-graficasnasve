@@ -1,5 +1,5 @@
 /**
- * tudominio.com — Chip (etiqueta pill mono uppercase)
+ * graficasnasve.art — Chip (etiqueta pill mono uppercase)
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 

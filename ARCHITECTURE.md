@@ -1,4 +1,4 @@
-# ARCHITECTURE — tudominio.com
+# ARCHITECTURE — graficasnasve.art
 
 > **Estado:** refleja la **implementación real** del repositorio (no un diseño previo).
 > Stack: **Next.js 16** · React 19 · TypeScript strict · Tailwind v4 · Supabase · Resend · Vercel · Cloudflare.
@@ -6,7 +6,7 @@
 
 ## Propósito
 
-Web de la imprenta **Gráficas Ejemplo** (Tu Ciudad, Tu Provincia · CNAE 1812 · desde 20XX). El producto
+Web de la imprenta **Gráficas NASVE** (Torrent, Valencia · CNAE 1812 · desde 1982). El producto
 ataca un dolor concreto del sector: *las soluciones suelen entregarse tarde, caras o
 incompatibles*. La arquitectura prioriza por tanto tres cualidades verificables:
 
@@ -20,7 +20,7 @@ incompatibles*. La arquitectura prioriza por tanto tres cualidades verificables:
 |---|---|---|
 | Framework | **Next.js 16.2.7** (App Router, Turbopack) | `next lint` eliminado; APIs de request async; `middleware`→`proxy` |
 | UI | React **19.2.4**, TypeScript 5 strict | Sin `any` |
-| Estilos | Tailwind CSS v4 (`@theme`) | Design System Ejemplo (negro/papel/oro/tinta) |
+| Estilos | Tailwind CSS v4 (`@theme`) | Design System NASVE (negro/papel/oro/tinta) |
 | Datos + Auth | Supabase (PostgreSQL, RLS) | `@supabase/ssr` (patrón cookies) |
 | Almacenamiento | Supabase Storage · bucket privado `arte-files` | Archivos de arte del cliente |
 | Email | Resend | Notificación interna + acuse al cliente |
@@ -187,7 +187,7 @@ sequenceDiagram
     A->>S: upload a arte-files (service_role)
   end
   A->>D: insert en presupuestos (estado=nuevo)
-  A->>R: email interno (Ejemplo) + acuse (cliente)
+  A->>R: email interno (NASVE) + acuse (cliente)
   A-->>F: 201 { ok: true }
   F-->>C: pantalla de confirmación
 ```
@@ -205,7 +205,7 @@ gramaje/soporte y de acabado (cada una con su `factor`), tramos de cantidad y un
 - **Motor de precio** (`src/lib/precioTienda.ts`) — función pura
   `estimarPrecioUnitario = precioBase × gramaje × acabado × descuento_por_volumen`, con redondeo a
   céntimos y formato `es-ES`. ⚠️ **Coeficientes orientativos**: centralizados aquí para sustituir
-  por la tarifa real de Ejemplo en un único punto.
+  por la tarifa real de NASVE en un único punto.
 - **Funnel** — el CTA de la ficha enlaza a `/presupuesto?producto=<tipo>&detalle=<resumen>`; la
   página de presupuesto lee `searchParams` en servidor y **prefija** el formulario.
 
@@ -214,7 +214,7 @@ gramaje/soporte y de acabado (cada una con su `factor`), tramos de cantidad y un
 - Cabeceras en `next.config.ts`: CSP (sin `unsafe-eval`), `X-Frame-Options: DENY`, `nosniff`,
   `Referrer-Policy`, `Permissions-Policy` (cámara/mic/geo deshabilitados), `poweredByHeader: false`.
 - `next/image` con `remotePatterns` para `*.supabase.co` (la config `images.domains` está obsoleta en v16).
-- Redirecciones 301 de `tudominioantiguo.com` → `tudominio.com`.
+- Redirecciones 301 de `graficasnasve.com` → `graficasnasve.art`.
 - Fuentes self-hosted (sin peticiones a Google Fonts). Base jurídica de formularios: art. 6.1.b RGPD.
 - `SUPABASE_SERVICE_ROLE_KEY` solo en servidor.
 
@@ -235,7 +235,7 @@ Vercel (`cdg1`) + Supabase (UE) + Resend + Cloudflare. Pasos detallados en
 
 ## Planificado (ver ROADMAP)
 
-Definido en el briefing `briefing.pdf` y aún **no implementado**:
+Definido en el briefing `nasveweb2026.pdf` y aún **no implementado**:
 
 - **Encargo asistido** `/encargo` (configurador de 4 pasos con *preflight* de archivo).
 - **Asistente flotante** (chatbot global que cualifica el encargo en 4 preguntas → CRM).

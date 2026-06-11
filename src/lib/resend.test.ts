@@ -14,7 +14,7 @@ const datos: DatosPresupuesto = {
   nombre: 'María García',
   empresa: 'ACME S.L.',
   email: 'maria@acme.com',
-  telefono: '600000000',
+  telefono: '961553409',
   producto: 'catalogo',
   tirada: '500',
   detalles: 'Catálogo A4 de 48 páginas',

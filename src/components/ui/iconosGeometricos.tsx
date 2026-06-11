@@ -1,5 +1,5 @@
 /**
- * tudominio.com — Iconos geométricos del DS (motivo «baldosa»)
+ * graficasnasve.art — Iconos geométricos del DS (motivo «baldosa»)
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  *
  * SVGs monocromos (currentColor) que visten las baldosas de color: el

@@ -1,5 +1,5 @@
 /**
- * tudominio.com — FilterChip (pill de filtro interactivo)
+ * graficasnasve.art — FilterChip (pill de filtro interactivo)
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 

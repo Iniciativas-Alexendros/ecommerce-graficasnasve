@@ -1,10 +1,9 @@
 /**
- * tudominio.com
+ * graficasnasve.art
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
- * Desarrollado para Gráficas Ejemplo, S.L. (CIF B00000000)
+ * Desarrollado para Gráficas NASVE, S.L. (CIF B46261210)
  */
 import type { NextConfig } from 'next'
-import { empresa, SITIO_URL } from './src/config/empresa'
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -56,14 +55,14 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/:path*',
-        has: [{ type: 'host', value: `www.${empresa.dominioAntiguo}` }],
-        destination: `${SITIO_URL}/:path*`,
+        has: [{ type: 'host', value: 'www.graficasnasve.com' }],
+        destination: 'https://graficasnasve.art/:path*',
         permanent: true,
       },
       {
         source: '/:path*',
-        has: [{ type: 'host', value: empresa.dominioAntiguo }],
-        destination: `${SITIO_URL}/:path*`,
+        has: [{ type: 'host', value: 'graficasnasve.com' }],
+        destination: 'https://graficasnasve.art/:path*',
         permanent: true,
       },
     ]

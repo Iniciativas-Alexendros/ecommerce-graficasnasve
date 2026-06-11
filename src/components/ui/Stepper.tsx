@@ -1,5 +1,5 @@
 /**
- * tudominio.com — Stepper (indicador de pasos del encargo asistido)
+ * graficasnasve.art — Stepper (indicador de pasos del encargo asistido)
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 

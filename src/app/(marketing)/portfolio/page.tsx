@@ -1,5 +1,5 @@
 /**
- * tudominio.com
+ * graficasnasve.art
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -8,14 +8,13 @@ import { createServidorSupabase } from '@/lib/supabase/servidor'
 import type { PortfolioItem } from '@/types/supabase'
 import { PortfolioGrid } from './PortfolioGrid'
 import { SectionLabel } from '@/components/ui/SectionLabel'
-import { empresa } from '@/config/empresa'
 
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: `Portfolio — ${empresa.nombre}`,
+  title: 'Portfolio — Gráficas NASVE',
   description:
-    'Trabajos de impresión offset, digital, encuadernación artesanal, acabados premium e impresión sobre madera. Cientos de proyectos realizados.',
+    'Trabajos de impresión offset, digital, encuadernación artesanal, acabados premium e impresión sobre madera. Más de 40 años de proyectos realizados en Torrent.',
 }
 
 async function obtenerItems(): Promise<PortfolioItem[]> {

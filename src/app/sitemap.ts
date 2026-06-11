@@ -1,14 +1,13 @@
 /**
- * tudominio.com
+ * graficasnasve.art
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
 import type { MetadataRoute } from 'next'
 import { catalogoServicios } from '@/lib/catalogoServicios'
 import { catalogoTienda } from '@/lib/catalogoTienda'
-import { SITIO_URL } from '@/config/empresa'
 
-const BASE_URL = SITIO_URL
+const BASE_URL = 'https://graficasnasve.art'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const ahora = new Date()

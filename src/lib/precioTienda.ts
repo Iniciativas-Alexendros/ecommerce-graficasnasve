@@ -1,5 +1,5 @@
 /**
- * tudominio.com
+ * graficasnasve.art
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -8,7 +8,7 @@
  *
  * ⚠️ ORIENTATIVO: los coeficientes (precio base por producto, tramos de
  * volumen y factores de gramaje/acabado) son provisionales y deben
- * sustituirse por la tarifa real de Ejemplo. Todo el cálculo está centralizado
+ * sustituirse por la tarifa real de NASVE. Todo el cálculo está centralizado
  * aquí para que afinar precios sea un único punto de cambio.
  *
  * Norte de producto «precio claro»: el cliente ve una estimación por unidad

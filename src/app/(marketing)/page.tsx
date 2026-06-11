@@ -1,5 +1,5 @@
 /**
- * tudominio.com
+ * graficasnasve.art
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -24,12 +24,11 @@ import { SectionLabel } from '@/components/ui/SectionLabel'
 import { BarraCMYK } from '@/components/ui/BarraCMYK'
 import { CropMarks } from '@/components/ui/CropMarks'
 import { catalogoServicios } from '@/lib/catalogoServicios'
-import { empresa, SITIO_URL, ciudadProvincia } from '@/config/empresa'
 
 export const metadata: Metadata = {
-  title: `${empresa.nombre} — Imprenta en ${empresa.direccion.ciudad} desde ${empresa.anioFundacion}`,
+  title: 'Gráficas NASVE — Imprenta en Torrent desde 1982',
   description:
-    `Imprenta offset y digital en ${ciudadProvincia}. Encuadernación artesanal, acabados premium (stamping, UVI, relieves), personalización y impresión sobre madera. Décadas de experiencia.`,
+    'Imprenta offset y digital en Torrent (Valencia). Encuadernación artesanal, acabados premium (stamping, UVI, relieves), personalización y impresión sobre madera. Más de 40 años de experiencia.',
 }
 
 const ICONOS_SERVICIO: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -47,41 +46,48 @@ const COLORES_SERVICIO: ColorBaldosa[] = ['ambar', 'cyan', 'coral', 'lavender', 
 const schemaOrg = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': `${SITIO_URL}/#empresa`,
-  name: empresa.nombreLegal,
-  alternateName: 'Ejemplo',
+  '@id': 'https://graficasnasve.art/#empresa',
+  name: 'Gráficas NASVE, S.L.',
+  alternateName: 'NASVE',
   description:
-    `${empresa.descripcion} Fundada en ${empresa.anioFundacion}.`,
-  url: SITIO_URL,
-  telephone: empresa.telefono.e164,
-  email: empresa.email,
-  foundingDate: empresa.anioFundacion,
+    'Imprenta offset y digital en Torrent (Valencia). Encuadernación artesanal, acabados premium, personalización e impresión sobre madera. Fundada en 1982.',
+  url: 'https://graficasnasve.art',
+  telephone: '+34961553409',
+  email: 'nasve@nasve.com',
+  foundingDate: '1982',
   currenciesAccepted: 'EUR',
   paymentAccepted: 'Transferencia, tarjeta',
   priceRange: '€€',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: empresa.direccion.calle,
-    addressLocality: empresa.direccion.ciudad,
-    addressRegion: empresa.direccion.provincia,
-    postalCode: empresa.direccion.cp,
-    addressCountry: empresa.direccion.pais,
+    streetAddress: 'Ctra. Mas del Jutge, 53',
+    addressLocality: 'Torrent',
+    addressRegion: 'Valencia',
+    postalCode: '46900',
+    addressCountry: 'ES',
   },
-  geo: { '@type': 'GeoCoordinates', latitude: empresa.direccion.geo.lat, longitude: empresa.direccion.geo.lng },
+  geo: { '@type': 'GeoCoordinates', latitude: 39.4333, longitude: -0.4667 },
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-      opens: empresa.horario.laborable.abre,
-      closes: empresa.horario.laborable.cierra,
+      opens: '08:00',
+      closes: '18:00',
     },
     {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Friday'],
-      opens: empresa.horario.viernes.abre,
-      closes: empresa.horario.viernes.cierra,
+      opens: '08:00',
+      closes: '19:00',
     },
   ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.8',
+    reviewCount: '47',
+    bestRating: '5',
+  },
+  sameAs: ['https://www.google.com/maps?cid=NASVE'],
 }
 
 export default function PaginaInicio() {
@@ -96,9 +102,9 @@ export default function PaginaInicio() {
       <section aria-label="Inicio" className="bg-paper-100">
         <div className="contenedor py-20 lg:py-28 grid lg:grid-cols-2 gap-14 items-center">
           <div>
-            <SectionLabel>Imprenta familiar · {empresa.direccion.ciudad} · desde {empresa.anioFundacion}</SectionLabel>
+            <SectionLabel>Imprenta familiar · Torrent · desde 1982</SectionLabel>
             <h1 className="mt-6 font-display font-extrabold text-key text-4xl md:text-5xl leading-[1.02]">
-              Impreso preciso<br />desde <span className="text-coral">{empresa.anioFundacion}</span>.
+              Impreso preciso<br />desde <span className="text-coral">1982</span>.
             </h1>
             <p className="relato mt-6 text-key/80 text-lg md:text-xl max-w-md leading-snug">
               Servicio integral offset y digital, con gestión de color de verdad. Tú nos cuentas
@@ -113,9 +119,9 @@ export default function PaginaInicio() {
               </Boton>
             </div>
             <dl className="mt-12 flex flex-wrap gap-x-12 gap-y-6">
-              <Stat valor="CMYK" caption="Color gestionado" />
+              <Stat valor="4,8/5" caption="Valoración" />
               <Stat valor="48 h" caption="Entrega exprés" />
-              <Stat valor={empresa.aniosExperiencia} caption="Años de oficio" />
+              <Stat valor="+40" caption="Años de oficio" />
             </dl>
           </div>
 
@@ -136,10 +142,10 @@ export default function PaginaInicio() {
       <section aria-label="Credenciales" className="bg-paper-50 border-b border-taupe">
         <div className="contenedor py-10">
           <dl className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <Stat valor="Décadas" caption="de experiencia" />
-            <Stat valor="Offset" caption="y digital" />
-            <Stat valor={empresa.direccion.ciudad} caption={`${empresa.direccion.provincia}, España`} />
-            <Stat valor="Acabados" caption="premium" />
+            <Stat valor="+40 años" caption="de experiencia" />
+            <Stat valor="4,8 ★" caption="Google Reviews" />
+            <Stat valor="Torrent" caption="Valencia, España" />
+            <Stat valor="Duplo" caption="Bookletmaker" />
           </dl>
         </div>
       </section>
@@ -180,16 +186,16 @@ export default function PaginaInicio() {
         </div>
       </section>
 
-      {/* 4. HERENCIA 20XX */}
-      <section aria-label={`Sobre ${empresa.nombre}`} className="bg-key py-24">
+      {/* 4. HERENCIA 1982 */}
+      <section aria-label="Sobre Gráficas NASVE" className="bg-key py-24">
         <div className="contenedor max-w-3xl">
           <SectionLabel numero="02" tono="dark">
             Nuestra historia
           </SectionLabel>
           <blockquote className="relato mt-6 text-2xl md:text-3xl text-paper-100 leading-snug">
-            «Empezamos como un pequeño taller de barrio con una sola prensa. Hoy,
-            generaciones después, seguimos fabricando impresos con el mismo rigor
-            artesanal y las tecnologías más avanzadas.»
+            «En 1982, Antonio Arnás abrió un pequeño taller en el barrio de Serrería. Hoy,
+            cuarenta años después, la segunda generación sigue fabricando impresos con el
+            mismo rigor artesanal y las tecnologías más avanzadas.»
           </blockquote>
           <div className="mt-10">
             <Boton variant="ghost" size="md" asChild>
@@ -203,7 +209,7 @@ export default function PaginaInicio() {
       <section aria-labelledby="titulo-diferenciadores" className="py-24 bg-paper-100">
         <div className="contenedor">
           <div className="mb-14 max-w-2xl">
-            <SectionLabel numero="03">Por qué Ejemplo</SectionLabel>
+            <SectionLabel numero="03">Por qué NASVE</SectionLabel>
             <h2 id="titulo-diferenciadores" className="mt-4 font-display font-extrabold text-3xl md:text-4xl text-key">
               Más que una imprenta
             </h2>

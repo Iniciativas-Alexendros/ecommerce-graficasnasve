@@ -1,18 +1,15 @@
 /**
- * tudominio.com
+ * graficasnasve.art
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SectionLabel } from '@/components/ui/SectionLabel'
-import { empresa, direccionLinea } from '@/config/empresa'
-
-const NOMBRE_LEGAL_MAY = empresa.nombreLegal.toUpperCase()
 
 export const metadata: Metadata = {
-  title: `Aviso Legal — ${empresa.nombre}`,
-  description: `Aviso legal y condiciones de uso del sitio web de ${empresa.nombreLegal}`,
+  title: 'Aviso Legal — Gráficas NASVE',
+  description: 'Aviso legal y condiciones de uso del sitio web de Gráficas NASVE, S.L.',
   robots: { index: false, follow: false },
 }
 
@@ -43,14 +40,14 @@ export default function PaginaAvisoLegal() {
             <table className="w-full border-collapse border border-borde text-sm mb-4">
               <tbody>
                 {[
-                  ['Denominación social', NOMBRE_LEGAL_MAY],
-                  ['CIF', empresa.cif],
-                  ['Domicilio social', direccionLinea],
-                  ['Teléfono', empresa.telefono.display],
-                  ['Email', empresa.email],
+                  ['Denominación social', 'GRÁFICAS NASVE, S.L.'],
+                  ['CIF', 'B46261210'],
+                  ['Domicilio social', 'Ctra. Mas del Jutge, 53 · 46900 Torrent (Valencia)'],
+                  ['Teléfono', '961 55 34 09'],
+                  ['Email', 'nasve@nasve.com'],
                   [
                     'Registro Mercantil',
-                    empresa.registroMercantil,
+                    'Registro Mercantil de Valencia · Tomo 4683 · Libro 1993 · Folio 137 · Sección 8ª · Hoja V-30079',
                   ],
                 ].map(([campo, valor]) => (
                   <tr key={campo} className="border-b border-borde">
@@ -71,8 +68,8 @@ export default function PaginaAvisoLegal() {
             </h2>
             <p className="font-sans text-base text-gris leading-relaxed">
               El presente aviso legal regula el acceso y uso del sitio web{' '}
-              <strong className="text-negro">{empresa.dominio}</strong> (en adelante,
-              &ldquo;el Sitio&rdquo;), propiedad de {NOMBRE_LEGAL_MAY} El acceso al Sitio y la
+              <strong className="text-negro">graficasnasve.art</strong> (en adelante,
+              &ldquo;el Sitio&rdquo;), propiedad de GRÁFICAS NASVE, S.L. El acceso al Sitio y la
               utilización de su contenido implica la aceptación expresa de las condiciones
               establecidas en este aviso legal. Si el usuario no está de acuerdo con las
               presentes condiciones, deberá abstenerse de utilizar el Sitio.
@@ -87,14 +84,15 @@ export default function PaginaAvisoLegal() {
             <p className="font-sans text-base text-gris leading-relaxed mb-4">
               Todos los contenidos del Sitio —incluyendo, sin carácter limitativo, textos,
               fotografías, gráficos, imágenes, iconos, tecnología, software, vínculos y
-              demás contenidos audiovisuales y sonoros— son propiedad de {NOMBRE_LEGAL_MAY} o de terceros que han autorizado su uso, y están protegidos por los
+              demás contenidos audiovisuales y sonoros— son propiedad de GRÁFICAS NASVE,
+              S.L. o de terceros que han autorizado su uso, y están protegidos por los
               derechos de propiedad intelectual e industrial.
             </p>
             <p className="font-sans text-base text-gris leading-relaxed">
               Queda expresamente prohibida la reproducción, distribución, comunicación
               pública, transformación o cualquier otra forma de explotación, total o
-              parcial, de los contenidos del Sitio sin la autorización previa y escrita de{' '}
-              {NOMBRE_LEGAL_MAY}
+              parcial, de los contenidos del Sitio sin la autorización previa y escrita de
+              GRÁFICAS NASVE, S.L.
             </p>
           </section>
 
@@ -104,14 +102,15 @@ export default function PaginaAvisoLegal() {
               4. Responsabilidad y exoneración
             </h2>
             <p className="font-sans text-base text-gris leading-relaxed mb-4">
-              {NOMBRE_LEGAL_MAY} no garantiza la ausencia de virus u otros elementos
+              GRÁFICAS NASVE, S.L. no garantiza la ausencia de virus u otros elementos
               en los contenidos que puedan producir alteraciones en el sistema informático
               del usuario. La empresa no se hace responsable de los daños y perjuicios de
               cualquier naturaleza que pudieran derivarse del acceso, uso o imposibilidad
               de uso del Sitio.
             </p>
             <p className="font-sans text-base text-gris leading-relaxed">
-              El Sitio puede contener enlaces a sitios web de terceros. {NOMBRE_LEGAL_MAY} no se responsabiliza del contenido, información o servicios que aparezcan
+              El Sitio puede contener enlaces a sitios web de terceros. GRÁFICAS NASVE,
+              S.L. no se responsabiliza del contenido, información o servicios que aparezcan
               en dichos sitios, que son responsabilidad exclusiva de sus titulares.
             </p>
           </section>
@@ -127,7 +126,7 @@ export default function PaginaAvisoLegal() {
               <Link href="/privacidad" className="text-negro underline hover:text-ambar transition-colors">
                 Política de Privacidad
               </Link>{' '}
-              de {NOMBRE_LEGAL_MAY}, de conformidad con el Reglamento (UE) 2016/679
+              de GRÁFICAS NASVE, S.L., de conformidad con el Reglamento (UE) 2016/679
               del Parlamento Europeo y del Consejo (RGPD) y la Ley Orgánica 3/2018, de 5
               de diciembre (LOPDGDD).
             </p>
@@ -141,9 +140,9 @@ export default function PaginaAvisoLegal() {
             <p className="font-sans text-base text-gris leading-relaxed">
               Las presentes condiciones se rigen e interpretan conforme a la legislación
               española. Para la resolución de cualquier controversia derivada del acceso o
-              uso del Sitio, {NOMBRE_LEGAL_MAY} y el usuario se someten, con renuncia
+              uso del Sitio, GRÁFICAS NASVE, S.L. y el usuario se someten, con renuncia
               expresa a cualquier otro fuero, a la jurisdicción de los Juzgados y Tribunales
-              de {empresa.direccion.provincia} (España).
+              de Valencia (España).
             </p>
           </section>
         </div>

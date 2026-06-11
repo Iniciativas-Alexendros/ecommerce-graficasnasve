@@ -1,12 +1,11 @@
 /**
- * tudominio.com
+ * graficasnasve.art
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
 import Link from 'next/link'
 import { Logo } from '@/components/marketing/Logo'
 import { BarraCMYK } from '@/components/ui/BarraCMYK'
-import { empresa, ciudadProvincia } from '@/config/empresa'
 
 const serviciosLinks = [
   { href: '/servicios/impresion-offset', label: 'Impresión Offset' },
@@ -41,31 +40,31 @@ export function Footer() {
             <Link
               href="/"
               className="inline-block transition-opacity hover:opacity-80"
-              aria-label={`${empresa.nombre} — ir a inicio`}
+              aria-label="Gráficas NASVE — ir a inicio"
             >
               <Logo variant="dark" />
             </Link>
             <p className="mt-4 text-sm text-gris leading-relaxed">
-              Imprenta offset y digital en {ciudadProvincia} desde {empresa.anioFundacion}.
+              Imprenta offset y digital en Torrent (Valencia) desde 1982.
               Calidad que se toca.
             </p>
             <address className="mt-6 not-italic text-sm text-gris leading-loose">
-              <p>{empresa.direccion.calle}</p>
-              <p>{empresa.direccion.cp} {ciudadProvincia}</p>
+              <p>Ctra. Mas del Jutge, 53</p>
+              <p>46900 Torrent (Valencia)</p>
               <p className="mt-2">
                 <a
-                  href={`tel:${empresa.telefono.e164}`}
+                  href="tel:+34961553409"
                   className="hover:text-ambar transition-colors duration-150"
                 >
-                  {empresa.telefono.display}
+                  961 55 34 09
                 </a>
               </p>
               <p>
                 <a
-                  href={`mailto:${empresa.email}`}
+                  href="mailto:nasve@nasve.com"
                   className="hover:text-ambar transition-colors duration-150"
                 >
-                  {empresa.email}
+                  nasve@nasve.com
                 </a>
               </p>
             </address>
@@ -135,7 +134,7 @@ export function Footer() {
         {/* Pie */}
         <div className="mt-16 pt-8 border-t border-papel/10 flex flex-col gap-2 md:flex-row md:justify-between md:items-center">
           <p className="text-xs text-gris">
-            © 2026 {empresa.nombreLegal} · CIF {empresa.cif}
+            © 2026 Gráficas NASVE, S.L. · CIF B46261210
           </p>
           <p className="text-xs text-gris">
             Desarrollado por{' '}

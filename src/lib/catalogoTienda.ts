@@ -1,5 +1,5 @@
 /**
- * tudominio.com
+ * graficasnasve.art
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -146,7 +146,7 @@ export const catalogoTienda: ProductoTienda[] = [
     categoria: 'editorial',
     descripcionCorta: '160 páginas cosidas en rústica. Para que dure.',
     descripcion:
-      'Libro de 160 páginas con encuadernación en rústica fresada, interior en offset ahuesado y cubierta a color. La solución artesanal de Ejemplo para autoedición y ediciones de calidad.',
+      'Libro de 160 páginas con encuadernación en rústica fresada, interior en offset ahuesado y cubierta a color. La solución artesanal de NASVE para autoedición y ediciones de calidad.',
     formato: '15 × 21 cm · 160 págs.',
     material: 'Interior offset ahuesado 90 g',
     gramajes: soporteUnico('Offset ahuesado 90 g/m²'),
@@ -279,9 +279,9 @@ export const catalogoTienda: ProductoTienda[] = [
     slug: 'placa-madera',
     nombre: 'Placa impresa sobre madera',
     categoria: 'producto',
-    descripcionCorta: 'Impresión UV directa sobre madera natural. La especialidad Ejemplo.',
+    descripcionCorta: 'Impresión UV directa sobre madera natural. La especialidad NASVE.',
     descripcion:
-      'Placa de madera natural con impresión UV directa, donde la veta forma parte del diseño. La especialidad diferencial de Ejemplo para señalética premium, decoración, regalo de empresa y packaging de lujo.',
+      'Placa de madera natural con impresión UV directa, donde la veta forma parte del diseño. La especialidad diferencial de NASVE para señalética premium, decoración, regalo de empresa y packaging de lujo.',
     formato: '20 × 30 cm · grosor 6 mm',
     material: 'Madera natural (impresión UV directa)',
     gramajes: [

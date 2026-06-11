@@ -1,5 +1,5 @@
 /**
- * tudominio.com — Crop marks (marcas de corte decorativas)
+ * graficasnasve.art — Crop marks (marcas de corte decorativas)
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 

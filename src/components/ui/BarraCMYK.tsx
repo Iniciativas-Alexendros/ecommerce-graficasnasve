@@ -1,5 +1,5 @@
 /**
- * tudominio.com — Barra CMYK (motivo recurrente del DS)
+ * graficasnasve.art — Barra CMYK (motivo recurrente del DS)
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 

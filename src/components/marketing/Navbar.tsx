@@ -1,5 +1,5 @@
 /**
- * tudominio.com
+ * graficasnasve.art
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -11,7 +11,6 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Boton } from "@/components/ui/Boton";
 import { Logo } from "@/components/marketing/Logo";
-import { empresa } from "@/config/empresa";
 
 const enlaces = [
   { href: "/", label: "Inicio" },
@@ -39,7 +38,7 @@ export function Navbar() {
       >
         <Link
           href="/"
-          aria-label={`${empresa.nombre} — ir a inicio`}
+          aria-label="Gráficas NASVE — ir a inicio"
           className="transition-opacity hover:opacity-80"
           data-tour="logo"
         >

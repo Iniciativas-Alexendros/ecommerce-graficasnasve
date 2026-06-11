@@ -1,10 +1,10 @@
 /**
- * tudominio.com — Design System Ejemplo v2.0 «Cuatricromía + papel»
+ * graficasnasve.art — Design System NASVE v2.0 «Cuatricromía + papel»
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  *
- * Tokens y motivos del deck (PlantillaWebDS): cuatricromía evocando CMYK
+ * Tokens y motivos del deck (GRAFICASNASVEwebDS): cuatricromía evocando CMYK
  * sobre papel cálido; Archivo (display+UI), IBM Plex Mono (oficio) y Spectral
- * itálica (relato 20XX). Fuentes self-hosted (convención del repo, no next/font).
+ * itálica (relato 1982). Fuentes self-hosted (convención del repo, no next/font).
  */
 
 @import "tailwindcss";
@@ -202,7 +202,7 @@ h1, h2, h3, h4 {
   padding-inline: clamp(1rem, 5vw, 4rem);
 }
 
-/* ── Relato 20XX (Spectral itálica) ──────────────────────────────────────── */
+/* ── Relato 1982 (Spectral itálica) ──────────────────────────────────────── */
 .relato {
   font-family: var(--font-serif);
   font-style: italic;

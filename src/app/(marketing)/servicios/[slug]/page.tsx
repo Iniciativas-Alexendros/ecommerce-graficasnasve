@@ -1,5 +1,5 @@
 /**
- * tudominio.com
+ * graficasnasve.art
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -11,7 +11,6 @@ import { catalogoServicios } from '@/lib/catalogoServicios'
 import { Boton } from '@/components/ui/Boton'
 import { Baldosa, type ColorBaldosa } from '@/components/ui/Baldosa'
 import { SectionLabel } from '@/components/ui/SectionLabel'
-import { empresa } from '@/config/empresa'
 
 const ICONOS_SERVICIO: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   Printer,
@@ -35,7 +34,7 @@ export async function generateMetadata({ params }: PropiedadesSlug): Promise<Met
   const { slug } = await params
   const servicio = catalogoServicios.find((s) => s.slug === slug)
   if (!servicio) return { title: 'Servicio no encontrado' }
-  return { title: `${servicio.titulo} — ${empresa.nombre}`, description: servicio.descripcionCorta }
+  return { title: `${servicio.titulo} — Gráficas NASVE`, description: servicio.descripcionCorta }
 }
 
 export default async function PaginaFichaServicio({ params }: PropiedadesSlug) {
