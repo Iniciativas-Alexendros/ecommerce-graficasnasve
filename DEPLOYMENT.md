@@ -69,7 +69,20 @@ Copiar `.env.local.example` → `.env.local` y rellenar (nunca subir `.env.local
 - **calidad**: `pnpm typecheck` + `pnpm lint` + `pnpm test` (Vitest).
 - **e2e**: `pnpm build` + `pnpm test:e2e` (Playwright/Chromium), sin secretos.
 
-Los despliegues los gestiona Vercel (previews por PR, producción en `main`).
+**Autodeploy encadenado a CI** (`.github/workflows/deploy.yml`): tras terminar el
+workflow `CI` con éxito sobre `main`, un job `workflow_run` despliega a producción con
+Vercel CLI. Si CI falla, **no** despliega. Requiere tres secretos en
+**Settings → Secrets and variables → Actions**:
+
+| Secreto             | Origen                                           |
+| ------------------- | ------------------------------------------------ |
+| `VERCEL_TOKEN`      | Vercel → Account → Tokens                        |
+| `VERCEL_ORG_ID`     | `.vercel/project.json` (`orgId`) o `vercel link` |
+| `VERCEL_PROJECT_ID` | `.vercel/project.json` (`projectId`)             |
+
+> Mientras no estén definidos, el job de deploy falla con un mensaje claro y el resto del
+> CI sigue verde. La integración nativa Git de Vercel y este workflow son **alternativas**:
+> usar una u otra para no desplegar dos veces.
 
 ## 8. Pagos (futuro — Fase 5)
 
