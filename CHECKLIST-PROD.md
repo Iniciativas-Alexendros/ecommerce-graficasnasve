@@ -31,7 +31,7 @@
 
 | Ítem                                                      | Estado          |
 | --------------------------------------------------------- | --------------- |
-| `.env.local.example` con todas las variables              | ✅              |
+| `.env.example` con todas las variables                    | ✅              |
 | Variables definidas en el host (Vercel prod + preview)    | ⬜ al desplegar |
 | Secretos solo server-side (no `NEXT_PUBLIC_` lo sensible) | ✅              |
 | Claves de pago como stub hasta elegir proveedor (Fase 5)  | ✅              |

@@ -38,7 +38,7 @@ yarn-error.log*
 .env.local
 .env.*.local
 # El ejemplo sí se versiona:
-!.env.local.example
+!.env.example
 
 # vercel
 .vercel
