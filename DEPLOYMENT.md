@@ -9,7 +9,7 @@
 
 ## 2. Variables de entorno
 
-Copiar `.env.local.example` → `.env.local` y rellenar (nunca subir `.env.local`):
+Copiar `.env.example` → `.env.local` y rellenar (nunca subir `.env.local`):
 
 | Variable                        | Ámbito       | Descripción                                                |
 | ------------------------------- | ------------ | ---------------------------------------------------------- |

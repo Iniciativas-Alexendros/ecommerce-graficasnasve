@@ -18,7 +18,7 @@ pnpm install
 pnpm dev          # http://localhost:3000
 ```
 
-Copiar `.env.local.example` → `.env.local` y rellenar (ver [`DEPLOYMENT.md`](./DEPLOYMENT.md)).
+Copiar `.env.example` → `.env.local` y rellenar (ver [`DEPLOYMENT.md`](./DEPLOYMENT.md)).
 
 ## Scripts
 
