@@ -29,6 +29,12 @@ const nextConfig: NextConfig = {
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
           {
+            // AVISO DE SEGURIDAD (MEDIO-1): 'unsafe-inline' en script-src y style-src
+            // debilita la protección contra XSS. Se mantiene como riesgo aceptado porque
+            // el sitio usa JSON-LD inline (src/app/(marketing)/tienda/[slug]/page.tsx)
+            // y estilos inline de componentes; Stripe solo requiere https://js.stripe.com.
+            // Para eliminar 'unsafe-inline' haría falta implementar nonces o migrar esos
+            // scripts/estilos a archivos externos, lo que queda fuera de esta fase.
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",

@@ -10,5 +10,11 @@ onlyBuiltDependencies:
   - unrs-resolver
 # Fuerza una única versión de Vite para evitar el conflicto de tipos entre
 # vitest/config y @vitejs/plugin-react (que arrastraban vite 7 y vite 6).
+# NOTA: pnpm 11.5.2 ya no lee el campo `pnpm` de package.json; los overrides
+# deben vivir en este fichero para que surtan efecto.
 overrides:
   vite: 6.4.3
+  postcss: ">=8.5.10"
+  ws: ">=8.21.0"
+  undici: ">=7.28.0"
+  esbuild: ">=0.28.1"

@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Directorio de sesiones de Claude Code.
+    ".claude/**",
   ]),
 ]);
 

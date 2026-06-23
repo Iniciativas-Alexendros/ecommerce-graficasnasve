@@ -6,11 +6,53 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
 import { randomUUID } from 'crypto'
+import path from 'path'
 import { schemaPresupuesto } from '@/lib/validaciones/presupuesto'
 import { sendEmailPresupuesto } from '@/lib/resend'
 import type { Database } from '@/types/supabase'
 
 const MAX_ARCHIVO_BYTES = 50 * 1024 * 1024 // 50 MB
+const ALLOWED_EXTENSIONS = ['pdf', 'ai', 'eps', 'zip']
+const ALLOWED_MIME_TYPES = [
+  'application/pdf',
+  'application/postscript',
+  'application/illustrator',
+  'image/x-eps',
+  'application/zip',
+  'application/x-zip-compressed',
+]
+
+/**
+ * Sanea el nombre de archivo original:
+ * - elimina cualquier componente de ruta,
+ * - conserva solo caracteres seguros,
+ * - normaliza a minúsculas.
+ */
+function sanitizeFileName(name: string): string {
+  const base = path.basename(name)
+  return base
+    .replace(/\s+/g, '-')
+    .replace(/[^a-zA-Z0-9._-]/g, '_')
+    .replace(/_+/g, '_')
+    .replace(/^[._-]+|[._-]+$/g, '')
+    .toLowerCase()
+}
+
+function validateFile(archivo: File): { ok: boolean; error?: string } {
+  const safeName = sanitizeFileName(archivo.name)
+  const ext = safeName.split('.').pop() ?? ''
+  if (!ALLOWED_EXTENSIONS.includes(ext)) {
+    return { ok: false, error: 'Extensión de archivo no permitida' }
+  }
+  if (
+    archivo.type &&
+    !ALLOWED_MIME_TYPES.includes(archivo.type) &&
+    !(archivo.type === 'application/octet-stream' && ['ai', 'eps'].includes(ext))
+  ) {
+    return { ok: false, error: 'Tipo de archivo no permitido' }
+  }
+  return { ok: true }
+}
 
 function createAdminClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -87,16 +129,25 @@ export async function POST(request: NextRequest) {
         )
       }
 
+      const validacion = validateFile(archivo)
+      if (!validacion.ok) {
+        return NextResponse.json(
+          { error: validacion.error },
+          { status: 422 },
+        )
+      }
+
       const supabaseAdmin = createAdminClient()
       if (supabaseAdmin) {
         const uuid = randomUUID()
-        const path = `presupuestos/${uuid}/${archivo.name}`
+        const safeName = sanitizeFileName(archivo.name)
+        const storagePath = `presupuestos/${uuid}/${safeName}`
 
         const buffer = await archivo.arrayBuffer()
 
         const { error: uploadError } = await supabaseAdmin.storage
           .from('arte-files')
-          .upload(path, buffer, {
+          .upload(storagePath, buffer, {
             contentType: archivo.type || 'application/octet-stream',
             upsert: false,
           })
@@ -105,11 +156,16 @@ export async function POST(request: NextRequest) {
           console.error('[api/presupuesto] Error subiendo archivo:', uploadError.message)
           // No bloqueamos el envío si falla el upload
         } else {
-          const { data: urlData } = supabaseAdmin.storage
+          const { data: signedData, error: signedError } = await supabaseAdmin.storage
             .from('arte-files')
-            .getPublicUrl(path)
-          archivoUrl = urlData.publicUrl
-          archivoNombre = archivo.name
+            .createSignedUrl(storagePath, 3600)
+
+          if (signedError) {
+            console.error('[api/presupuesto] Error generando signed URL:', signedError.message)
+          } else {
+            archivoUrl = signedData.signedUrl
+            archivoNombre = safeName
+          }
         }
       }
     }
@@ -142,7 +198,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 6. Enviar emails
-    await sendEmailPresupuesto(datos, archivoNombre ?? undefined)
+    await sendEmailPresupuesto(datos, archivoNombre ?? undefined, archivoUrl ?? undefined)
 
     return NextResponse.json({ ok: true }, { status: 201 })
   } catch (err) {

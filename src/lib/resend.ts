@@ -20,7 +20,25 @@ const ETIQUETAS_PRODUCTO: Record<DatosPresupuesto['producto'], string> = {
   otro: 'Personalizados / Otro',
 }
 
-function buildTablaHtml(datos: DatosPresupuesto, archivoNombre?: string): string {
+/**
+ * Escapa entidades HTML para evitar inyección de contenido dinámico en emails.
+ */
+function escapeHtml(input: string): string {
+  const entities: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#x27;',
+  }
+  return String(input).replace(/[&<>"']/g, (char) => entities[char] ?? char)
+}
+
+function buildTablaHtml(
+  datos: DatosPresupuesto,
+  archivoNombre?: string,
+  archivoUrl?: string,
+): string {
   const filas: [string, string][] = [
     ['Nombre', datos.nombre],
     ['Empresa', datos.empresa ?? '—'],
@@ -31,22 +49,34 @@ function buildTablaHtml(datos: DatosPresupuesto, archivoNombre?: string): string
     ['Fecha de entrega deseada', datos.entrega ?? '—'],
     ['Detalles', datos.detalles ?? '—'],
     ['Acabados', datos.acabados ?? '—'],
-    ['Archivo adjunto', archivoNombre ?? '—'],
   ]
 
   const filasHtml = filas
     .map(
       ([campo, valor]) =>
         `<tr>
-          <td style="padding:8px 12px;background:#f5f0e8;font-weight:600;color:#0d0d0b;white-space:nowrap;vertical-align:top;">${campo}</td>
-          <td style="padding:8px 12px;color:#1a1a17;vertical-align:top;">${valor}</td>
+          <td style="padding:8px 12px;background:#f5f0e8;font-weight:600;color:#0d0d0b;white-space:nowrap;vertical-align:top;">${escapeHtml(campo)}</td>
+          <td style="padding:8px 12px;color:#1a1a17;vertical-align:top;">${escapeHtml(valor)}</td>
         </tr>`,
     )
     .join('')
 
+  const filaArchivo =
+    archivoUrl && archivoNombre
+      ? `<tr>
+          <td style="padding:8px 12px;background:#f5f0e8;font-weight:600;color:#0d0d0b;white-space:nowrap;vertical-align:top;">${escapeHtml('Archivo adjunto')}</td>
+          <td style="padding:8px 12px;color:#1a1a17;vertical-align:top;"><a href="${escapeHtml(archivoUrl)}" style="color:#c9a84c;">${escapeHtml(archivoNombre)}</a></td>
+        </tr>`
+      : archivoNombre
+        ? `<tr>
+          <td style="padding:8px 12px;background:#f5f0e8;font-weight:600;color:#0d0d0b;white-space:nowrap;vertical-align:top;">${escapeHtml('Archivo adjunto')}</td>
+          <td style="padding:8px 12px;color:#1a1a17;vertical-align:top;">${escapeHtml(archivoNombre)}</td>
+        </tr>`
+        : ''
+
   return `
     <table style="border-collapse:collapse;width:100%;font-family:sans-serif;font-size:14px;">
-      <tbody>${filasHtml}</tbody>
+      <tbody>${filasHtml}${filaArchivo}</tbody>
     </table>
   `
 }
@@ -59,6 +89,7 @@ export interface ResultadoEmail {
 export async function sendEmailPresupuesto(
   datos: DatosPresupuesto,
   archivoNombre?: string,
+  archivoUrl?: string,
 ): Promise<ResultadoEmail> {
   const resend = getResendClient()
   if (!resend) {
@@ -68,7 +99,7 @@ export async function sendEmailPresupuesto(
 
   const from = process.env.RESEND_FROM ?? 'noreply@graficasnasve.art'
   const to = process.env.RESEND_PRESUPUESTO_TO ?? 'alicia@nasve.com'
-  const tablaHtml = buildTablaHtml(datos, archivoNombre)
+  const tablaHtml = buildTablaHtml(datos, archivoNombre, archivoUrl)
 
   // Email interno a NASVE
   const emailInterno = resend.emails.send({
@@ -89,7 +120,7 @@ export async function sendEmailPresupuesto(
             <p style="color:#1a1a17;margin-top:0;">Se ha recibido una nueva solicitud de presupuesto a través de graficasnasve.art.</p>
             ${tablaHtml}
             <p style="color:#6b6b60;font-size:13px;margin-top:24px;">
-              Responde directamente a ${datos.email} o accede al panel de administración para gestionar esta solicitud.
+              Responde directamente a ${escapeHtml(datos.email)} o accede al panel de administración para gestionar esta solicitud.
             </p>
           </div>
           <div style="padding:16px 32px;background:#f5f0e8;font-size:12px;color:#6b6b60;text-align:center;">
@@ -117,7 +148,7 @@ export async function sendEmailPresupuesto(
             <p style="margin:4px 0 0;font-size:13px;color:#c9a84c;text-transform:uppercase;letter-spacing:0.1em;">Solicitud recibida</p>
           </div>
           <div style="padding:32px;">
-            <p style="color:#1a1a17;margin-top:0;">Hola ${datos.nombre},</p>
+            <p style="color:#1a1a17;margin-top:0;">Hola ${escapeHtml(datos.nombre)},</p>
             <p style="color:#1a1a17;">Hemos recibido tu solicitud de presupuesto. Nuestro equipo la revisará y te responderemos en un plazo máximo de 24–48 horas laborables.</p>
             <p style="color:#1a1a17;">A continuación te dejamos un resumen de los datos que nos has enviado:</p>
             ${tablaHtml}
