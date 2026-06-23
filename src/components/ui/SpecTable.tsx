@@ -15,16 +15,9 @@ interface PropsSpecTable {
 
 export function SpecTable({ filas, className = '' }: PropsSpecTable) {
   return (
-    <dl
-      className={['rounded-card overflow-hidden border border-key/10', className]
-        .filter(Boolean)
-        .join(' ')}
-    >
+    <dl className={['rounded-card overflow-hidden border border-key/10', className].filter(Boolean).join(' ')}>
       {filas.map(({ label, valor }) => (
-        <div
-          key={label}
-          className="flex items-start justify-between gap-4 px-4 py-3 odd:bg-paper-50 even:bg-paper-0"
-        >
+        <div key={label} className="flex items-start justify-between gap-4 px-4 py-3 odd:bg-paper-50 even:bg-paper-0">
           <dt className="font-mono text-xs uppercase tracking-widest text-gris pt-0.5">{label}</dt>
           <dd className="font-sans text-sm font-medium text-key text-right">{valor}</dd>
         </div>

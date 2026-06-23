@@ -24,9 +24,7 @@ export async function createServidorSupabase() {
       },
       setAll(cookiesToSet) {
         try {
-          cookiesToSet.forEach(({ name, value, options }) =>
-            cookieStore.set(name, value, options),
-          )
+          cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options))
         } catch {
           // setAll se llama desde un Server Component — se puede ignorar
           // si hay middleware actualizando las cookies de sesión
@@ -53,9 +51,7 @@ export async function createServidorSupabaseAdmin() {
       },
       setAll(cookiesToSet) {
         try {
-          cookiesToSet.forEach(({ name, value, options }) =>
-            cookieStore.set(name, value, options),
-          )
+          cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options))
         } catch {
           // ignorar en Server Components
         }

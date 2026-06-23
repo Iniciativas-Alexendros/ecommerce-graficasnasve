@@ -55,7 +55,9 @@ export default async function PaginaFichaServicio({ params }: PropiedadesSlug) {
         <nav aria-label="Migas de pan" className="mb-10">
           <ol className="flex items-center gap-2 font-mono text-xs text-gris">
             <li>
-              <Link href="/servicios" className="hover:text-key transition-colors">Servicios</Link>
+              <Link href="/servicios" className="hover:text-key transition-colors">
+                Servicios
+              </Link>
             </li>
             <li aria-hidden="true">›</li>
             <li className="text-key">{servicio.titulo}</li>
@@ -71,12 +73,8 @@ export default async function PaginaFichaServicio({ params }: PropiedadesSlug) {
           )}
           <div>
             <SectionLabel>Servicio</SectionLabel>
-            <h1 className="mt-3 font-display font-extrabold text-4xl md:text-5xl text-key mb-5">
-              {servicio.titulo}
-            </h1>
-            <p className="font-sans text-base md:text-md text-gris leading-relaxed max-w-2xl">
-              {servicio.descripcion}
-            </p>
+            <h1 className="mt-3 font-display font-extrabold text-4xl md:text-5xl text-key mb-5">{servicio.titulo}</h1>
+            <p className="font-sans text-base md:text-md text-gris leading-relaxed max-w-2xl">{servicio.descripcion}</p>
           </div>
         </div>
 

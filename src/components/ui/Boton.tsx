@@ -32,8 +32,7 @@ const clasesVariante: Record<VarianteBoton, string> = {
   ghost:
     'bg-transparent text-paper-0 border border-paper-0 hover:bg-paper-0 hover:text-key focus-visible:bg-paper-0 focus-visible:text-key',
   // Relleno key (submit del formulario).
-  dark:
-    'bg-key text-paper-0 border border-key hover:bg-ambar hover:text-key hover:border-key focus-visible:bg-ambar focus-visible:text-key',
+  dark: 'bg-key text-paper-0 border border-key hover:bg-ambar hover:text-key hover:border-key focus-visible:bg-ambar focus-visible:text-key',
 }
 
 const clasesBase =
@@ -47,21 +46,11 @@ export function Boton({
   children,
   ...props
 }: PropiedadesBoton) {
-  const clases = [
-    clasesBase,
-    clasesVariante[variant],
-    clasesTamano[size],
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ')
+  const clases = [clasesBase, clasesVariante[variant], clasesTamano[size], className].filter(Boolean).join(' ')
 
   if (asChild && React.isValidElement(children)) {
     return React.cloneElement(children as React.ReactElement<{ className?: string }>, {
-      className: [
-        clases,
-        (children as React.ReactElement<{ className?: string }>).props.className ?? '',
-      ]
+      className: [clases, (children as React.ReactElement<{ className?: string }>).props.className ?? '']
         .filter(Boolean)
         .join(' '),
     })

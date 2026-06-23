@@ -8,11 +8,7 @@ import Link from 'next/link'
 import { createServidorSupabase } from '@/lib/supabase/servidor'
 import { BarraCMYK } from '@/components/ui/BarraCMYK'
 
-export default async function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createServidorSupabase()
 
   if (!supabase) {
@@ -40,10 +36,7 @@ export default async function AdminLayout({
               nasve admin
             </Link>
             <div className="hidden md:flex items-center gap-4">
-              <Link
-                href="/admin"
-                className="font-sans text-sm text-gris hover:text-papel transition-colors"
-              >
+              <Link href="/admin" className="font-sans text-sm text-gris hover:text-papel transition-colors">
                 Presupuestos
               </Link>
               <Link
@@ -57,14 +50,9 @@ export default async function AdminLayout({
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <span className="font-mono text-xs text-gris hidden md:block">
-              {user.email}
-            </span>
+            <span className="font-mono text-xs text-gris hidden md:block">{user.email}</span>
             <form action="/api/auth/signout" method="post">
-              <button
-                type="submit"
-                className="font-sans text-xs text-gris hover:text-papel transition-colors"
-              >
+              <button type="submit" className="font-sans text-xs text-gris hover:text-papel transition-colors">
                 Cerrar sesión
               </button>
             </form>

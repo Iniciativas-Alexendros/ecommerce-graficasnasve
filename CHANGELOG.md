@@ -27,4 +27,4 @@ y [Versionado Semántico](https://semver.org/lang/es/).
 
 - Unit (Vitest): 54/54 · E2E (Playwright): 11/11 · CI en verde.
 
-[0.2.0]: https://github.com/Iniciativas-Alexendros/ecom-graficasnasve/releases/tag/v0.2.0
+[0.2.0]: https://github.com/Iniciativas-Alexendros/ecom-graficasnasve/releases

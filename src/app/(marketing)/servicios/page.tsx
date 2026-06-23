@@ -39,8 +39,8 @@ export default function PaginaServicios() {
             Servicios de impresión y acabado
           </h1>
           <p className="relato text-lg md:text-xl text-key/80 leading-snug">
-            De la plancha offset al barniz UVI selectivo, de la encuadernación artesanal a la
-            impresión directa sobre madera. Un taller completo para proyectos completos.
+            De la plancha offset al barniz UVI selectivo, de la encuadernación artesanal a la impresión directa sobre
+            madera. Un taller completo para proyectos completos.
           </p>
         </div>
 

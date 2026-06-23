@@ -11,16 +11,9 @@ export const schemaPresupuesto = z.object({
     .min(2, 'El nombre debe tener al menos 2 caracteres')
     .max(100, 'El nombre no puede superar los 100 caracteres'),
 
-  empresa: z
-    .string()
-    .max(150, 'El nombre de empresa no puede superar los 150 caracteres')
-    .optional()
-    .or(z.literal('')),
+  empresa: z.string().max(150, 'El nombre de empresa no puede superar los 150 caracteres').optional().or(z.literal('')),
 
-  email: z
-    .string()
-    .email('Introduce un email válido')
-    .max(254, 'El email no puede superar los 254 caracteres'),
+  email: z.string().email('Introduce un email válido').max(254, 'El email no puede superar los 254 caracteres'),
 
   telefono: z
     .string()
@@ -33,23 +26,11 @@ export const schemaPresupuesto = z.object({
     error: 'Selecciona un tipo de producto',
   }),
 
-  tirada: z
-    .string()
-    .max(100, 'La tirada no puede superar los 100 caracteres')
-    .optional()
-    .or(z.literal('')),
+  tirada: z.string().max(100, 'La tirada no puede superar los 100 caracteres').optional().or(z.literal('')),
 
-  detalles: z
-    .string()
-    .max(2000, 'Los detalles no pueden superar los 2000 caracteres')
-    .optional()
-    .or(z.literal('')),
+  detalles: z.string().max(2000, 'Los detalles no pueden superar los 2000 caracteres').optional().or(z.literal('')),
 
-  acabados: z
-    .string()
-    .max(1000, 'Los acabados no pueden superar los 1000 caracteres')
-    .optional()
-    .or(z.literal('')),
+  acabados: z.string().max(1000, 'Los acabados no pueden superar los 1000 caracteres').optional().or(z.literal('')),
 
   entrega: z
     .string()

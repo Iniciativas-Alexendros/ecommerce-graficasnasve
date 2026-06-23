@@ -7,29 +7,29 @@
 ## Propósito
 
 Web de la imprenta **Gráficas NASVE** (Torrent, Valencia · CNAE 1812 · desde 1982). El producto
-ataca un dolor concreto del sector: *las soluciones suelen entregarse tarde, caras o
-incompatibles*. La arquitectura prioriza por tanto tres cualidades verificables:
+ataca un dolor concreto del sector: _las soluciones suelen entregarse tarde, caras o
+incompatibles_. La arquitectura prioriza por tanto tres cualidades verificables:
 
 - **Rápido** — SSG/ISR para todo lo público; entrega exprés como promesa visible (48 h).
 - **Precio claro** — tienda con precios "desde" y **estimación orientativa por unidad** en la ficha (`/tienda`, Fase 2).
-- **Compatible** — *preflight* de archivos (formato, sangre, resolución, CMYK, tipografías) antes de máquina (planificado, Fase 3).
+- **Compatible** — _preflight_ de archivos (formato, sangre, resolución, CMYK, tipografías) antes de máquina (planificado, Fase 3).
 
 ## Stack real
 
-| Capa | Tecnología | Notas |
-|---|---|---|
-| Framework | **Next.js 16.2.7** (App Router, Turbopack) | `next lint` eliminado; APIs de request async; `middleware`→`proxy` |
-| UI | React **19.2.4**, TypeScript 5 strict | Sin `any` |
-| Estilos | Tailwind CSS v4 (`@theme`) | Design System NASVE (negro/papel/oro/tinta) |
-| Datos + Auth | Supabase (PostgreSQL, RLS) | `@supabase/ssr` (patrón cookies) |
-| Almacenamiento | Supabase Storage · bucket privado `arte-files` | Archivos de arte del cliente |
-| Email | Resend | Notificación interna + acuse al cliente |
-| Validación | Zod v4 + React Hook Form | Esquema compartido cliente/servidor |
-| Formularios | react-hook-form + `@hookform/resolvers` | |
-| Hosting | Vercel (región `cdg1`, París) | CI/CD + previews |
-| CDN/DNS | Cloudflare | Proxy + caché de assets |
-| Gestor de paquetes | pnpm 11 (Node ≥ 20.9) | `pnpm-workspace.yaml` |
-| Tests | Vitest + Testing Library · Playwright | CI en GitHub Actions |
+| Capa               | Tecnología                                     | Notas                                                              |
+| ------------------ | ---------------------------------------------- | ------------------------------------------------------------------ |
+| Framework          | **Next.js 16.2.7** (App Router, Turbopack)     | `next lint` eliminado; APIs de request async; `middleware`→`proxy` |
+| UI                 | React **19.2.4**, TypeScript 5 strict          | Sin `any`                                                          |
+| Estilos            | Tailwind CSS v4 (`@theme`)                     | Design System NASVE (negro/papel/oro/tinta)                        |
+| Datos + Auth       | Supabase (PostgreSQL, RLS)                     | `@supabase/ssr` (patrón cookies)                                   |
+| Almacenamiento     | Supabase Storage · bucket privado `arte-files` | Archivos de arte del cliente                                       |
+| Email              | Resend                                         | Notificación interna + acuse al cliente                            |
+| Validación         | Zod v4 + React Hook Form                       | Esquema compartido cliente/servidor                                |
+| Formularios        | react-hook-form + `@hookform/resolvers`        |                                                                    |
+| Hosting            | Vercel (región `cdg1`, París)                  | CI/CD + previews                                                   |
+| CDN/DNS            | Cloudflare                                     | Proxy + caché de assets                                            |
+| Gestor de paquetes | pnpm 11 (Node ≥ 20.9)                          | `pnpm-workspace.yaml`                                              |
+| Tests              | Vitest + Testing Library · Playwright          | CI en GitHub Actions                                               |
 
 ## Diagrama de contexto
 
@@ -166,7 +166,7 @@ erDiagram
 - `pedidos`: solo admin autenticado.
 - `portfolio`: SELECT público **solo de `publicado = true`**; resto solo admin.
 - Bucket `arte-files` **privado**; la API escribe con `service_role`. Lectura prevista por
-  **signed URLs** de TTL corto. *(Deuda técnica: el endpoint usa hoy `getPublicUrl`; ver ROADMAP.)*
+  **signed URLs** de TTL corto. _(Deuda técnica: el endpoint usa hoy `getPublicUrl`; ver ROADMAP.)_
 
 ## Flujo de presupuesto
 
@@ -237,7 +237,7 @@ Vercel (`cdg1`) + Supabase (UE) + Resend + Cloudflare. Pasos detallados en
 
 Definido en el briefing `nasveweb2026.pdf` y aún **no implementado**:
 
-- **Encargo asistido** `/encargo` (configurador de 4 pasos con *preflight* de archivo).
+- **Encargo asistido** `/encargo` (configurador de 4 pasos con _preflight_ de archivo).
 - **Asistente flotante** (chatbot global que cualifica el encargo en 4 preguntas → CRM).
 - **Pagos** (Fase 4): comparativa Redsys + Bizum vs Stripe vs Mollie.
 
@@ -246,11 +246,11 @@ Definido en el briefing `nasveweb2026.pdf` y aún **no implementado**:
 El documento de diseño aportado describía un estado que **no** coincidía con el código. Esta
 arquitectura ya está alineada con la realidad; se deja constancia de las diferencias:
 
-| Tema | Diseño previo | Implementación real |
-|---|---|---|
-| Framework | Next 15 · `middleware.ts` · `app/` | Next 16 · `proxy.ts` · `src/app/` |
-| Naming `lib/` | `client/server`, `validations`, `stripe.ts` | `cliente/servidor`, `validaciones`, sin `stripe.ts` |
-| `pedidos` | pedidos de Stripe (jsonb, céntimos) | pipeline de producción (FK a presupuesto) |
-| `presupuestos`/`portfolio` | otros enums/campos | enums reales + `archivo_nombre`, `imagen_alt`, `publicado`… |
-| Pagos | Stripe activo | stub 501; proveedor a decidir (Fase 5) |
-| Tienda | implementada (asumía Supabase) | implementada (Fase 2; catálogo en código, no Supabase) |
+| Tema                       | Diseño previo                               | Implementación real                                         |
+| -------------------------- | ------------------------------------------- | ----------------------------------------------------------- |
+| Framework                  | Next 15 · `middleware.ts` · `app/`          | Next 16 · `proxy.ts` · `src/app/`                           |
+| Naming `lib/`              | `client/server`, `validations`, `stripe.ts` | `cliente/servidor`, `validaciones`, sin `stripe.ts`         |
+| `pedidos`                  | pedidos de Stripe (jsonb, céntimos)         | pipeline de producción (FK a presupuesto)                   |
+| `presupuestos`/`portfolio` | otros enums/campos                          | enums reales + `archivo_nombre`, `imagen_alt`, `publicado`… |
+| Pagos                      | Stripe activo                               | stub 501; proveedor a decidir (Fase 5)                      |
+| Tienda                     | implementada (asumía Supabase)              | implementada (Fase 2; catálogo en código, no Supabase)      |

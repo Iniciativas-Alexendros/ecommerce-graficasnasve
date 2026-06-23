@@ -36,9 +36,7 @@ export function TiendaGrid({ productos }: PropiedadesTiendaGrid) {
   const [filtroActivo, setFiltroActivo] = useState<FiltroTienda>('todos')
 
   const productosFiltrados =
-    filtroActivo === 'todos'
-      ? productos
-      : productos.filter((p) => p.categoria === filtroActivo)
+    filtroActivo === 'todos' ? productos : productos.filter((p) => p.categoria === filtroActivo)
 
   return (
     <>
@@ -87,15 +85,11 @@ export function TiendaGrid({ productos }: PropiedadesTiendaGrid) {
                       {etiquetaCategoria(producto.categoria)}
                     </p>
                     <h3 className="font-display text-lg font-bold text-key">{producto.nombre}</h3>
-                    <p className="font-sans text-sm text-gris mt-1 line-clamp-2">
-                      {producto.descripcionCorta}
-                    </p>
+                    <p className="font-sans text-sm text-gris mt-1 line-clamp-2">{producto.descripcionCorta}</p>
                     <div className="mt-4 pt-3 flex items-baseline justify-between border-t border-taupe">
                       <span className="font-sans text-sm text-key">
                         <span className="text-gris text-xs">desde </span>
-                        <span className="font-semibold">
-                          {formatearPrecioUnidad(precioDesdeUnidad(producto))}
-                        </span>
+                        <span className="font-semibold">{formatearPrecioUnidad(precioDesdeUnidad(producto))}</span>
                         <span className="text-gris text-xs"> /ud</span>
                       </span>
                       <span className="font-mono text-xs text-ambar-700 group-hover:translate-x-0.5 transition-transform">

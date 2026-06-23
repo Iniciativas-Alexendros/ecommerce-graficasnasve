@@ -26,10 +26,10 @@ type PropiedadesCampo = PropiedadesInput | PropiedadesTextarea
 const clasesControl =
   'w-full rounded-card border border-taupe bg-paper-0 text-key font-sans text-base px-4 py-3 placeholder:text-gris transition-colors duration-150 focus:outline-none focus:border-ambar focus:ring-2 focus:ring-ambar/25 disabled:opacity-50 disabled:cursor-not-allowed'
 
-export const Campo = React.forwardRef<
-  HTMLInputElement | HTMLTextAreaElement,
-  PropiedadesCampo
->(function Campo({ label, error, className = '', as, ...props }, ref) {
+export const Campo = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, PropiedadesCampo>(function Campo(
+  { label, error, className = '', as, ...props },
+  ref,
+) {
   const id = (props as { id?: string }).id ?? label.toLowerCase().replace(/\s+/g, '-')
   const clases = [clasesControl, error ? 'border-coral focus:border-coral focus:ring-coral/20' : '', className]
     .filter(Boolean)

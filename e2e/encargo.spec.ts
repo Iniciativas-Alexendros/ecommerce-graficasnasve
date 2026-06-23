@@ -2,9 +2,7 @@ import { test, expect } from './fixtures'
 
 test('el encargo asistido arranca y avanza de producto a especificaciones', async ({ page }) => {
   await page.goto('/encargo')
-  await expect(
-    page.getByRole('heading', { level: 1, name: /configura tu encargo/i }),
-  ).toBeVisible()
+  await expect(page.getByRole('heading', { level: 1, name: /configura tu encargo/i })).toBeVisible()
 
   // Paso «Producto»: elegir uno del selector.
   await page.getByRole('button', { name: /flyers a5/i }).click()

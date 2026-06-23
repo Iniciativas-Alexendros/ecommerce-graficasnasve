@@ -51,9 +51,7 @@ describe('estimarPrecioUnitario', () => {
 
   it('aplica factores de gramaje y acabado', () => {
     // 2 × 1.5 (gramaje) × 1.2 (acabado) × 1 (vol) = 3.6
-    expect(
-      estimarPrecioUnitario({ precioBase: 2, cantidad: 10, factorGramaje: 1.5, factorAcabado: 1.2 }),
-    ).toBe(3.6)
+    expect(estimarPrecioUnitario({ precioBase: 2, cantidad: 10, factorGramaje: 1.5, factorAcabado: 1.2 })).toBe(3.6)
   })
 
   it('redondea a céntimos', () => {

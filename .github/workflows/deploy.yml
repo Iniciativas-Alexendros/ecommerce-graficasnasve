@@ -4,7 +4,7 @@ name: Deploy (producción)
 # `workflow_run` encadena este deploy a la validación de CI: si CI falla, no despliega.
 on:
   workflow_run:
-    workflows: ["CI"]
+    workflows: ['CI']
     types: [completed]
     branches: [main]
 

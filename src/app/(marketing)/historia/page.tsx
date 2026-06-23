@@ -50,28 +50,22 @@ export default function PaginaHistoria() {
             Más de cuatro décadas de oficio gráfico
           </h1>
           <p className="relato text-lg md:text-xl text-key/80 leading-snug">
-            La historia de Gráficas NASVE es la de una familia valenciana que apostó por la
-            calidad cuando la calidad aún requería esfuerzo. Un compromiso que no ha cambiado
-            en 40 años.
+            La historia de Gráficas NASVE es la de una familia valenciana que apostó por la calidad cuando la calidad
+            aún requería esfuerzo. Un compromiso que no ha cambiado en 40 años.
           </p>
         </div>
 
         {/* Timeline */}
         <div className="relative">
           {/* Línea vertical */}
-          <div
-            className="absolute left-16 md:left-24 top-0 bottom-0 w-px bg-borde"
-            aria-hidden="true"
-          />
+          <div className="absolute left-16 md:left-24 top-0 bottom-0 w-px bg-borde" aria-hidden="true" />
 
           <ol className="relative space-y-16">
             {hitos.map((hito, i) => (
               <li key={hito.año} className="relative flex gap-12 md:gap-16">
                 {/* Año y punto */}
                 <div className="relative flex flex-col items-end w-14 md:w-22 shrink-0 pt-1">
-                  <span className="font-mono text-sm font-medium text-gris">
-                    {hito.año}
-                  </span>
+                  <span className="font-mono text-sm font-medium text-gris">{hito.año}</span>
                   {/* Punto dorado */}
                   <div
                     className="absolute right-0 translate-x-[calc(100%+1px)] top-2 w-3 h-3 rounded-full bg-ambar border-2 border-papel"
@@ -82,12 +76,8 @@ export default function PaginaHistoria() {
 
                 {/* Contenido */}
                 <div className={`pb-8 ${i < hitos.length - 1 ? 'border-b border-borde' : ''}`}>
-                  <h2 className="font-display text-2xl md:text-3xl font-bold text-negro mb-3">
-                    {hito.titulo}
-                  </h2>
-                  <p className="font-sans text-base text-gris leading-relaxed max-w-xl">
-                    {hito.descripcion}
-                  </p>
+                  <h2 className="font-display text-2xl md:text-3xl font-bold text-negro mb-3">{hito.titulo}</h2>
+                  <p className="font-sans text-base text-gris leading-relaxed max-w-xl">{hito.descripcion}</p>
                 </div>
               </li>
             ))}

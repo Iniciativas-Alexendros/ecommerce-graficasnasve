@@ -1,5 +1,5 @@
 /**
- * graficasnasve.art
+ * graficasnasve.art — Envío de emails de presupuesto.
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
@@ -34,11 +34,7 @@ function escapeHtml(input: string): string {
   return String(input).replace(/[&<>"']/g, (char) => entities[char] ?? char)
 }
 
-function buildTablaHtml(
-  datos: DatosPresupuesto,
-  archivoNombre?: string,
-  archivoUrl?: string,
-): string {
+function buildTablaHtml(datos: DatosPresupuesto, archivoNombre?: string, archivoUrl?: string): string {
   const filas: [string, string][] = [
     ['Nombre', datos.nombre],
     ['Empresa', datos.empresa ?? '—'],
@@ -93,7 +89,7 @@ export async function sendEmailPresupuesto(
 ): Promise<ResultadoEmail> {
   const resend = getResendClient()
   if (!resend) {
-    console.warn('[resend] RESEND_API_KEY no configurada — email omitido')
+    console.warn('[email/presupuesto] RESEND_API_KEY no configurada — email omitido')
     return { ok: false, error: 'Servicio de email no configurado' }
   }
 
@@ -173,10 +169,10 @@ export async function sendEmailPresupuesto(
     const [internoRes, acuseRes] = await Promise.allSettled([emailInterno, emailAcuse])
 
     if (internoRes.status === 'rejected') {
-      console.error('[resend] Error enviando email interno:', internoRes.reason)
+      console.error('[email/presupuesto] Error enviando email interno:', internoRes.reason)
     }
     if (acuseRes.status === 'rejected') {
-      console.error('[resend] Error enviando acuse de recibo:', acuseRes.reason)
+      console.error('[email/presupuesto] Error enviando acuse de recibo:', acuseRes.reason)
     }
 
     if (internoRes.status === 'rejected' && acuseRes.status === 'rejected') {
@@ -185,7 +181,7 @@ export async function sendEmailPresupuesto(
 
     return { ok: true }
   } catch (err) {
-    console.error('[resend] Error inesperado:', err)
+    console.error('[email/presupuesto] Error inesperado:', err)
     return { ok: false, error: 'Error inesperado en el servicio de email' }
   }
 }

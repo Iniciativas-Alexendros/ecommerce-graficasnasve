@@ -75,9 +75,7 @@ export default async function PaginaAdminDashboard() {
       <div className="mb-10">
         <SectionLabel>Panel · Admin</SectionLabel>
         <h1 className="mt-3 font-display font-extrabold text-3xl text-key mb-1">Presupuestos</h1>
-        <p className="font-sans text-sm text-gris">
-          Gestión de solicitudes recibidas a través de graficasnasve.art
-        </p>
+        <p className="font-sans text-sm text-gris">Gestión de solicitudes recibidas a través de graficasnasve.art</p>
       </div>
 
       {/* Stats */}
@@ -141,7 +139,9 @@ export default async function PaginaAdminDashboard() {
                   </td>
                   <td className="px-5 py-4 font-mono text-xs text-gris">{ETIQUETAS_PRODUCTO[p.producto]}</td>
                   <td className="px-5 py-4">
-                    <span className={`inline-block rounded-pill font-mono text-xs uppercase tracking-wide px-2.5 py-1 ${COLORES_ESTADO[p.estado]}`}>
+                    <span
+                      className={`inline-block rounded-pill font-mono text-xs uppercase tracking-wide px-2.5 py-1 ${COLORES_ESTADO[p.estado]}`}
+                    >
                       {ETIQUETAS_ESTADO[p.estado]}
                     </span>
                   </td>

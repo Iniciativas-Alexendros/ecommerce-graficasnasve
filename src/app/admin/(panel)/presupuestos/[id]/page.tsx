@@ -51,11 +51,7 @@ async function obtenerPresupuesto(id: string): Promise<Presupuesto | null> {
   const supabase = await createServidorSupabase()
   if (!supabase) return null
 
-  const { data, error } = await supabase
-    .from('presupuestos')
-    .select('*')
-    .eq('id', id)
-    .single()
+  const { data, error } = await supabase.from('presupuestos').select('*').eq('id', id).single()
 
   if (error || !data) return null
   return data
@@ -127,9 +123,7 @@ export default async function PaginaDetallePresupuesto({ params }: PropiedadesId
                   <h1 className="font-display font-extrabold text-2xl text-key">{presupuesto.nombre}</h1>
                   <Chip tono={TONO_ESTADO[presupuesto.estado]}>{ETIQUETAS_ESTADO[presupuesto.estado]}</Chip>
                 </div>
-                {presupuesto.empresa && (
-                  <p className="font-sans text-sm text-gris">{presupuesto.empresa}</p>
-                )}
+                {presupuesto.empresa && <p className="font-sans text-sm text-gris">{presupuesto.empresa}</p>}
               </div>
               <p className="font-mono text-xs text-gris whitespace-nowrap">
                 {new Date(presupuesto.created_at).toLocaleDateString('es-ES', {
@@ -149,9 +143,7 @@ export default async function PaginaDetallePresupuesto({ params }: PropiedadesId
                     <td className="py-3 pr-6 font-mono text-xs uppercase tracking-widest text-gris w-1/3 align-top">
                       {campo}
                     </td>
-                    <td className="py-3 font-sans text-sm text-key align-top whitespace-pre-wrap">
-                      {valor}
-                    </td>
+                    <td className="py-3 font-sans text-sm text-key align-top whitespace-pre-wrap">{valor}</td>
                   </tr>
                 ))}
               </tbody>
@@ -202,7 +194,10 @@ export default async function PaginaDetallePresupuesto({ params }: PropiedadesId
 
               {/* Notas admin */}
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="notas_admin" className="font-mono text-xs font-medium uppercase tracking-widest text-gris">
+                <label
+                  htmlFor="notas_admin"
+                  className="font-mono text-xs font-medium uppercase tracking-widest text-gris"
+                >
                   Notas internas
                 </label>
                 <textarea

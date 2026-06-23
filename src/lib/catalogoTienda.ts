@@ -8,13 +8,7 @@ import type { ColorBaldosa } from '@/components/ui/Baldosa'
 import type { NombreIcono } from '@/components/ui/iconosGeometricos'
 import { estimarPrecioUnitario } from './precioTienda'
 
-export type CategoriaTienda =
-  | 'publicidad'
-  | 'editorial'
-  | 'hosteleria'
-  | 'identidad'
-  | 'gran-formato'
-  | 'producto'
+export type CategoriaTienda = 'publicidad' | 'editorial' | 'hosteleria' | 'identidad' | 'gran-formato' | 'producto'
 
 export interface OpcionConfigurable {
   id: string
@@ -87,9 +81,7 @@ const GRAMAJES_CARTULINA: OpcionConfigurable[] = [
   { id: 'g300', etiqueta: '300 g/m²', factor: 1.12 },
   { id: 'g350', etiqueta: '350 g/m²', factor: 1.25 },
 ]
-const soporteUnico = (etiqueta: string): OpcionConfigurable[] => [
-  { id: 'estandar', etiqueta, factor: 1 },
-]
+const soporteUnico = (etiqueta: string): OpcionConfigurable[] => [{ id: 'estandar', etiqueta, factor: 1 }]
 
 export const catalogoTienda: ProductoTienda[] = [
   // ── Publicidad ──────────────────────────────────────────────────────────
@@ -266,11 +258,7 @@ export const catalogoTienda: ProductoTienda[] = [
     formato: 'Hasta 10 × 10 cm · forma libre',
     material: 'Vinilo adhesivo blanco',
     gramajes: soporteUnico('Vinilo blanco'),
-    acabados: [
-      ACAB_NINGUNO,
-      ACAB_BRILLO,
-      { id: 'laminado-resistente', etiqueta: 'Laminado resistente', factor: 1.25 },
-    ],
+    acabados: [ACAB_NINGUNO, ACAB_BRILLO, { id: 'laminado-resistente', etiqueta: 'Laminado resistente', factor: 1.25 }],
     cantidades: [50, 100, 250, 500, 1000],
     precioBase: 0.22,
     tipoPresupuesto: 'otro',
@@ -289,10 +277,7 @@ export const catalogoTienda: ProductoTienda[] = [
       { id: 'g3', etiqueta: 'Grosor 3 mm', factor: 0.85 },
       { id: 'g10', etiqueta: 'Grosor 10 mm', factor: 1.2 },
     ],
-    acabados: [
-      ACAB_NINGUNO,
-      { id: 'barniz', etiqueta: 'Barniz protector', factor: 1.2 },
-    ],
+    acabados: [ACAB_NINGUNO, { id: 'barniz', etiqueta: 'Barniz protector', factor: 1.2 }],
     cantidades: [1, 5, 10, 25, 50],
     precioBase: 14,
     tipoPresupuesto: 'otro',

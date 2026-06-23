@@ -22,10 +22,7 @@ describe('ConfiguradorPrecio', () => {
     render(<ConfiguradorPrecio producto={producto} />)
     const unidadInicial = parseImporte(screen.getByTestId('precio-unidad').textContent)
 
-    await userEvent.selectOptions(
-      screen.getByLabelText('Cantidad'),
-      String(Math.max(...producto.cantidades)),
-    )
+    await userEvent.selectOptions(screen.getByLabelText('Cantidad'), String(Math.max(...producto.cantidades)))
 
     const unidadFinal = parseImporte(screen.getByTestId('precio-unidad').textContent)
     expect(unidadFinal).toBeLessThan(unidadInicial)

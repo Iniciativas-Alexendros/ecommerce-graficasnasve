@@ -3,15 +3,7 @@
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
-export type TonoChip =
-  | 'key'
-  | 'ambar'
-  | 'cyan'
-  | 'sky'
-  | 'coral'
-  | 'spot-blue'
-  | 'lavender'
-  | 'plain'
+export type TonoChip = 'key' | 'ambar' | 'cyan' | 'sky' | 'coral' | 'spot-blue' | 'lavender' | 'plain'
 
 const tonos: Record<TonoChip, string> = {
   key: 'bg-key text-paper-0',

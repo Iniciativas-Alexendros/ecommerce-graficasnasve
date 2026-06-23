@@ -3,20 +3,9 @@
  * © 2026 Iniciativas Alexendros S.L.U. — Todos los derechos reservados.
  */
 
-export type ProductoPresupuesto =
-  | 'papeleria'
-  | 'catalogo'
-  | 'libro'
-  | 'carpeteria'
-  | 'otro'
+export type ProductoPresupuesto = 'papeleria' | 'catalogo' | 'libro' | 'carpeteria' | 'otro'
 
-export type EstadoPresupuesto =
-  | 'nuevo'
-  | 'en_revision'
-  | 'presupuestado'
-  | 'aceptado'
-  | 'rechazado'
-  | 'completado'
+export type EstadoPresupuesto = 'nuevo' | 'en_revision' | 'presupuestado' | 'aceptado' | 'rechazado' | 'completado'
 
 export interface Presupuesto {
   id: string
@@ -37,13 +26,7 @@ export interface Presupuesto {
   updated_at: string | null
 }
 
-export type EstadoPedido =
-  | 'pendiente'
-  | 'en_produccion'
-  | 'acabados'
-  | 'enviado'
-  | 'entregado'
-  | 'cancelado'
+export type EstadoPedido = 'pendiente' | 'en_produccion' | 'acabados' | 'enviado' | 'entregado' | 'cancelado'
 
 export interface Pedido {
   id: string
@@ -64,13 +47,7 @@ export interface Pedido {
   updated_at: string | null
 }
 
-export type CategoriaPortfolio =
-  | 'offset'
-  | 'digital'
-  | 'encuadernacion'
-  | 'acabados'
-  | 'madera'
-  | 'personalizacion'
+export type CategoriaPortfolio = 'offset' | 'digital' | 'encuadernacion' | 'acabados' | 'madera' | 'personalizacion'
 
 export interface PortfolioItem {
   id: string

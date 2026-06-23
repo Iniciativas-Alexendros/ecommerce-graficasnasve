@@ -43,16 +43,14 @@ const nextConfig: NextConfig = {
               "font-src 'self'",
               "img-src 'self' data: https://*.supabase.co https://maps.googleapis.com https://maps.gstatic.com",
               "connect-src 'self' https://*.supabase.co https://api.stripe.com",
-              "frame-src https://js.stripe.com https://hooks.stripe.com https://www.google.com",
+              'frame-src https://js.stripe.com https://hooks.stripe.com https://www.google.com',
             ].join('; '),
           },
         ],
       },
       {
         source: '/fonts/(.*)',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
     ]
   },

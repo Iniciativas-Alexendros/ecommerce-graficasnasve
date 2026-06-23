@@ -4,29 +4,29 @@ Rama: `fix/seguridad-fase-1` (creada desde `main` local, commit `24dc33f`).
 
 ## Hallazgos cerrados
 
-| Severidad | ID | Archivo | Línea aprox. | Fix aplicado |
-|---|---|---|---|---|
-| **CRÍTICO** | 1 | `src/app/api/presupuesto/route.ts` | 108 | Reemplazado `getPublicUrl()` por `createSignedUrl(storagePath, 3600)` usando `supabaseAdmin` (service-role). El signed URL se guarda en `presupuestos.archivo_url` y se envía por email. |
-| **ALTO** | 2 | `src/lib/resend.ts` | 41 | Añadida función `escapeHtml` que escapa `&`, `<`, `>`, `"`, `'`. Se aplica a todas las variables interpoladas en la tabla HTML y en los cuerpos de email (`datos.email`, `datos.nombre`). |
-| **ALTO** | 3 | `src/app/api/presupuesto/route.ts` | 82 | Validación de archivo en servidor: lista blanca de extensiones (`pdf`, `ai`, `eps`, `zip`), verificación de `archivo.type`, saneamiento del nombre con `path.basename` y regexp, y path forzado a `presupuestos/${uuid}/${safeName}`. |
-| **ALTO** | 4 | `.github/workflows/ci.yml` | 16 | Acciones pinadas a SHA, bloque `permissions` mínimo (`contents: read`; `actions: write` solo en job `e2e` para `upload-artifact`), `persist-credentials: false` en todos los checkouts. |
-| **ALTO** | 5 | `.github/workflows/deploy.yml` | 4 | `workflow_run` se conserva; se añade validación de `github.event.workflow_run.head_repository.full_name` y `github.event.workflow_run.actor.login`. Acciones pinadas a SHA, `permissions: contents: read`, `persist-credentials: false`. |
-| **ALTO** | 6 | `pnpm-workspace.yaml` | 13 | Añadidos overrides para forzar versiones seguras: `postcss >=8.5.10`, `ws >=8.21.0`, `undici >=7.28.0`, `esbuild >=0.28.1`. `pnpm-lock.yaml` regenerado. |
-| **MEDIO** | 7 | `next.config.ts` | 35 | Documentado como riesgo aceptado: `'unsafe-inline'` se mantiene porque el sitio usa JSON-LD inline (`src/app/(marketing)/tienda/[slug]/page.tsx`) y estilos inline; Stripe solo requiere el origen `https://js.stripe.com`. |
-| **BAJO** | 8 | `.env.local.example` | 6 | Reemplazados placeholders con forma JWT por `YOUR_SUPABASE_ANON_KEY` y `YOUR_SUPABASE_SERVICE_ROLE_KEY`. |
-| **BAJO** | 9 | `eslint.config.mjs` | 9 | Añadido `.claude/**` a `globalIgnores`. |
-| **BAJO** | 10 | `.nvmrc` | 1 | Añadido archivo `.nvmrc` con `22`. |
+| Severidad   | ID  | Archivo                            | Línea aprox. | Fix aplicado                                                                                                                                                                                                                             |
+| ----------- | --- | ---------------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **CRÍTICO** | 1   | `src/app/api/presupuesto/route.ts` | 108          | Reemplazado `getPublicUrl()` por `createSignedUrl(storagePath, 3600)` usando `supabaseAdmin` (service-role). El signed URL se guarda en `presupuestos.archivo_url` y se envía por email.                                                 |
+| **ALTO**    | 2   | `src/lib/resend.ts`                | 41           | Añadida función `escapeHtml` que escapa `&`, `<`, `>`, `"`, `'`. Se aplica a todas las variables interpoladas en la tabla HTML y en los cuerpos de email (`datos.email`, `datos.nombre`).                                                |
+| **ALTO**    | 3   | `src/app/api/presupuesto/route.ts` | 82           | Validación de archivo en servidor: lista blanca de extensiones (`pdf`, `ai`, `eps`, `zip`), verificación de `archivo.type`, saneamiento del nombre con `path.basename` y regexp, y path forzado a `presupuestos/${uuid}/${safeName}`.    |
+| **ALTO**    | 4   | `.github/workflows/ci.yml`         | 16           | Acciones pinadas a SHA, bloque `permissions` mínimo (`contents: read`; `actions: write` solo en job `e2e` para `upload-artifact`), `persist-credentials: false` en todos los checkouts.                                                  |
+| **ALTO**    | 5   | `.github/workflows/deploy.yml`     | 4            | `workflow_run` se conserva; se añade validación de `github.event.workflow_run.head_repository.full_name` y `github.event.workflow_run.actor.login`. Acciones pinadas a SHA, `permissions: contents: read`, `persist-credentials: false`. |
+| **ALTO**    | 6   | `pnpm-workspace.yaml`              | 13           | Añadidos overrides para forzar versiones seguras: `postcss >=8.5.10`, `ws >=8.21.0`, `undici >=7.28.0`, `esbuild >=0.28.1`. `pnpm-lock.yaml` regenerado.                                                                                 |
+| **MEDIO**   | 7   | `next.config.ts`                   | 35           | Documentado como riesgo aceptado: `'unsafe-inline'` se mantiene porque el sitio usa JSON-LD inline (`src/app/(marketing)/tienda/[slug]/page.tsx`) y estilos inline; Stripe solo requiere el origen `https://js.stripe.com`.              |
+| **BAJO**    | 8   | `.env.local.example`               | 6            | Reemplazados placeholders con forma JWT por `YOUR_SUPABASE_ANON_KEY` y `YOUR_SUPABASE_SERVICE_ROLE_KEY`.                                                                                                                                 |
+| **BAJO**    | 9   | `eslint.config.mjs`                | 9            | Añadido `.claude/**` a `globalIgnores`.                                                                                                                                                                                                  |
+| **BAJO**    | 10  | `.nvmrc`                           | 1            | Añadido archivo `.nvmrc` con `22`.                                                                                                                                                                                                       |
 
 ## Verificaciones
 
-| Comando | Resultado | Notas |
-|---|---|---|
-| `pnpm install` | OK | Se regeneró `pnpm-lock.yaml`. |
-| `pnpm audit` | **0 vulnerabilidades** | Antes del fix: 4 altas, 3 moderadas, 3 bajas. |
-| `pnpm lint` | OK | Sin errores. |
-| `pnpm typecheck` | OK | `tsc --noEmit` sin errores. |
-| `pnpm test` | OK | 54/54 tests unitarios. |
-| `pnpm build` | OK | Build de producción correcto. |
+| Comando          | Resultado              | Notas                                         |
+| ---------------- | ---------------------- | --------------------------------------------- |
+| `pnpm install`   | OK                     | Se regeneró `pnpm-lock.yaml`.                 |
+| `pnpm audit`     | **0 vulnerabilidades** | Antes del fix: 4 altas, 3 moderadas, 3 bajas. |
+| `pnpm lint`      | OK                     | Sin errores.                                  |
+| `pnpm typecheck` | OK                     | `tsc --noEmit` sin errores.                   |
+| `pnpm test`      | OK                     | 54/54 tests unitarios.                        |
+| `pnpm build`     | OK                     | Build de producción correcto.                 |
 
 ## Decisiones importantes
 

@@ -8,62 +8,59 @@
  * `nasve:tour` o el botón flotante. Respeta `prefers-reduced-motion`.
  */
 
-"use client";
+'use client'
 
-import { useCallback, useEffect, useRef } from "react";
-import { driver, type Driver } from "driver.js";
-import "driver.js/dist/driver.css";
-import { Compass } from "lucide-react";
+import { useCallback, useEffect, useRef } from 'react'
+import { driver, type Driver } from 'driver.js'
+import 'driver.js/dist/driver.css'
+import { Compass } from 'lucide-react'
 
-const CLAVE_VISTO = "nasve:tour-visto:v1";
+const CLAVE_VISTO = 'nasve:tour-visto:v1'
 
 const PASOS = [
   {
     element: '[data-tour="logo"]',
     popover: {
-      title: "Bienvenida a Gráficas NASVE",
+      title: 'Bienvenida a Gráficas NASVE',
       description:
-        "Imprenta de Torrent desde 1982. Te enseño el sitio en 30 segundos: cómo pedir, qué ofrecemos y dónde resolver dudas.",
+        'Imprenta de Torrent desde 1982. Te enseño el sitio en 30 segundos: cómo pedir, qué ofrecemos y dónde resolver dudas.',
     },
   },
   {
     element: '[data-tour="tienda"]',
     popover: {
-      title: "Tienda",
+      title: 'Tienda',
       description:
-        "Productos listos para encargar (flyers, carteles, catálogos…) con precio «desde» y estimación por unidad en vivo.",
+        'Productos listos para encargar (flyers, carteles, catálogos…) con precio «desde» y estimación por unidad en vivo.',
     },
   },
   {
     element: '[data-tour="encargo"]',
     popover: {
-      title: "Encargo asistido",
+      title: 'Encargo asistido',
       description:
-        "Configura tu trabajo paso a paso: producto, especificaciones y archivo. Respuesta en menos de 24 h.",
+        'Configura tu trabajo paso a paso: producto, especificaciones y archivo. Respuesta en menos de 24 h.',
     },
   },
   {
     element: '[data-tour="cta"]',
     popover: {
-      title: "Pide presupuesto",
-      description:
-        "Sin compromiso. Cuéntanos qué necesitas y te enviamos una estimación clara con plazos.",
+      title: 'Pide presupuesto',
+      description: 'Sin compromiso. Cuéntanos qué necesitas y te enviamos una estimación clara con plazos.',
     },
   },
   {
     element: '[data-tour="asistente"]',
     popover: {
-      title: "¿Dudas? Pregunta al taller",
+      title: '¿Dudas? Pregunta al taller',
       description:
-        "El asistente te cualifica el encargo en 4 preguntas y deja el resumen listo. Siempre disponible aquí abajo.",
+        'El asistente te cualifica el encargo en 4 preguntas y deja el resumen listo. Siempre disponible aquí abajo.',
     },
   },
-];
+]
 
 function crearDriver(): Driver {
-  const reduce =
-    typeof window !== "undefined" &&
-    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  const reduce = typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 
   return driver({
     showProgress: true,
@@ -71,59 +68,55 @@ function crearDriver(): Driver {
     overlayOpacity: 0.6,
     stagePadding: 6,
     stageRadius: 8,
-    nextBtnText: "Siguiente",
-    prevBtnText: "Atrás",
-    doneBtnText: "Empezar",
-    progressText: "{{current}} de {{total}}",
+    nextBtnText: 'Siguiente',
+    prevBtnText: 'Atrás',
+    doneBtnText: 'Empezar',
+    progressText: '{{current}} de {{total}}',
     // Salta cualquier paso cuyo ancla no esté en el DOM (p. ej. móvil sin CTA visible).
-    steps: PASOS.filter((p) =>
-      typeof document !== "undefined"
-        ? document.querySelector(p.element) !== null
-        : true,
-    ),
-  });
+    steps: PASOS.filter((p) => (typeof document !== 'undefined' ? document.querySelector(p.element) !== null : true)),
+  })
 }
 
 export function TourBienvenida() {
-  const driverRef = useRef<Driver | null>(null);
+  const driverRef = useRef<Driver | null>(null)
 
   const lanzar = useCallback(() => {
-    driverRef.current?.destroy();
-    const d = crearDriver();
-    driverRef.current = d;
-    d.drive();
-  }, []);
+    driverRef.current?.destroy()
+    const d = crearDriver()
+    driverRef.current = d
+    d.drive()
+  }, [])
 
   useEffect(() => {
     // Primera visita: arranca solo una vez.
-    let visto = false;
+    let visto = false
     try {
-      visto = window.localStorage.getItem(CLAVE_VISTO) === "1";
+      visto = window.localStorage.getItem(CLAVE_VISTO) === '1'
     } catch {
-      visto = false;
+      visto = false
     }
     if (!visto) {
       // Espera a que navbar y asistente estén pintados.
       const t = window.setTimeout(() => {
-        lanzar();
+        lanzar()
         try {
-          window.localStorage.setItem(CLAVE_VISTO, "1");
+          window.localStorage.setItem(CLAVE_VISTO, '1')
         } catch {
           /* almacenamiento no disponible: no bloquea */
         }
-      }, 600);
-      return () => window.clearTimeout(t);
+      }, 600)
+      return () => window.clearTimeout(t)
     }
-  }, [lanzar]);
+  }, [lanzar])
 
   // Permite relanzar desde cualquier sitio: window.dispatchEvent(new Event('nasve:tour'))
   useEffect(() => {
-    const handler = () => lanzar();
-    window.addEventListener("nasve:tour", handler);
-    return () => window.removeEventListener("nasve:tour", handler);
-  }, [lanzar]);
+    const handler = () => lanzar()
+    window.addEventListener('nasve:tour', handler)
+    return () => window.removeEventListener('nasve:tour', handler)
+  }, [lanzar])
 
-  useEffect(() => () => driverRef.current?.destroy(), []);
+  useEffect(() => () => driverRef.current?.destroy(), [])
 
   return (
     <button
@@ -136,5 +129,5 @@ export function TourBienvenida() {
       <Compass size={18} aria-hidden="true" />
       Visita guiada
     </button>
-  );
+  )
 }

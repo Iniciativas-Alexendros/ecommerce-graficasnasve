@@ -39,7 +39,8 @@ const PLACEHOLDERS: PortfolioItem[] = Array.from({ length: 6 }, (_, i) => ({
   created_at: '',
   titulo: `Proyecto ${i + 1}`,
   descripcion: 'Próximamente',
-  categoria: (['offset', 'digital', 'encuadernacion', 'acabados', 'madera', 'personalizacion'][i] ?? 'offset') as CategoriaPortfolio,
+  categoria: (['offset', 'digital', 'encuadernacion', 'acabados', 'madera', 'personalizacion'][i] ??
+    'offset') as CategoriaPortfolio,
   imagen_url: '',
   imagen_alt: null,
   cliente: null,
@@ -60,8 +61,7 @@ export function PortfolioGrid({ items }: PropiedadesPortfolioGrid) {
   const datos = items.length > 0 ? items : PLACEHOLDERS
   const esPlaceholder = items.length === 0
 
-  const itemsFiltrados =
-    filtroActivo === 'todos' ? datos : datos.filter((item) => item.categoria === filtroActivo)
+  const itemsFiltrados = filtroActivo === 'todos' ? datos : datos.filter((item) => item.categoria === filtroActivo)
 
   function abrirLightbox(item: PortfolioItem) {
     if (esPlaceholder) return
