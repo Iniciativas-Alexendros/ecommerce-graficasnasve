@@ -14,6 +14,7 @@ import {
   ESTILO_CATEGORIA,
 } from '@/lib/catalogoTienda'
 import { formatearPrecioUnidad } from '@/lib/precioTienda'
+import { serializeJsonLd } from '@/lib/jsonld'
 import { ConfiguradorPrecio } from './ConfiguradorPrecio'
 import { Baldosa } from '@/components/ui/Baldosa'
 import { SpecTable } from '@/components/ui/SpecTable'
@@ -87,14 +88,8 @@ export default async function PaginaProducto({ params }: PropiedadesSlug) {
 
   return (
     <div className="py-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productoLd).replace(/</g, '\\u003c') }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd).replace(/</g, '\\u003c') }}
-      />
+      <script type="application/ld+json">{serializeJsonLd(productoLd)}</script>
+      <script type="application/ld+json">{serializeJsonLd(breadcrumbLd)}</script>
 
       <div className="contenedor max-w-5xl">
         {/* Migas de pan */}
@@ -145,14 +140,16 @@ export default async function PaginaProducto({ params }: PropiedadesSlug) {
             <p className="font-mono text-xs text-gris uppercase tracking-widest mb-3">
               {etiquetaCategoria(producto.categoria)}
             </p>
-            <h1 className="font-display font-extrabold text-3xl md:text-4xl text-key mb-4">
-              {producto.nombre}
-            </h1>
-            <p className="font-sans text-base text-gris leading-relaxed mb-5">
-              {producto.descripcion}
-            </p>
+            <h1 className="font-display font-extrabold text-3xl md:text-4xl text-key mb-4">{producto.nombre}</h1>
+            <p className="font-sans text-base text-gris leading-relaxed mb-5">{producto.descripcion}</p>
             <div className="flex flex-wrap gap-2 mb-8">
-              <Chip tono={ESTILO_CATEGORIA[producto.categoria].color === 'key' ? 'plain' : ESTILO_CATEGORIA[producto.categoria].color}>
+              <Chip
+                tono={
+                  ESTILO_CATEGORIA[producto.categoria].color === 'key'
+                    ? 'plain'
+                    : ESTILO_CATEGORIA[producto.categoria].color
+                }
+              >
                 {etiquetaCategoria(producto.categoria)}
               </Chip>
               <Chip tono="plain">48 H · Taller</Chip>

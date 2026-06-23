@@ -18,10 +18,7 @@ export async function proxy(request: NextRequest) {
   // Si no hay configuración de Supabase, bloquear /admin (excepto el propio
   // login, para no provocar un bucle de redirección sobre /admin/login).
   if (!url || !key) {
-    if (
-      request.nextUrl.pathname.startsWith('/admin') &&
-      !request.nextUrl.pathname.startsWith('/admin/login')
-    ) {
+    if (request.nextUrl.pathname.startsWith('/admin') && !request.nextUrl.pathname.startsWith('/admin/login')) {
       return NextResponse.redirect(new URL('/admin/login', request.url))
     }
     return supabaseResponse
@@ -37,9 +34,7 @@ export async function proxy(request: NextRequest) {
         supabaseResponse = NextResponse.next({
           request,
         })
-        cookiesToSet.forEach(({ name, value, options }) =>
-          supabaseResponse.cookies.set(name, value, options),
-        )
+        cookiesToSet.forEach(({ name, value, options }) => supabaseResponse.cookies.set(name, value, options))
       },
     },
   })
@@ -50,11 +45,7 @@ export async function proxy(request: NextRequest) {
   } = await supabase.auth.getUser()
 
   // Proteger rutas /admin
-  if (
-    !user &&
-    request.nextUrl.pathname.startsWith('/admin') &&
-    !request.nextUrl.pathname.startsWith('/admin/login')
-  ) {
+  if (!user && request.nextUrl.pathname.startsWith('/admin') && !request.nextUrl.pathname.startsWith('/admin/login')) {
     const url = request.nextUrl.clone()
     url.pathname = '/admin/login'
     return NextResponse.redirect(url)

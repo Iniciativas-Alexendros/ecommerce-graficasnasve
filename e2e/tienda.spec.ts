@@ -2,9 +2,7 @@ import { test, expect } from './fixtures'
 
 test('la tienda lista productos y permite filtrar por categoría', async ({ page }) => {
   await page.goto('/tienda')
-  await expect(
-    page.getByRole('heading', { level: 1, name: /encarga tu impresión/i }),
-  ).toBeVisible()
+  await expect(page.getByRole('heading', { level: 1, name: /encarga tu impresión/i })).toBeVisible()
 
   // Hay tarjetas de producto (enlaces a /tienda/<slug>).
   const tarjetas = page.locator('a[href^="/tienda/"]')
@@ -17,9 +15,7 @@ test('la tienda lista productos y permite filtrar por categoría', async ({ page
 
 test('la ficha de producto estima precio y enlaza al presupuesto', async ({ page }) => {
   await page.goto('/tienda/tarjetas-de-visita')
-  await expect(
-    page.getByRole('heading', { level: 1, name: /tarjetas de visita/i }),
-  ).toBeVisible()
+  await expect(page.getByRole('heading', { level: 1, name: /tarjetas de visita/i })).toBeVisible()
 
   // La estimación es visible y se recalcula al cambiar la cantidad.
   const total = page.getByTestId('precio-total')

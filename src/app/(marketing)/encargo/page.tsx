@@ -27,12 +27,10 @@ export default async function PaginaEncargo({ searchParams }: PropiedadesPagina)
       <div className="contenedor">
         <header className="max-w-2xl mb-12">
           <SectionLabel>Encargo asistido</SectionLabel>
-          <h1 className="mt-4 font-display font-extrabold text-4xl md:text-5xl text-key mb-5">
-            Configura tu encargo
-          </h1>
+          <h1 className="mt-4 font-display font-extrabold text-4xl md:text-5xl text-key mb-5">Configura tu encargo</h1>
           <p className="relato text-lg md:text-xl text-key/80 leading-snug">
-            Cuatro pasos guiados — del producto al presupuesto, sin perderte. Te decimos al
-            instante si tu archivo está listo para máquina.
+            Cuatro pasos guiados — del producto al presupuesto, sin perderte. Te decimos al instante si tu archivo está
+            listo para máquina.
           </p>
         </header>
 

@@ -9,12 +9,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Boton } from '@/components/ui/Boton'
 import { type ProductoTienda, tipoPresupuestoDe } from '@/lib/catalogoTienda'
-import {
-  estimarPrecioUnitario,
-  estimarTotal,
-  formatearEuros,
-  formatearPrecioUnidad,
-} from '@/lib/precioTienda'
+import { estimarPrecioUnitario, estimarTotal, formatearEuros, formatearPrecioUnidad } from '@/lib/precioTienda'
 
 const CLASES_SELECT =
   'w-full rounded-card border border-taupe bg-paper-0 text-key font-sans text-base px-4 py-3 transition-colors duration-150 focus:outline-none focus:border-ambar focus:ring-2 focus:ring-ambar/25'
@@ -41,9 +36,7 @@ export function ConfiguradorPrecio({ producto }: PropiedadesConfigurador) {
   const precioUnidad = estimarPrecioUnitario(parametros)
   const total = estimarTotal(parametros)
 
-  const etiquetaGramaje = producto.gramajes.some((g) => g.etiqueta.includes('g/m²'))
-    ? 'Gramaje'
-    : 'Soporte'
+  const etiquetaGramaje = producto.gramajes.some((g) => g.etiqueta.includes('g/m²')) ? 'Gramaje' : 'Soporte'
 
   const detalle = `${producto.nombre} · ${producto.formato} · ${gramaje.etiqueta} · ${acabado.etiqueta} · ${cantidad} ud (estimación orientativa ${formatearEuros(total)})`
   const hrefPresupuesto = `/presupuesto?producto=${tipoPresupuestoDe(producto)}&detalle=${encodeURIComponent(detalle)}`
@@ -123,16 +116,14 @@ export function ConfiguradorPrecio({ producto }: PropiedadesConfigurador) {
           </span>
         </div>
         <div className="flex items-baseline justify-between mt-2">
-          <span className="font-sans text-sm text-gris">
-            Total estimado · {cantidad.toLocaleString('es-ES')} ud
-          </span>
+          <span className="font-sans text-sm text-gris">Total estimado · {cantidad.toLocaleString('es-ES')} ud</span>
           <span className="font-display text-2xl font-bold text-ambar-700" data-testid="precio-total">
             {formatearEuros(total)}
           </span>
         </div>
         <p className="font-mono text-xs text-gris mt-3 leading-relaxed">
-          Estimación orientativa (IVA no incluido). El precio definitivo se confirma en el
-          presupuesto según archivo y acabados.
+          Estimación orientativa (IVA no incluido). El precio definitivo se confirma en el presupuesto según archivo y
+          acabados.
         </p>
       </div>
 

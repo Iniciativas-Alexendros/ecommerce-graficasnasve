@@ -27,10 +27,7 @@ interface PropiedadesFormulario {
   detallesInicial?: string
 }
 
-export function FormularioPresupuesto({
-  productoInicial,
-  detallesInicial,
-}: PropiedadesFormulario = {}) {
+export function FormularioPresupuesto({ productoInicial, detallesInicial }: PropiedadesFormulario = {}) {
   const [estadoEnvio, setEstadoEnvio] = useState<EstadoEnvio>('idle')
   const [mensajeError, setMensajeError] = useState<string>('')
   const [errorArchivo, setErrorArchivo] = useState<string>('')
@@ -103,9 +100,7 @@ export function FormularioPresupuesto({
       reset()
     } catch (err) {
       const mensaje =
-        err instanceof Error
-          ? err.message
-          : 'Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.'
+        err instanceof Error ? err.message : 'Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.'
       setMensajeError(mensaje)
       setEstadoEnvio('error')
     }
@@ -115,19 +110,12 @@ export function FormularioPresupuesto({
     return (
       <div className="flex flex-col items-center justify-center gap-4 py-20 text-center">
         <CheckCircle size={48} className="text-verde" />
-        <h2 className="font-display text-2xl font-bold text-negro">
-          ¡Solicitud enviada!
-        </h2>
+        <h2 className="font-display text-2xl font-bold text-negro">¡Solicitud enviada!</h2>
         <p className="font-sans text-base text-gris max-w-md">
-          Hemos recibido tu solicitud de presupuesto. Nuestro equipo te responderá
-          en un plazo máximo de 24–48 horas laborables.
+          Hemos recibido tu solicitud de presupuesto. Nuestro equipo te responderá en un plazo máximo de 24–48 horas
+          laborables.
         </p>
-        <Boton
-          variant="secondary"
-          size="md"
-          onClick={() => setEstadoEnvio('idle')}
-          className="mt-4"
-        >
+        <Boton variant="secondary" size="md" onClick={() => setEstadoEnvio('idle')} className="mt-4">
           Enviar otra solicitud
         </Boton>
       </div>
@@ -143,9 +131,7 @@ export function FormularioPresupuesto({
     >
       {/* Datos personales */}
       <fieldset className="flex flex-col gap-4 border-0 p-0 m-0">
-        <legend className="font-mono text-xs text-gris uppercase tracking-widest mb-2">
-          Datos de contacto
-        </legend>
+        <legend className="font-mono text-xs text-gris uppercase tracking-widest mb-2">Datos de contacto</legend>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Campo
             label="Nombre *"
@@ -190,9 +176,7 @@ export function FormularioPresupuesto({
 
       {/* Detalles del trabajo */}
       <fieldset className="flex flex-col gap-4 border-0 p-0 m-0 border-t border-borde pt-6">
-        <legend className="font-mono text-xs text-gris uppercase tracking-widest mb-2">
-          Detalles del trabajo
-        </legend>
+        <legend className="font-mono text-xs text-gris uppercase tracking-widest mb-2">Detalles del trabajo</legend>
 
         {/* Producto */}
         <div className="flex flex-col gap-1.5">
@@ -276,9 +260,7 @@ export function FormularioPresupuesto({
             onChange={() => setErrorArchivo('')}
             className="w-full rounded-card border border-taupe bg-paper-0 font-sans text-sm text-gris file:mr-4 file:py-2 file:px-4 file:border-0 file:bg-paper-50 file:font-sans file:text-sm file:text-key file:cursor-pointer hover:file:bg-key hover:file:text-paper-0 transition-colors"
           />
-          <p className="font-mono text-xs text-gris">
-            Formatos: PDF, AI, EPS, ZIP · Máximo 50 MB
-          </p>
+          <p className="font-mono text-xs text-gris">Formatos: PDF, AI, EPS, ZIP · Máximo 50 MB</p>
           {errorArchivo && (
             <p className="text-xs font-sans text-rojo" role="alert">
               {errorArchivo}
@@ -290,18 +272,14 @@ export function FormularioPresupuesto({
       {/* RGPD */}
       <div className="border-t border-borde pt-6">
         <label className="flex items-start gap-3 cursor-pointer">
-          <input
-            type="checkbox"
-            className="mt-1 w-4 h-4 border-borde accent-negro"
-            {...register('rgpd')}
-          />
+          <input type="checkbox" className="mt-1 w-4 h-4 border-borde accent-negro" {...register('rgpd')} />
           <span className="font-sans text-sm text-gris leading-relaxed">
             He leído y acepto la{' '}
             <Link href="/privacidad" className="text-negro underline hover:text-ambar transition-colors">
               política de privacidad
             </Link>
-            . Mis datos serán tratados por Gráficas NASVE, S.L. con la finalidad de
-            gestionar mi solicitud de presupuesto (art. 6.1.b RGPD). *
+            . Mis datos serán tratados por Gráficas NASVE, S.L. con la finalidad de gestionar mi solicitud de
+            presupuesto (art. 6.1.b RGPD). *
           </span>
         </label>
         {errors.rgpd && (
@@ -321,13 +299,7 @@ export function FormularioPresupuesto({
 
       {/* Submit */}
       <div className="flex items-center gap-4">
-        <Boton
-          type="submit"
-          variant="primary"
-          size="lg"
-          disabled={estadoEnvio === 'loading'}
-          className="min-w-48"
-        >
+        <Boton type="submit" variant="primary" size="lg" disabled={estadoEnvio === 'loading'} className="min-w-48">
           {estadoEnvio === 'loading' ? (
             <>
               <Loader2 size={16} className="animate-spin" />
@@ -337,9 +309,7 @@ export function FormularioPresupuesto({
             'Enviar solicitud'
           )}
         </Boton>
-        <p className="font-sans text-xs text-gris">
-          * Campos obligatorios
-        </p>
+        <p className="font-sans text-xs text-gris">* Campos obligatorios</p>
       </div>
     </form>
   )

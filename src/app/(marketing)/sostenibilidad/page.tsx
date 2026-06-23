@@ -60,9 +60,9 @@ export default function PaginaSostenibilidad() {
             <span className="text-cyan">imprimir limpio</span>
           </h1>
           <p className="relato text-lg md:text-xl text-key/80 leading-snug">
-            La industria gráfica tiene una responsabilidad medioambiental real. En NASVE llevamos
-            años reduciendo nuestro impacto: materiales certificados, tintas más limpias, gestión
-            rigurosa de residuos. No como marketing, sino como práctica cotidiana.
+            La industria gráfica tiene una responsabilidad medioambiental real. En NASVE llevamos años reduciendo
+            nuestro impacto: materiales certificados, tintas más limpias, gestión rigurosa de residuos. No como
+            marketing, sino como práctica cotidiana.
           </p>
         </div>
 
@@ -80,21 +80,14 @@ export default function PaginaSostenibilidad() {
                 <Baldosa color={COLORES_PILAR[i % COLORES_PILAR.length]} cuadrada={false} className="w-16 h-16">
                   <Icono size={32} />
                 </Baldosa>
-                <span className="font-mono text-xs text-gris uppercase tracking-widest">
-                  0{i + 1} / 04
-                </span>
+                <span className="font-mono text-xs text-gris uppercase tracking-widest">0{i + 1} / 04</span>
               </div>
 
               {/* Texto */}
               <div className="md:col-span-9">
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-key mb-6">
-                  {titulo}
-                </h2>
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-key mb-6">{titulo}</h2>
                 {texto.split('\n\n').map((parrafo, j) => (
-                  <p
-                    key={j}
-                    className="font-sans text-base text-gris leading-relaxed mb-4 last:mb-0"
-                  >
+                  <p key={j} className="font-sans text-base text-gris leading-relaxed mb-4 last:mb-0">
                     {parrafo}
                   </p>
                 ))}

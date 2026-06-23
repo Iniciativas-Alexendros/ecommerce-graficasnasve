@@ -72,10 +72,7 @@ const schemaOrg = {
 export default function PaginaContacto() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }} />
 
       <div className="py-24">
         <div className="contenedor">
@@ -87,17 +84,61 @@ export default function PaginaContacto() {
                 Cuéntanos tu proyecto
               </h1>
               <p className="relato text-lg md:text-xl text-key/80 leading-snug mb-12">
-                Rellena el formulario y respondemos con presupuesto y prueba de color en menos
-                de 24 h. Visítanos en el Polígono Masía del Juez o llámanos sin compromiso.
+                Rellena el formulario y respondemos con presupuesto y prueba de color en menos de 24 h. Visítanos en el
+                Polígono Masía del Juez o llámanos sin compromiso.
               </p>
 
               <ul className="space-y-6">
-                {([
-                  { icono: MapPin, color: 'ambar', titulo: 'Taller', cuerpo: <address className="not-italic">Ctra. Mas del Jutge, 53<br />46900 Torrent (Valencia)<br />Polígono Masía del Juez</address> },
-                  { icono: Phone, color: 'cyan', titulo: 'Teléfono', cuerpo: <a href="tel:+34961553409" className="hover:text-key transition-colors">961 55 34 09</a> },
-                  { icono: Mail, color: 'coral', titulo: 'Email', cuerpo: <a href="mailto:nasve@nasve.com" className="hover:text-key transition-colors">nasve@nasve.com</a> },
-                  { icono: Clock, color: 'lavender', titulo: 'Horario', cuerpo: <>Lun–Jue 8:00–18:00<br />Vie 8:00–19:00</> },
-                ] as { icono: typeof MapPin; color: ColorBaldosa; titulo: string; cuerpo: React.ReactNode }[]).map(({ icono: Icono, color, titulo, cuerpo }) => (
+                {(
+                  [
+                    {
+                      icono: MapPin,
+                      color: 'ambar',
+                      titulo: 'Taller',
+                      cuerpo: (
+                        <address className="not-italic">
+                          Ctra. Mas del Jutge, 53
+                          <br />
+                          46900 Torrent (Valencia)
+                          <br />
+                          Polígono Masía del Juez
+                        </address>
+                      ),
+                    },
+                    {
+                      icono: Phone,
+                      color: 'cyan',
+                      titulo: 'Teléfono',
+                      cuerpo: (
+                        <a href="tel:+34961553409" className="hover:text-key transition-colors">
+                          961 55 34 09
+                        </a>
+                      ),
+                    },
+                    {
+                      icono: Mail,
+                      color: 'coral',
+                      titulo: 'Email',
+                      cuerpo: (
+                        <a href="mailto:nasve@nasve.com" className="hover:text-key transition-colors">
+                          nasve@nasve.com
+                        </a>
+                      ),
+                    },
+                    {
+                      icono: Clock,
+                      color: 'lavender',
+                      titulo: 'Horario',
+                      cuerpo: (
+                        <>
+                          Lun–Jue 8:00–18:00
+                          <br />
+                          Vie 8:00–19:00
+                        </>
+                      ),
+                    },
+                  ] as { icono: typeof MapPin; color: ColorBaldosa; titulo: string; cuerpo: React.ReactNode }[]
+                ).map(({ icono: Icono, color, titulo, cuerpo }) => (
                   <li key={titulo} className="flex gap-4 items-start">
                     <Baldosa color={color} cuadrada={false} className="w-11 h-11 shrink-0">
                       <Icono size={20} />
@@ -128,9 +169,7 @@ export default function PaginaContacto() {
 
             {/* Formulario de presupuesto */}
             <Tarjeta barraCMYK className="p-8 md:p-10 self-start">
-              <h2 className="font-display font-extrabold text-2xl text-key mb-6">
-                Formulario de presupuesto
-              </h2>
+              <h2 className="font-display font-extrabold text-2xl text-key mb-6">Formulario de presupuesto</h2>
               <FormularioPresupuesto />
             </Tarjeta>
           </div>

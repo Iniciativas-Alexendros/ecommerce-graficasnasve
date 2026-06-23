@@ -7,7 +7,7 @@ Next.js 16 · React 19 · Supabase · Resend · Tailwind v4 · Design System NAS
 
 - **Deploy en vivo (temporal):** <https://ecom-graficasnasve.vercel.app>
 - **Dominio de producción:** `https://graficasnasve.art` _(pendiente de apuntar DNS)_
-- **Última release:** [v0.2.0](https://github.com/Iniciativas-Alexendros/ecom-graficasnasve/releases/tag/v0.2.0)
+- **Última release:** [v0.2.0](https://github.com/Iniciativas-Alexendros/ecom-graficasnasve/releases)
 - Docs: [`ARCHITECTURE.md`](./ARCHITECTURE.md) · [`DEPLOYMENT.md`](./DEPLOYMENT.md) · [`ROADMAP.md`](./ROADMAP.md) · [`CHECKLIST-PROD.md`](./CHECKLIST-PROD.md) · [`COSTES.md`](./COSTES.md) · [`AUDITORIA-SEM-SEO.md`](./AUDITORIA-SEM-SEO.md)
 
 ## Desarrollo

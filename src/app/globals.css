@@ -7,98 +7,98 @@
  * itálica (relato 1982). Fuentes self-hosted (convención del repo, no next/font).
  */
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* ── Registro de tokens en Tailwind v4 ───────────────────────────────────── */
 @theme {
   /* Cuatricromía (evocación CMYK) */
-  --color-ambar:     #F4A52A;
-  --color-ambar-200: #FBD9A0;
-  --color-ambar-700: #B97608;
-  --color-coral:     #E04B35;
-  --color-cyan:      #18B2A4;
-  --color-sky:       #A6D6EA;
-  --color-key:       #16140F;
-  --color-spot-blue: #2D7FA8;
-  --color-lavender:  #8E80E6;
+  --color-ambar: #f4a52a;
+  --color-ambar-200: #fbd9a0;
+  --color-ambar-700: #b97608;
+  --color-coral: #e04b35;
+  --color-cyan: #18b2a4;
+  --color-sky: #a6d6ea;
+  --color-key: #16140f;
+  --color-spot-blue: #2d7fa8;
+  --color-lavender: #8e80e6;
 
   /* Papel (neutros cálidos — nunca grises azulados) */
-  --color-paper-0:   #FEFDFB;
-  --color-paper-50:  #F7F2E9;
-  --color-paper-100: #EFE7D7;
-  --color-taupe:     #D9D2C4;
+  --color-paper-0: #fefdfb;
+  --color-paper-50: #f7f2e9;
+  --color-paper-100: #efe7d7;
+  --color-taupe: #d9d2c4;
 
   /* Semánticos */
-  --color-exito: #18B2A4;
-  --color-aviso: #F4A52A;
-  --color-error: #E04B35;
-  --color-info:  #2D7FA8;
+  --color-exito: #18b2a4;
+  --color-aviso: #f4a52a;
+  --color-error: #e04b35;
+  --color-info: #2d7fa8;
 
   /* Alias de compatibilidad (recolorean el marcado heredado sin editarlo) */
-  --color-papel:      var(--color-paper-100);
-  --color-blanco:     var(--color-paper-0);
-  --color-fondo-alt:  var(--color-paper-50);
-  --color-negro:      var(--color-key);
-  --color-tinta:      var(--color-key);
-  --color-borde:      var(--color-taupe);
-  --color-gris:       #6B6357;
-  --color-rojo:       var(--color-coral);
-  --color-verde:      var(--color-cyan);
+  --color-papel: var(--color-paper-100);
+  --color-blanco: var(--color-paper-0);
+  --color-fondo-alt: var(--color-paper-50);
+  --color-negro: var(--color-key);
+  --color-tinta: var(--color-key);
+  --color-borde: var(--color-taupe);
+  --color-gris: #6b6357;
+  --color-rojo: var(--color-coral);
+  --color-verde: var(--color-cyan);
 
   /* Tipografía — tres familias */
   --font-display: 'Archivo', system-ui, sans-serif;
-  --font-sans:    'Archivo', system-ui, sans-serif;
-  --font-mono:    'IBM Plex Mono', ui-monospace, monospace;
-  --font-serif:   'Spectral', Georgia, serif;
+  --font-sans: 'Archivo', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-serif: 'Spectral', Georgia, serif;
 
   /* Escala modular (1.25) */
-  --text-xs:   0.640rem;
-  --text-sm:   0.800rem;
-  --text-base: 1.000rem;
-  --text-md:   1.250rem;
-  --text-lg:   1.563rem;
-  --text-xl:   1.953rem;
-  --text-2xl:  2.441rem;
-  --text-3xl:  3.052rem;
-  --text-4xl:  3.815rem;
-  --text-5xl:  4.768rem;
+  --text-xs: 0.64rem;
+  --text-sm: 0.8rem;
+  --text-base: 1rem;
+  --text-md: 1.25rem;
+  --text-lg: 1.563rem;
+  --text-xl: 1.953rem;
+  --text-2xl: 2.441rem;
+  --text-3xl: 3.052rem;
+  --text-4xl: 3.815rem;
+  --text-5xl: 4.768rem;
 
   /* Radios y sombras (neo-brutalista de imprenta) */
   --radius-baldosa: 1.25rem;
-  --radius-card:    1rem;
-  --radius-pill:    9999px;
-  --shadow-duro:    6px 6px 0 0 var(--color-key);
+  --radius-card: 1rem;
+  --radius-pill: 9999px;
+  --shadow-duro: 6px 6px 0 0 var(--color-key);
   --shadow-duro-sm: 4px 4px 0 0 var(--color-key);
 
   /* Animación */
-  --duration-rapido:  150ms;
-  --duration-base:    250ms;
-  --duration-lento:   400ms;
-  --duration-reveal:  600ms;
-  --ease-out-expo:    cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out:      cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-rapido: 150ms;
+  --duration-base: 250ms;
+  --duration-lento: 400ms;
+  --duration-reveal: 600ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ── Variables CSS nativas (usadas por reglas de este fichero) ───────────── */
 :root {
-  --ambar:      #F4A52A;
-  --coral:      #E04B35;
-  --cyan:       #18B2A4;
-  --key:        #16140F;
-  --paper-0:    #FEFDFB;
-  --paper-50:   #F7F2E9;
-  --paper-100:  #EFE7D7;
-  --taupe:      #D9D2C4;
-  --gris:       #6B6357;
+  --ambar: #f4a52a;
+  --coral: #e04b35;
+  --cyan: #18b2a4;
+  --key: #16140f;
+  --paper-0: #fefdfb;
+  --paper-50: #f7f2e9;
+  --paper-100: #efe7d7;
+  --taupe: #d9d2c4;
+  --gris: #6b6357;
   /* Alias heredados */
-  --negro:      var(--key);
-  --tinta:      var(--key);
-  --papel:      var(--paper-100);
-  --blanco:     var(--paper-0);
-  --borde:      var(--taupe);
-  --rojo:       var(--coral);
-  --key-70:     rgba(22, 20, 15, 0.70);
-  --key-40:     rgba(22, 20, 15, 0.40);
+  --negro: var(--key);
+  --tinta: var(--key);
+  --papel: var(--paper-100);
+  --blanco: var(--paper-0);
+  --borde: var(--taupe);
+  --rojo: var(--coral);
+  --key-70: rgba(22, 20, 15, 0.7);
+  --key-40: rgba(22, 20, 15, 0.4);
 }
 
 /* ── Fuentes self-hosted ─────────────────────────────────────────────────── */
@@ -146,7 +146,9 @@
 }
 
 /* ── Reset y base ────────────────────────────────────────────────────────── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -166,7 +168,10 @@ body {
 }
 
 /* Titulares: Archivo grotesca pesada, tracking apretado */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-display);
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -184,7 +189,9 @@ h1, h2, h3, h4 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -222,12 +229,24 @@ h1, h2, h3, h4 {
   transform: translateY(0);
 }
 
-.stagger > *:nth-child(1) { transition-delay: 0ms; }
-.stagger > *:nth-child(2) { transition-delay: 80ms; }
-.stagger > *:nth-child(3) { transition-delay: 160ms; }
-.stagger > *:nth-child(4) { transition-delay: 240ms; }
-.stagger > *:nth-child(5) { transition-delay: 320ms; }
-.stagger > *:nth-child(6) { transition-delay: 400ms; }
+.stagger > *:nth-child(1) {
+  transition-delay: 0ms;
+}
+.stagger > *:nth-child(2) {
+  transition-delay: 80ms;
+}
+.stagger > *:nth-child(3) {
+  transition-delay: 160ms;
+}
+.stagger > *:nth-child(4) {
+  transition-delay: 240ms;
+}
+.stagger > *:nth-child(5) {
+  transition-delay: 320ms;
+}
+.stagger > *:nth-child(6) {
+  transition-delay: 400ms;
+}
 
 /* ── Separador editorial ─────────────────────────────────────────────────── */
 .separador {

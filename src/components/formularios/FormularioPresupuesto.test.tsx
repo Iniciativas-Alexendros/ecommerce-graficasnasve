@@ -12,13 +12,9 @@ describe('FormularioPresupuesto', () => {
     render(<FormularioPresupuesto />)
     await userEvent.click(screen.getByRole('button', { name: /enviar solicitud/i }))
 
-    expect(
-      await screen.findByText('El nombre debe tener al menos 2 caracteres'),
-    ).toBeInTheDocument()
+    expect(await screen.findByText('El nombre debe tener al menos 2 caracteres')).toBeInTheDocument()
     expect(screen.getByText('Introduce un email válido')).toBeInTheDocument()
-    expect(
-      screen.getByText('Debes aceptar la política de privacidad para continuar'),
-    ).toBeInTheDocument()
+    expect(screen.getByText('Debes aceptar la política de privacidad para continuar')).toBeInTheDocument()
   })
 
   it('envía los datos a /api/presupuesto y muestra la confirmación', async () => {
@@ -36,10 +32,7 @@ describe('FormularioPresupuesto', () => {
     await userEvent.click(screen.getByRole('button', { name: /enviar solicitud/i }))
 
     await waitFor(() =>
-      expect(fetchMock).toHaveBeenCalledWith(
-        '/api/presupuesto',
-        expect.objectContaining({ method: 'POST' }),
-      ),
+      expect(fetchMock).toHaveBeenCalledWith('/api/presupuesto', expect.objectContaining({ method: 'POST' })),
     )
     expect(await screen.findByText('¡Solicitud enviada!')).toBeInTheDocument()
   })

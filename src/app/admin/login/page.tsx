@@ -52,9 +52,7 @@ export default function PaginaAdminLogin() {
       <div className="w-full max-w-sm">
         <div className="flex flex-col items-center mb-10">
           <Logo />
-          <p className="mt-2 font-mono text-xs text-gris uppercase tracking-widest">
-            Panel de administración
-          </p>
+          <p className="mt-2 font-mono text-xs text-gris uppercase tracking-widest">Panel de administración</p>
         </div>
 
         <form
@@ -88,13 +86,7 @@ export default function PaginaAdminLogin() {
             </div>
           )}
 
-          <Boton
-            type="submit"
-            variant="primary"
-            size="md"
-            disabled={cargando}
-            className="w-full mt-2"
-          >
+          <Boton type="submit" variant="primary" size="md" disabled={cargando} className="w-full mt-2">
             {cargando ? (
               <>
                 <Loader2 size={16} className="animate-spin" />
@@ -106,9 +98,7 @@ export default function PaginaAdminLogin() {
           </Boton>
         </form>
 
-        <p className="text-center mt-6 font-mono text-xs text-gris">
-          graficasnasve.art © 2026
-        </p>
+        <p className="text-center mt-6 font-mono text-xs text-gris">graficasnasve.art © 2026</p>
       </div>
     </div>
   )

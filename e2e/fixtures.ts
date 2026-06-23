@@ -1,4 +1,4 @@
-import { test as base, expect } from "@playwright/test";
+import { test as base, expect } from '@playwright/test'
 
 // Fixture por defecto para los E2E que NO prueban la visita guiada:
 // siembra `nasve:tour-visto` antes de cargar la página para que el tour
@@ -7,13 +7,13 @@ export const test = base.extend({
   page: async ({ page }, run) => {
     await page.addInitScript(() => {
       try {
-        window.localStorage.setItem("nasve:tour-visto:v1", "1");
+        window.localStorage.setItem('nasve:tour-visto:v1', '1')
       } catch {
         /* almacenamiento no disponible en este contexto */
       }
-    });
-    await run(page);
+    })
+    await run(page)
   },
-});
+})
 
-export { expect };
+export { expect }

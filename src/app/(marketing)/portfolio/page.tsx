@@ -44,12 +44,10 @@ export default async function PaginaPortfolio() {
         {/* Cabecera */}
         <div className="max-w-2xl mb-12">
           <SectionLabel>Nuestros trabajos</SectionLabel>
-          <h1 className="mt-4 font-display font-extrabold text-4xl md:text-5xl text-key mb-5">
-            Portfolio
-          </h1>
+          <h1 className="mt-4 font-display font-extrabold text-4xl md:text-5xl text-key mb-5">Portfolio</h1>
           <p className="relato text-lg md:text-xl text-key/80 leading-snug">
-            Una selección de proyectos realizados. Cada pieza es el resultado de la colaboración
-            con el cliente, del rigor técnico y de cuatro décadas de oficio.
+            Una selección de proyectos realizados. Cada pieza es el resultado de la colaboración con el cliente, del
+            rigor técnico y de cuatro décadas de oficio.
           </p>
         </div>
 

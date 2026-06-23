@@ -8,14 +8,7 @@
 
 import React from 'react'
 
-export type NombreIcono =
-  | 'barras'
-  | 'cuarto'
-  | 'mediaLuna'
-  | 'estrella'
-  | 'anillo'
-  | 'puntos'
-  | 'gota'
+export type NombreIcono = 'barras' | 'cuarto' | 'mediaLuna' | 'estrella' | 'anillo' | 'puntos' | 'gota'
 
 interface PropsIcono {
   size?: number
@@ -25,14 +18,7 @@ interface PropsIcono {
 function svg(children: React.ReactNode) {
   return function Icono({ size = 24, className = '' }: PropsIcono) {
     return (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        aria-hidden="true"
-        className={className}
-      >
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
         {children}
       </svg>
     )
@@ -62,13 +48,9 @@ const MediaLuna = svg(
   </>,
 )
 
-const Estrella = svg(
-  <path d="M12 2 C12 7 17 12 22 12 C17 12 12 17 12 22 C12 17 7 12 2 12 C7 12 12 7 12 2 Z" />,
-)
+const Estrella = svg(<path d="M12 2 C12 7 17 12 22 12 C17 12 12 17 12 22 C12 17 7 12 2 12 C7 12 12 7 12 2 Z" />)
 
-const Anillo = svg(
-  <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="4" />,
-)
+const Anillo = svg(<circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="4" />)
 
 const Puntos = svg(
   <>
@@ -79,9 +61,7 @@ const Puntos = svg(
   </>,
 )
 
-const Gota = svg(
-  <path d="M12 3 C12 3 5 11 5 15 a7 7 0 0 0 14 0 C19 11 12 3 12 3 Z" />,
-)
+const Gota = svg(<path d="M12 3 C12 3 5 11 5 15 a7 7 0 0 0 14 0 C19 11 12 3 12 3 Z" />)
 
 export const ICONOS: Record<NombreIcono, React.FC<PropsIcono>> = {
   barras: Barras,
@@ -93,11 +73,7 @@ export const ICONOS: Record<NombreIcono, React.FC<PropsIcono>> = {
   gota: Gota,
 }
 
-export function IconoGeometrico({
-  nombre,
-  size,
-  className,
-}: { nombre: NombreIcono } & PropsIcono) {
+export function IconoGeometrico({ nombre, size, className }: { nombre: NombreIcono } & PropsIcono) {
   const Cmp = ICONOS[nombre]
   return <Cmp size={size} className={className} />
 }

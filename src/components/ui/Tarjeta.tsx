@@ -13,10 +13,7 @@ interface PropsTarjeta {
 export function Tarjeta({ children, barraCMYK = false, className = '' }: PropsTarjeta) {
   return (
     <div
-      className={[
-        'bg-paper-0 rounded-card border border-key/10 shadow-duro overflow-hidden',
-        className,
-      ]
+      className={['bg-paper-0 rounded-card border border-key/10 shadow-duro overflow-hidden', className]
         .filter(Boolean)
         .join(' ')}
     >

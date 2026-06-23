@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import type { DatosPresupuesto } from './validaciones/presupuesto'
+import type { DatosPresupuesto } from '@/lib/validaciones/presupuesto'
 
 // Mock del SDK de Resend. `vi.hoisted` permite referenciar el mock dentro de
 // la factoría de `vi.mock` (que se eleva por encima de los imports).
@@ -8,7 +8,7 @@ vi.mock('resend', () => ({
   Resend: vi.fn(() => ({ emails: { send: sendMock } })),
 }))
 
-import { sendEmailPresupuesto } from './resend'
+import { sendEmailPresupuesto } from './presupuesto'
 
 const datos: DatosPresupuesto = {
   nombre: 'María García',
@@ -57,9 +57,7 @@ describe('sendEmailPresupuesto', () => {
   it('la plantilla incluye nombre, etiqueta de producto y nombre de archivo', async () => {
     vi.stubEnv('RESEND_API_KEY', 're_test')
     await sendEmailPresupuesto(datos, 'arte-final.pdf')
-    const htmls = sendMock.mock.calls
-      .map((c) => (c[0] as { html: string }).html)
-      .join('\n')
+    const htmls = sendMock.mock.calls.map((c) => (c[0] as { html: string }).html).join('\n')
     expect(htmls).toContain('María García')
     expect(htmls).toContain('Catálogos y revistas')
     expect(htmls).toContain('arte-final.pdf')

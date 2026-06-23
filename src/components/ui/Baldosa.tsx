@@ -5,14 +5,7 @@
 
 import { IconoGeometrico, type NombreIcono } from './iconosGeometricos'
 
-export type ColorBaldosa =
-  | 'ambar'
-  | 'coral'
-  | 'cyan'
-  | 'sky'
-  | 'spot-blue'
-  | 'lavender'
-  | 'key'
+export type ColorBaldosa = 'ambar' | 'coral' | 'cyan' | 'sky' | 'spot-blue' | 'lavender' | 'key'
 
 const fondo: Record<ColorBaldosa, string> = {
   ambar: 'bg-ambar',
