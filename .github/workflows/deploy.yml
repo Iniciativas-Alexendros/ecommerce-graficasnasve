@@ -18,7 +18,7 @@ concurrency:
 jobs:
   deploy:
     name: Vercel → producción
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, ts]
     # Solo si CI pasó (no en fallo ni cancelación).
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     environment:
