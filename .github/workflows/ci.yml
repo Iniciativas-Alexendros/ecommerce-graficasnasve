@@ -18,6 +18,7 @@ env:
   NODE_VERSION: '22'
   PNPM_VERSION: '11'
   SHA_DEPLOY_CACHE: ${{ github.sha }}
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: 'true'
 
 jobs:
   quality:
