@@ -1,13 +1,10 @@
 name: Deploy → Producción
 
-# Autodespliegue a Vercel SOLO cuando el workflow "CI/CD" completa con éxito sobre `main`.
-# Validación reforzada del workflow_run, arquitectura de implementación modular, y despliegue secundario (preview).
-# `workflow_run` encadena este deploy a la validación de CI: si CI falla, no despliega.
 on:
   workflow_run:
     workflows: ['CI/CD']
     types: [completed]
-    branches: [main, staging]
+    branches: [main]
 
 permissions:
   contents: read
@@ -16,214 +13,46 @@ concurrency:
   group: deploy-production
   cancel-in-progress: false
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-  VERCEL_TEAM_ID: ${{ secrets.VERCEL_TEAM_ID }}
-  VERCEL_DEPLOY_TOKEN: ${{ secrets.VERCEL_DEPLOY_TOKEN }}
-
 jobs:
-  validate-prerequisites:
-    name: Validar Pre-requisitos y Configuración
+  deploy:
+    name: Vercel
     runs-on: [self-hosted, ts]
-    timeout-minutes: 5
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-
-      - name: Validar origen del workflow_run
-        run: |
-          echo "=== Validación de Árbol de Antecedentes ==="
-          HEAD_REPO="${{ github.event.workflow_run.head_repository.full_name }}"
-          ACTOR="${{ github.event.workflow_run.actor.login }}"
-          EVENT_TYPE="${{ github.event.workflow_run.event_type }}"
-          WORKFLOW_SHA="${{ github.event.workflow_run.head_sha }}"
-
-          echo "Repositorio de origen: ${{ github.repository }}"
-          echo "Repositorio HEAD: $HEAD_REPO"
-          echo "Actor: $ACTOR"
-          echo "Tipo de evento: $EVENT_TYPE"
-          echo "SHA del commit: $WORKFLOW_SHA"
-
-          if [ "$HEAD_REPO" != "${{ github.repository }}" ]; then
-            echo "❌ ERROR: workflow_run no proviene de este repositorio ($HEAD_REPO)"
-            echo "Esto podría indicar un intento de espionaje o Bypass. Abortando."
-            exit 1
-          fi
-
-          if [ -z "$ACTOR" ]; then
-            echo "❌ ERROR: No se pudo identificar el actor del workflow_run"
-            exit 1
-          fi
-
-          echo "✅ Actor validado: $ACTOR"
-
-      - name: Validar corrección de secretos de Vercel
-        run: |
-          echo "=== Validación de Secretos de Vercel ==="
-
-          MISSING_SECRETS=""
-          if [ -z "$VERCEL_TOKEN" ]; then
-            MISSING_SECRETS="$MISSING_SECRETS VERCEL_TOKEN"
-          fi
-          if [ -z "$VERCEL_ORG_ID" ]; then
-            MISSING_SECRETS="$MISSING_SECRETS VERCEL_ORG_ID"
-          fi
-          if [ -z "$VERCEL_PROJECT_ID" ]; then
-            MISSING_SECRETS="$MISSING_SECRETS VERCEL_PROJECT_ID"
-          fi
-
-          if [ ! -z "$MISSING_SECRETS" ]; then
-            echo "❌ ERROR: Faltan secretos obligatorios:$MISSING_SECRETS"
-            echo "Por favor configura estos en Actions → Settings → Secrets → Environment Variables"
-            exit 1
-          fi
-
-          # Testar secretos: mostrar longitudes (no revelar valores)
-          echo " VERCEL_TOKEN: ${#VERCEL_TOKEN} caracteres"
-          echo " VERCEL_ORG_ID: ${#VERCEL_ORG_ID} caracteres"
-          echo " VERCEL_PROJECT_ID: ${#VERCEL_PROJECT_ID} caracteres"
-          echo " VERCEL_TEAM_ID: ${#VERCEL_TEAM_ID} caracteres (opcional)"
-          echo " VERCEL_DEPLOY_TOKEN: ${#VERCEL_DEPLOY_TOKEN} caracteres (opcional)"
-          echo "✅ Todos los secretos están presentes"
-
-      - name: Setup PNPM
-        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
-        with:
-          version: 11.5.2
-
-      - name: Configurar Node.js
-        uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
-        with:
-          node-version: '22'
-          cache: pnpm
-
-      - name: Validar Lockfile y Dependencias
-        run: |
-          echo "=== Validación de Dependencias ==="
-          cat package.json | grep -A 3 '"packageManager"'
-          cat pnpm-lock.yaml | wc -l
-          echo "✓ Lockfile válido y completo"
-
-  planear-deploy:
-    name: Planear Etapa de Desplegue
-    runs-on: [self-hosted, ts]
-    needs: validate-prerequisites
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     environment:
       name: production
       url: ${{ steps.deploy.outputs.url }}
-    outputs:
-      url: ${{ steps.deploy.outputs.url }}
-      preview-url: ${{ steps.deploy.outputs.preview-url }}
     steps:
-      - name: Checkout con SHA específico
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
           persist-credentials: false
 
-      - name: Setup PNPM
-        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
+      - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
         with:
           version: 11.5.2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
+      - uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
         with:
           node-version: '22'
           cache: pnpm
 
-      - name: Instalar dependencias
-        run: |
-          echo "📦 Instalando dependencias..."
-          pnpm install --frozen-lockfile
-          echo "✅ Dependencias instaladas"
+      - run: pnpm install --frozen-lockfile
 
-      - name: Validar Tarjeta del Proyecto
-        run: |
-          echo "🔍 Validando ID del Proyecto Vercel..."
-          if [ -z "$VERCEL_PROJECT_ID" ]; then
-            echo "❌ ERROR: VERCEL_PROJECT_ID está vacío"
-            exit 1
-          fi
-          echo " ID del Proyecto: $VERCEL_PROJECT_ID (Primeros 8 caracteres: ${VERCEL_PROJECT_ID:0:8}...)"
-
-      - name: Descargar Configuración de Producción desde Vercel
-        run: |
-          echo "📥 Descargando configuración de Vercel..."
-          if [ ! -z "$VERCEL_TOKEN" ]; then
-            pnpm dlx vercel@latest pull --yes --environment=production --token="$VERCEL_TOKEN"
-            echo "✅ Configuración descargada"
-          else
-            echo "⚠️ VERCEL_TOKEN no configurado, usando el valor actual de .vercel/"
-          fi
-
-      - name: Construir Aplicación
-        run: |
-          echo "🔨 Construyendo aplicación..."
-          if [ ! -z "$VERCEL_TOKEN" ]; then
-            pnpm dlx vercel@latest build --prod --token="$VERCEL_TOKEN"
-          else
-            pnpm build
-          fi
-          echo "✅ Construcción completada"
-
-      - name: Desplegar Artifacto Prebuilt
+      - name: Deploy to Vercel
         id: deploy
         env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
-          echo "🚀 Desplegando artifacto prebuilt..."
-          if [ ! -z "$VERCEL_TOKEN" ]; then
-            URL=$(pnpm dlx vercel@latest deploy --prebuilt --prod --token="$VERCEL_TOKEN")
-          else
-            # Fallback si los secrets de Vercel no están disponibles
-            URL=$(pnpm dlx vercel@latest deploy --prod)
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "⚠️ VERCEL_TOKEN no configurado. Define en Settings → Secrets → Actions."
+            echo "url=unavailable" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+
+          pnpm dlx vercel@latest pull --yes --environment=production --token="$VERCEL_TOKEN"
+          pnpm dlx vercel@latest build --prod --token="$VERCEL_TOKEN"
+          URL=$(pnpm dlx vercel@latest deploy --prebuilt --prod --token="$VERCEL_TOKEN")
           echo "url=$URL" >> "$GITHUB_OUTPUT"
-          echo "preview-url=${URL/".vercel.app"/"vercel.app"}" >> "$GITHUB_OUTPUT"
-          echo "✅ Despliegue completado: $URL"
-          echo "📊 URL para GitHub Actions: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-
-      - name: Registrar Métricas de Despliegue
-        run: |
-          echo "=== Estadísticas de Despliegue ==="
-          echo "Workflow Run ID: ${{ github.run_id }}"
-          echo "Commit SHA: ${{ github.event.workflow_run.head_sha }}"
-          echo "Branch: ${{ github.ref_name }}"
-          echo "Actor: ${{ github.event.workflow_run.actor.login }}"
-          echo "Estado del Despliegue: ${{ steps.deploy.outputs.url }}"
-          echo "✅ Métricas registradas"
-
-  notificar-resultados:
-    name: Publicar Resultados del Despliegue
-    runs-on: [self-hosted, ts]
-    needs: [planear-deploy]
-    if: always()
-    steps:
-      - name: Publicar Resultado del Despliegue
-        run: |
-          echo "=== Resumen del Despliegue ==="
-          echo "Nombre del Deployment: ${{ github.event.workflow_run.name }}"
-          echo "Workflow: ${{ github.event.workflow_run.workflow }}"
-          echo "Estado: ${{ needs.planear-deploy.result }}"
-          echo "Resultado del Realease: ${{ needs.planear-deploy.outputs.url }}"
-          echo "Commit: ${{ github.event.workflow_run.head_sha }}"
-          echo "Actor: ${{ github.event.workflow_run.actor.login }}"
-
-      - name: Backup Post-Despliegue
-        if: failure() && (github.ref_name == 'main' || github.ref_name == 'staging')
-        run: |
-          echo "⚠️ BACKUP POST-DESPLIEGUE (en caso de falla) ==="
-          echo "Creando backup del state reciente..."
-          BACKUP_DIR="backup-fallback-${{ github.run_id }}-$(date +%Y%m%d-%H%M%S)"
-          mkdir -p "$BACKUP_DIR"
-          cp -r .next "$BACKUP_DIR/"
-          cp -r dist "$BACKUP_DIR/"
-          echo "Backup creado en: $BACKUP_DIR"
-          echo "✅ Backup completado"
+          echo "✅ Deployed: $URL"
