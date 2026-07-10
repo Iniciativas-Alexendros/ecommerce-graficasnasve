@@ -3,6 +3,50 @@
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es/1.1.0/)
 y [Versionado Semántico](https://semver.org/lang/es/).
 
+## [0.3.0] — 2026-07-10
+
+### Añadido
+
+- **README profesional** con badges, plantilla de uso y checklist de versión
+  (se convirtió en template para clone)
+- **Configuración multi-región en Vercel** (cdg1+fra1)
+- **Flujo CI/CD moderno** con steps separados, skips para dependabot, reportes consolidados
+- **Estructuras de archivos coherentes**:
+  - `docs/config/` — vercel.json + .vercel/
+  - `docs/scripts/` — package.json + README
+  - `docs/templates/` — plantillas del proyecto (por implementar)
+- **Placeholder de despliegue STG & PROD** (`workflow_run` con validación)
+- **Estricto checklist de secrets** en CI/CD (VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID)
+- **Tokens wildcard** `(**SHARE**)` para secrets en workflowLogs (como nxw alternativo)
+
+### Cambiado
+
+- **`README.md`:** → plantillas reutilizable, badges profesionales, checklist
+  guiado
+- **vercel.json:** → configuración completa de producción con headers y rewrites
+- **`.github/workflows/ci.yml`:** → nombre: CI/CD, estructura de etapas multijob, validadores
+- **`.github/workflows/deploy.yml`:** → nombre: Deploy → production, validaciones mejoradas
+- **`vercel.json`:** → configuración multi-región y producción canónica
+- **`vercel.json`:** → milisegundos cambio: modificación de producción desde prebuilt con LEGADO
+- **`vercel.json`:** → capa de encabezados e rewrites agregados
+- **`README.md`:** → agregados formatos de badges (enlace wikis para badges)
+- **`README.md`:** → importante histórico reemplazado por checklists de despliegue
+
+### Corrigió
+
+- **`README.md`:** → URLs rotas en badges (`.github.com/.../releases`)
+- **`README.md`:** → Títulos reemplazados por enlaces combinados de badges
+- **`README.md`:** → requisitos del proyecto `README.md` formatados mejorados
+
+### Deprecado
+
+- **`vercel.json`:** → El antiguo deploy de un solo job en `vercel.com` reemplazado por la integración nativa de Vercel + Vercel CLI
+- **`.github/workflows/ci.yml`:** → workflow reducido para deployments más rápidos
+- **`.github/workflows/deploy.yml`:** → Capa separada `pipeline de despliegue`
+- **`vercel.json`:** → documentación de “forms” obsoleta, etiquetas consistentes con 🔐 emojis
+
+---
+
 ## [0.2.0] — 2026-06-10
 
 ### Añadido
@@ -27,4 +71,5 @@ y [Versionado Semántico](https://semver.org/lang/es/).
 
 - Unit (Vitest): 54/54 · E2E (Playwright): 11/11 · CI en verde.
 
+[0.3.0]: https://github.com/Iniciativas-Alexendros/ecom-graficasnasve/releases
 [0.2.0]: https://github.com/Iniciativas-Alexendros/ecom-graficasnasve/releases
