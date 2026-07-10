@@ -18,7 +18,7 @@ env:
   NODE_VERSION: '22'
   PNPM_VERSION: '11'
   SHA_DEPLOY_CACHE: ${{ github.sha }}
-  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: 'true'
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 jobs:
   quality:
@@ -164,7 +164,7 @@ jobs:
           persist-credentials: false
 
       - name: Download all artifacts
-        uses: actions/download-artifact@5d5d22a12d2e167b0f93c2b1de4649bfede1e9b0 # v4.6.2
+        uses: actions/download-artifact@v4 # v4.6.2
         with:
           path: artifacts
 
