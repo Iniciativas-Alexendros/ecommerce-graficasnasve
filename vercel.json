@@ -1,6 +1,6 @@
 {
   "framework": "nextjs",
-  "regions": ["cdg1", "fra1"],
+  "regions": ["fra1"],
   "buildCommand": "pnpm build",
   "installCommand": "pnpm install --frozen-lockfile",
   "outputDirectory": ".next",
@@ -37,6 +37,5 @@
         { "key": "X-Robots-Tag", "value": "all" }
       ]
     }
-  ],
-  "productionUrl": "graficasnasve.art"
+  ]
 }

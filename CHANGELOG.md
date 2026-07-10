@@ -18,6 +18,13 @@ y [Versionado Semántico](https://semver.org/lang/es/).
 - **Placeholder de despliegue STG & PROD** (`workflow_run` con validación)
 - **Estricto checklist de secrets** en CI/CD (VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID)
 - **Tokens wildcard** `(**SHARE**)` para secrets en workflowLogs (como nxw alternativo)
+- **Deploy real a Vercel** via `vercel build --prod` + `vercel deploy --prebuilt --prod`
+- **Secret VERCEL_TOKEN renovado** con token vivo de sesión OIDC
+
+### Corregido
+
+- **`vercel.json`:** — `productionUrl` eliminado (no es propiedad válida)
+- **`vercel.json`:** — `regions` reducido a `["fra1"]` (Hobby plan no soporta multi-región)
 
 ### Cambiado
 
