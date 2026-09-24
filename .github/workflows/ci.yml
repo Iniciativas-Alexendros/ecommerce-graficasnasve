@@ -119,6 +119,7 @@ jobs:
           path: |
             .next
             !.next/cache
+          include-hidden-files: true
           if-no-files-found: error
           retention-days: 3
 
