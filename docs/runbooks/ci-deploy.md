@@ -4,7 +4,7 @@
 
 - **Objetivos:** Diagnosticar un CI rojo o un deploy a Vercel que no salta, sin tocar branch protection ni org.
 - **Estructura:** Jobs del CI → deploy por `workflow_run` → fallos frecuentes.
-- **Contenido a integrar según contexto:** Adapta runners self-hosted `ts` y secrets Vercel de este repo. No copies semantic-release de una CLI.
+- **Contenido a integrar según contexto:** Adapta runners `ubuntu-latest` (canon) y secrets Vercel de este repo. No copies semantic-release de una CLI.
 
 ## Pipeline
 
@@ -24,4 +24,4 @@ El `name:` del workflow de CI debe seguir siendo **CI/CD**. Si lo cambias, el `w
 | Deploy no corre | ¿CI/CD en `main` verde? ¿nombre del workflow intacto?             |
 | Deploy sin URL  | Secretos Vercel ausentes — no es un fallo de producto             |
 
-Runners: `[self-hosted, ts]`. No migrar a `ubuntu-latest` en esta alineación.
+Runners del CI: `ubuntu-latest` (GitHub-hosted). `deploy.yml` permanece aparte.
