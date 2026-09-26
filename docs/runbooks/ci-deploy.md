@@ -25,3 +25,5 @@ El `name:` del workflow de CI debe seguir siendo **CI/CD**. Si lo cambias, el `w
 | Deploy sin URL  | Secretos Vercel ausentes — no es un fallo de producto             |
 
 Runners del CI: `ubuntu-latest` (GitHub-hosted). `deploy.yml` permanece aparte.
+
+> Nota (2026-09-26): el job Deploy usa `runs-on: ubuntu-latest` (el runner self-hosted `ts` no tenía workers y cancelaba a las 24h).
