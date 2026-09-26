@@ -27,3 +27,4 @@ El `name:` del workflow de CI debe seguir siendo **CI/CD**. Si lo cambias, el `w
 Runners del CI: `ubuntu-latest` (GitHub-hosted). `deploy.yml` permanece aparte.
 
 > Nota (2026-09-26): el job Deploy usa `runs-on: ubuntu-latest` (el runner self-hosted `ts` no tenía workers y cancelaba a las 24h).
+> Nota (2026-09-26b): si `VERCEL_TOKEN` es inválido, Deploy sale 0 con warning (alineado a token ausente; Vercel no es required check en privados org).
